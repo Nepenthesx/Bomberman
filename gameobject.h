@@ -38,7 +38,6 @@ public:
     PivotLocation getPivotLocation();
     void setPivotLocation(PivotLocation pivot);
 
-signals:
 };
 
 #endif // GAMEOBJECT_H

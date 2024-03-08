@@ -41,11 +41,6 @@ public:
 
     int number;
 
-    //Vector2i getPosition();
-    //void setPosition(int x, int y);
-    //QPixmap getPicture();
-    //void setPicture(QPixmap pic);
-    //void setPicture(string relativePath);
 };
 
 #endif // TILE_H

@@ -1,7 +1,5 @@
 #include "player.h"
-//#include "gamesystem.h"
 #include "gameobject.h"
-//#include "board.h"
 #include "tile.h"
 
 #include <QEvent>
@@ -18,18 +16,6 @@ Player::Player(Vector2i positionVector, GameObject::PivotLocation pivot, int spe
     setRelativeScale(relativeScale);
 }
 
-/*
-void Player::setGameSystem(GameSystem* gameSystemPointer)
-{
-    gameSystem = gameSystemPointer;
-}
-
-void Player::setBoard(Board* boardObject)
-{
-    board = boardObject;
-}
-*/
-
 Tile* Player::getCurrentTile()
 {
     return currentTile;
@@ -37,9 +23,7 @@ Tile* Player::getCurrentTile()
 
 void Player::updateTile()
 {
-    //int tileX = position(0)/board->getScale();
-    //int tileY = position(0)/board->getScale();
-    //currentTile = board->getTile(tileY, tileX);
+    ///
 }
 
 int Player::getSpeed()

@@ -26,7 +26,6 @@ private:
     Vector2i tileSize;
     int scale;
 
-//    QImage *image;
     Matrix<Tile*, Dynamic, Dynamic> tiles;
     QList<GameObject*> objects;
 
@@ -57,8 +56,6 @@ public:
     void removeObject(GameObject* object);
 
     void setFirstLevel();
-
-    void updateGraphic();
 
 protected:
     void paintEvent(QPaintEvent* event) override;

@@ -30,7 +30,6 @@ GraphicsManager::GraphicsManager(QWidget* parent, Vector2i tileSizeXY, int scale
 
     setFixedSize(getTileSize()(0)*getScale(), getTileSize()(1)*getScale());
     setGeometry(0, 0, width(), height());
-    //image = new QImage(width(), height(), QImage::Format_ARGB32);
 
     Player* newPlayer = new Player(Vector2i(3*getScale(), 3*getScale()), GameObject::Center, 0.2f*getScale(), "/img/character.png", 0.5f);
     connect(this, SIGNAL(leftArrowPressed()), newPlayer, SLOT(moveLeft()));
@@ -38,7 +37,6 @@ GraphicsManager::GraphicsManager(QWidget* parent, Vector2i tileSizeXY, int scale
     connect(this, SIGNAL(upArrowPressed()), newPlayer, SLOT(moveUp()));
     connect(this, SIGNAL(downArrowPressed()), newPlayer, SLOT(moveDown()));
     addObject(newPlayer);
-    //connect(this, SIGNAL(rightArrowPressed()), newPlayer, SLOT(newPlayer->moveRight()));
 
 
     timer = new QTimer(this);
@@ -150,23 +148,6 @@ void GraphicsManager::setFirstLevel()
     }
 }
 
-void GraphicsManager::updateGraphic()
-{
-    /*
-    QPainter painter(image);
-
-    for (int y = 0; y < tileHeight; y++)
-    {
-        for (int x = 0; x < tileWidth; x++)
-        {
-            Vector2i tilePos = tiles(y, x)->getPosition();
-            QRect r(tilePos(0), tilePos(1), scale, scale);
-            painter.drawPixmap(r, tiles(y, x)->getPicture());
-        }
-    }
-*/
-}
-
 void GraphicsManager::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -195,10 +176,6 @@ void GraphicsManager::paintEvent(QPaintEvent *event)
     QRect rect(64, 64, getScale(), getScale());
     painter.drawText(rect, QString::number(getFrameNumber()));
     setFrameNumber(getFrameNumber() + 1);
-
-    //QPainter p(this);
-    //QRect rect = event->rect();
-    //p.drawImage(rect, *image, rect);dd
 }
 
 void GraphicsManager::keyPressEvent(QKeyEvent* event)
@@ -223,10 +200,3 @@ void GraphicsManager::keyPressEvent(QKeyEvent* event)
         break;
     }
 }
-
-/*
-void GraphicsManager::rightArrowPressed()
-{
-    qDebug() << "Right arrow pressed";
-}
-*/
