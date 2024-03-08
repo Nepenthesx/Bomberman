@@ -14,9 +14,18 @@ class GameObject : public QObject
 {
     Q_OBJECT
 
-private:
+
+public:enum PivotLocation
+    {
+        UpLeft,
+        Center
+    };
+
+protected:
     Vector2i position;
     QPixmap picture;
+    float relativeScale;
+    PivotLocation pivotLocation;
 
 public:
     Vector2i getPosition();
@@ -24,6 +33,10 @@ public:
     QPixmap getPicture();
     void setPicture(QPixmap pic);
     void setPicture(string relativePath);
+    float getRelativeScale();
+    void setRelativeScale(float relativeScaleValue);
+    PivotLocation getPivotLocation();
+    void setPivotLocation(PivotLocation pivot);
 
 signals:
 };

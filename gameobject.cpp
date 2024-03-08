@@ -48,3 +48,23 @@ void GameObject::setPicture(string relativePath)
     else
         qDebug() << "Error to load file";
 }
+
+float GameObject::getRelativeScale()
+{
+    return relativeScale;
+}
+
+void GameObject::setRelativeScale(float relativeScaleValue)
+{
+    relativeScale = relativeScaleValue;
+}
+
+GameObject::PivotLocation GameObject::getPivotLocation()
+{
+    return pivotLocation;
+}
+
+void GameObject::setPivotLocation(GameObject::PivotLocation pivot)
+{
+    pivotLocation = pivot;
+}

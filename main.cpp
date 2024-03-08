@@ -1,8 +1,15 @@
 #include "mainwindow.h"
-#include "board.h"
+//#include "gamesystem.h"
+#include "graphicsmanager.h"
 
 #include <iostream>
 #include <QApplication>
+#include <QDebug>
+
+#include <Eigen/Dense>
+
+using namespace std;
+using namespace Eigen;
 
 int main(int argc, char *argv[])
 {
@@ -10,8 +17,8 @@ int main(int argc, char *argv[])
     MainWindow mainWindow;
     mainWindow.show();
 
-    Board board(mainWindow.centralWidget(), 20, 10, 32);
-    board.show();
+    GraphicsManager graphicsManager(mainWindow.centralWidget(), Vector2i(20, 10), 32, 100);
+    graphicsManager.show();
 
     return app.exec();
 }

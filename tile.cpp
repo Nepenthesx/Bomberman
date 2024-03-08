@@ -16,11 +16,12 @@ Tile::Tile()
 
 }
 
-Tile::Tile(string relativePath, bool destructibility, bool permeability)
+Tile::Tile(string relativePath, bool destructibility, bool permeability, float relativeScale)
 {
     setPicture(relativePath);
     setDestructibility(destructibility);
     setPermeability(permeability);
+    setRelativeScale(relativeScale);
 }
 
 Tile::Tile(Tile* left, Tile* right, Tile* up, Tile* down, bool destructibility, bool permeability)

@@ -11,14 +11,20 @@ CONFIG += c++17
 SOURCES += \
     board.cpp \
     gameobject.cpp \
+    gamesystem.cpp \
+    graphicsmanager.cpp \
     main.cpp \
     mainwindow.cpp \
+    player.cpp \
     tile.cpp
 
 HEADERS += \
     board.h \
     gameobject.h \
+    gamesystem.h \
+    graphicsmanager.h \
     mainwindow.h \
+    player.h \
     tile.h
 
 FORMS += \

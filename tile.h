@@ -23,7 +23,7 @@ private:
 
 public:
     Tile();
-    Tile(string relativePath, bool destructibility, bool permeability);
+    Tile(string relativePath, bool destructibility, bool permeability, float relativeScale = 1);
     Tile(Tile* left, Tile* right, Tile* up, Tile* down, bool destructibility, bool permeability);
 
     Tile* getLeftTile();
@@ -38,6 +38,9 @@ public:
     void setDestructibility(bool destructibility);
     bool getPermeability();
     void setPermeability(bool permeability);
+
+    int number;
+
     //Vector2i getPosition();
     //void setPosition(int x, int y);
     //QPixmap getPicture();
