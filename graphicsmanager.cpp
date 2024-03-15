@@ -17,21 +17,22 @@ using namespace std;
 using namespace Eigen;
 
 
-GraphicsManager::GraphicsManager(QWidget* parent, Vector2i tileSizeXY, int scaleValue, int frameIntervalMS) : QWidget(parent)
+GraphicsManager::GraphicsManager(QWidget* parent, Vector2i tileSizeXY, int scaleValue, float frameIntervalMS) : QWidget (parent)
 {
     setFocus();
 
     setScale(scaleValue);
+    GameObject::globalScale = getScale();
     setTileSize(tileSizeXY);
     setFrameInterval(frameIntervalMS);
 
     if (getLevel() == GraphicsManager::First)
         setFirstLevel();
 
-    setFixedSize(getTileSize()(0)*getScale(), getTileSize()(1)*getScale());
+    setFixedSize(getTileSize()(0)*getScale() + getScale(), getTileSize()(1)*getScale() + getScale());
     setGeometry(0, 0, width(), height());
 
-    Player* newPlayer = new Player(Vector2i(3*getScale(), 3*getScale()), GameObject::Center, 0.2f*getScale(), "/img/character.png", 0.5f);
+    Player* newPlayer = new Player(Vector2i(3*getScale(), 3*getScale()), tiles(3, 3), GameObject::Center, 0.2f*getScale(), "/img/character.png", 0.5f);
     connect(this, SIGNAL(leftArrowPressed()), newPlayer, SLOT(moveLeft()));
     connect(this, SIGNAL(rightArrowPressed()), newPlayer, SLOT(moveRight()));
     connect(this, SIGNAL(upArrowPressed()), newPlayer, SLOT(moveUp()));
@@ -55,12 +56,12 @@ void GraphicsManager::setFrameNumber(int number)
     frameNumber = number;
 }
 
-int GraphicsManager::getFrameInterval()
+float GraphicsManager::getFrameInterval()
 {
     return frameInterval;
 }
 
-void GraphicsManager::setFrameInterval(int frameIntervalMS)
+void GraphicsManager::setFrameInterval(float frameIntervalMS)
 {
     frameInterval = frameIntervalMS;
 }
@@ -146,6 +147,29 @@ void GraphicsManager::setFirstLevel()
             number++;
         }
     }
+
+    for (int y = 0; y < tileHeight; y++)
+    {
+        for (int x = 0; x < tileWidth; x++)
+        {
+            if (x > 0)
+                tiles(y, x)->setLeftTile(tiles(y, x - 1));
+            else
+                tiles(y, x)->setLeftTile(nullptr);
+            if (x < tileWidth - 1)
+                tiles(y, x)->setRightTile(tiles(y, x + 1));
+            else
+                tiles(y, x)->setRightTile(nullptr);
+            if (y > 0)
+                tiles(y, x)->setUpTile(tiles(y - 1, x));
+            else
+                tiles(y, x)->setUpTile(nullptr);
+            if (y < tileHeight - 1)
+                tiles(y, x)->setDownTile(tiles(y + 1, x));
+            else
+                tiles(y, x)->setDownTile(nullptr);
+        }
+    }
 }
 
 void GraphicsManager::paintEvent(QPaintEvent *event)
@@ -168,13 +192,26 @@ void GraphicsManager::paintEvent(QPaintEvent *event)
     {
         Vector2i objectPos = object->getPosition();
         if (object->getPivotLocation() == GameObject::Center)
-            objectPos = Vector2i(objectPos(0) + getScale()/2 * object->getRelativeScale(), objectPos(1) + getScale()/2 * object->getRelativeScale());
+            objectPos = Vector2i(objectPos(0) + getScale()/2 - getScale() * object->getRelativeScale() / 2, objectPos(1) + getScale()/2 - getScale() * object->getRelativeScale() / 2);
         QRect rect(objectPos(0), objectPos(1), object->getRelativeScale() * getScale(), object->getRelativeScale() * getScale());
         painter.drawPixmap(rect, object->getPicture());
     }
 
-    QRect rect(64, 64, getScale(), getScale());
-    painter.drawText(rect, QString::number(getFrameNumber()));
+    QRect fpsRect(width() - 7*getScale(), height() - getScale(), 2*getScale(), getScale());
+    QString fpsText = "FPS: ";
+    fpsText += QString::number(round(1000 / getFrameInterval()));
+    painter.drawText(fpsRect, fpsText);
+
+    QRect timeRect(width() - 5*getScale(), height() - getScale(), 2*getScale(), getScale());
+    QString timeText = "Time: ";
+    timeText += QString::number(round(getFrameNumber()*getFrameInterval() / 1000));
+    timeText += "s";
+    painter.drawText(timeRect, timeText);
+
+    QRect frameNumberRect(width() - 3*getScale(), height() - getScale(), 2*getScale(), getScale());
+    QString frameNumberText = "Frames: ";
+    frameNumberText += QString::number(getFrameNumber());
+    painter.drawText(frameNumberRect, frameNumberText);
     setFrameNumber(getFrameNumber() + 1);
 }
 

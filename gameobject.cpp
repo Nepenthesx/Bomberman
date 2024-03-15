@@ -49,6 +49,18 @@ void GameObject::setPicture(string relativePath)
         qDebug() << "Error to load file";
 }
 
+/*
+int GameObject::getGlobalScale()
+{
+    return globalScale;
+}
+
+void GameObject::setGlobalScale(int scale)
+{
+    globalScale = scale;
+}
+*/
+
 float GameObject::getRelativeScale()
 {
     return relativeScale;

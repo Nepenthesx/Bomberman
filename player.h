@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include "gameobject.h"
-//#include "board.h"
 #include "tile.h"
 
 #include <QEvent>
@@ -18,9 +17,10 @@ private:
     int speed;
 
 public:
-    Player(Vector2i positionVector, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale);
+    Player(Vector2i positionVector, Tile* currentTilePointer, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale);
     Tile* getCurrentTile();
-    void updateTile();
+    void setCurrentTile(Tile* tile);
+    void updateCurrentTile();
     int getSpeed();
     void setSpeed(int speedValue);
 

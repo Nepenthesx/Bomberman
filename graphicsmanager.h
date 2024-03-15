@@ -30,18 +30,18 @@ private:
     QList<GameObject*> objects;
 
     int frameNumber = 0;
-    int frameInterval;
+    float frameInterval;
     QTimer* timer;
 
     Level level = GraphicsManager::First;
 
 public:
-    GraphicsManager(QWidget* parent = nullptr, Vector2i tileSizeXY = Vector2i(20, 20), int scaleValue = 32, int frameIntervalMS = 1000);
+    GraphicsManager(QWidget* parent = nullptr, Vector2i tileSizeXY = Vector2i(20, 20), int scaleValue = 32, float frameIntervalMS = 1000);
 
     int getFrameNumber();
     void setFrameNumber(int number);
-    int getFrameInterval();
-    void setFrameInterval(int frameIntervalMS);
+    float getFrameInterval();
+    void setFrameInterval(float frameIntervalMS);
 
     int getScale();
     void setScale(int scaleValue);
