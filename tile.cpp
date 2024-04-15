@@ -1,95 +1,97 @@
 #include "tile.h"
 
-#include <Eigen/Dense>
 #include <QImage>
 #include <QImageReader>
 #include <QPixmap>
 #include <QDebug>
 #include <QDir>
 #include <iostream>
+#include <QVector>
 
-using namespace std;
-using namespace Eigen;
 
 Tile::Tile()
 {
 
 }
 
-Tile::Tile(string relativePath, bool destructibility, bool permeability, float relativeScale)
+/// FLOOR TILE
+
+FloorTile::FloorTile(QVector<int> position)
 {
-    setPicture(relativePath);
-    setDestructibility(destructibility);
-    setPermeability(permeability);
-    setRelativeScale(relativeScale);
+    this->position = position;
+    setPicture("/img/tile1.png");
+    relativeScale = 1;
+    isInteractive = false;
+    durability = 0;
 }
 
-Tile::Tile(Tile* left, Tile* right, Tile* up, Tile* down, bool destructibility, bool permeability)
+void FloorTile::interact() {}
+
+void FloorTile::move() {}
+
+void FloorTile::undoMove() {}
+
+void FloorTile::onDurabilityLoss() {}
+
+/// ROCK TILE
+
+RockTile::RockTile(QVector<int> position, int durability)
 {
-    setLeftTile(left);
-    setRightTile(right);
-    setUpTile(up);
-    setDownTile(down);
-    setDestructibility(destructibility);
-    setPermeability(permeability);
+    interactPriority = 2;
+
+    this->position = position;
+    setPicture("/img/tile2.png");
+    relativeScale = 1;
+    isInteractive = true;
+    this->durability = durability;
 }
 
-Tile* Tile::getLeftTile()
+void RockTile::interact()
 {
-    return leftTile;
+    for (GameObject* object : objectsInContact)
+    {
+        object->undoMove();
+
+        qDebug() << "Collision!";
+    }
 }
 
-void Tile::setLeftTile(Tile* tile)
+void RockTile::move() {}
+
+void RockTile::undoMove() {}
+
+void RockTile::onDurabilityLoss()
 {
-    leftTile = tile;
+    GameObject* floor = new FloorTile(position);
+    delete this;
+
+    //CO Z LISTĄ GAMEOBJECTS???
 }
 
-Tile* Tile::getRightTile()
+/// WALL TILE
+
+WallTile::WallTile(QVector<int> position)
 {
-    return rightTile;
+    interactPriority = 2;
+
+    this->position = position;
+    setPicture("/img/tile3.png");
+    relativeScale = 1;
+    isInteractive = false;
+    this->durability = durability;
 }
 
-void Tile::setRightTile(Tile* tile)
+void WallTile::interact()
 {
-    rightTile = tile;
+    for (GameObject* object : objectsInContact)
+    {
+        object->undoMove();
+        qDebug() << "Collision!";
+    }
 }
 
-Tile* Tile::getUpTile()
-{
-    return upTile;
-}
+void WallTile::move() {}
 
-void Tile::setUpTile(Tile* tile)
-{
-    upTile = tile;
-}
+void WallTile::undoMove() {}
 
-Tile* Tile::getDownTile()
-{
-    return downTile;
-}
-
-void Tile::setDownTile(Tile* tile)
-{
-    downTile = tile;
-}
-
-bool Tile::getDestructibility()
-{
-    return isDestructible;
-}
-
-void Tile::setDestructibility(bool destructibility)
-{
-    isDestructible = destructibility;
-}
-
-bool Tile::getPermeability()
-{
-    return isPermeable;
-}
-
-void Tile::setPermeability(bool permeability)
-{
-    isPermeable = permeability;
-}
+void WallTile::onDurabilityLoss() {}

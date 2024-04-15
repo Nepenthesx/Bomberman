@@ -1,7 +1,43 @@
 #include "graphicsmanager.h"
 #include "gameobject.h"
+
+#include <QPainter>
+#include <QRect>
+#include <QPaintEvent>
+#include <QDebug>
+#include <QVector>
+
+
+GraphicsManager::GraphicsManager(QVector<int> size, QWidget* parent) : QWidget (parent)
+{
+    setFixedSize(size[0], size[1]);
+    setGeometry(0, 0, width(), height());
+}
+
+void GraphicsManager::setObjectsList(QList<GameObject*> objects)
+{
+    this->objects = objects;
+}
+
+void GraphicsManager::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+
+    for (GameObject* object : objects)
+    {
+        QVector<int> objectPos = object->getPosition();
+        QRect rect(objectPos[0], objectPos[1], object->getRelativeScale() * GameObject::getGlobalScale(), object->getRelativeScale() * GameObject::getGlobalScale());
+        painter.drawPixmap(rect, object->getPicture());
+    }
+
+}
+
+
+/*
+#include "graphicsmanager.h"
+#include "gameobject.h"
 #include "tile.h"
-#include "player.h"
+//#include "player.h"
 
 #include <QList>
 #include <QTimer>
@@ -237,3 +273,4 @@ void GraphicsManager::keyPressEvent(QKeyEvent* event)
         break;
     }
 }
+*/

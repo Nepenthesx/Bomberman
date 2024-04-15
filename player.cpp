@@ -1,3 +1,4 @@
+/*
 #include "player.h"
 #include "gameobject.h"
 #include "tile.h"
@@ -6,6 +7,10 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include <Eigen/Dense>
+
+using namespace std;
+using namespace Eigen;
+
 
 Player::Player(Vector2i positionVector, Tile* currentTilePointer, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale = 1)
 {
@@ -109,4 +114,4 @@ void Player::moveDown()
         setPosition(getPosition()(0), getPosition()(1) - getSpeed());
 
     updateCurrentTile();
-}
+}*/

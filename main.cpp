@@ -1,14 +1,11 @@
 #include "mainwindow.h"
-#include "graphicsmanager.h"
+#include "gamemanager.h"
 
 #include <iostream>
 #include <QApplication>
 #include <QDebug>
+#include <QVector>
 
-#include <Eigen/Dense>
-
-using namespace std;
-using namespace Eigen;
 
 int main(int argc, char *argv[])
 {
@@ -16,9 +13,12 @@ int main(int argc, char *argv[])
     MainWindow mainWindow;
     mainWindow.show();
 
+    GameManager gameManager(32, 100, GameManager::First);
+    gameManager.startLevel(mainWindow.centralWidget());
+
     // 50/3 = 60 fps
-    GraphicsManager graphicsManager(mainWindow.centralWidget(), Vector2i(20, 10), 32, 12.5);
-    graphicsManager.show();
+    //GraphicsManager graphicsManager(mainWindow.centralWidget(), Vector2i(20, 10), 32, 12.5);
+    //graphicsManager.show();
 
     return app.exec();
 }

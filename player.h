@@ -1,3 +1,4 @@
+/*
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -8,6 +9,7 @@
 #include <QKeyEvent>
 #include <Eigen/Dense>
 
+
 class Player : public GameObject
 {
     Q_OBJECT
@@ -17,7 +19,7 @@ private:
     int speed;
 
 public:
-    Player(Vector2i positionVector, Tile* currentTilePointer, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale);
+    Player(Vector2i position, Tile* currentTilePointer, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale);
     Tile* getCurrentTile();
     void setCurrentTile(Tile* tile);
     void updateCurrentTile();
@@ -31,4 +33,5 @@ public slots:
     void moveDown();
 };
 
-#endif // PLAYER_H
+
+#endif // PLAYER_H*/

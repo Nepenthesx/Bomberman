@@ -4,41 +4,52 @@
 #include <QObject>
 #include <QImage>
 #include <QPixmap>
+#include <QList>
+#include <QVector>
 
-#include <Eigen/Dense>
-
-using namespace std;
-using namespace Eigen;
 
 class GameObject : public QObject
 {
     Q_OBJECT
 
-public:enum PivotLocation
-    {
-        UpLeft,
-        Center
-    };
-
 protected:
-    //int globalScale;
-    Vector2i position;
+    QList <GameObject*> objectsInContact;
+    int interactPriority;
+
+    QVector<int> position;
     QPixmap picture;
     float relativeScale;
-    PivotLocation pivotLocation;
+    bool isInteractive;
+    int durability;
 
 public:
     static int globalScale;
+    static int getGlobalScale();
+    static void setGlobalScale(int scale);
 
-    virtual Vector2i getPosition();
-    virtual void setPosition(int x, int y);
-    virtual QPixmap getPicture();
-    virtual void setPicture(QPixmap pic);
-    virtual void setPicture(string relativePath);
-    virtual float getRelativeScale();
-    virtual void setRelativeScale(float relativeScaleValue);
-    virtual PivotLocation getPivotLocation();
-    virtual void setPivotLocation(PivotLocation pivot);
+    void checkContact(GameObject* object);
+    void clearObjectsInContact();
+    virtual void interact() = 0;
+    virtual void move() = 0;
+    virtual void undoMove() = 0;
+    virtual void onDurabilityLoss() = 0;
+
+
+    //getset
+    QVector<int> getPosition();
+    void setPosition(int x, int y);
+    void setPosition(QVector<int> position);
+    QPixmap getPicture();
+    void setPicture(QPixmap pic);
+    void setPicture(std::string relativePath);
+    float getRelativeScale();
+    void setRelativeScale(float relativeScaleValue);
+    bool getInteractivity();
+    void setInteractivity(bool interactivity);
+    int getDurability();
+    void setDurability(int durability);
+
+
 
 };
 

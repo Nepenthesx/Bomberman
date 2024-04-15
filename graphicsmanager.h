@@ -2,6 +2,38 @@
 #define GRAPHICSMANAGER_H
 
 #include "gameobject.h"
+
+#include <QWidget>
+#include <QList>
+#include <QVector>
+
+
+class GraphicsManager : public QWidget
+{
+    Q_OBJECT
+
+private:
+    QList<GameObject*> objects;
+
+public:
+    GraphicsManager(QVector<int> size, QWidget* parent = nullptr);
+    void setObjectsList(QList<GameObject*> objects);
+
+protected:
+    void paintEvent(QPaintEvent* event) override;
+
+};
+
+#endif // GRAPHICSMANAGER_H
+
+
+
+
+/*
+#ifndef GRAPHICSMANAGER_H
+#define GRAPHICSMANAGER_H
+
+#include "gameobject.h"
 #include "tile.h"
 
 #include <QWidget>
@@ -70,3 +102,4 @@ signals:
 };
 
 #endif // GRAPHICSMANAGER_H
+*/

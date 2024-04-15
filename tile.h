@@ -5,42 +5,50 @@
 
 #include <QImage>
 #include <QPixmap>
+#include <QVector>
 
-#include <Eigen/Dense>
-
-using namespace std;
-using namespace Eigen;
 
 class Tile : public GameObject
 {
-private:
-    Tile* leftTile = nullptr;
-    Tile* rightTile = nullptr;
-    Tile* upTile = nullptr;
-    Tile* downTile = nullptr;
-    bool isDestructible;
-    bool isPermeable;
+protected:
 
 public:
     Tile();
-    Tile(string relativePath, bool destructibility, bool permeability, float relativeScale = 1);
-    Tile(Tile* left, Tile* right, Tile* up, Tile* down, bool destructibility, bool permeability);
 
-    Tile* getLeftTile();
-    void setLeftTile(Tile* tile);
-    Tile* getRightTile();
-    void setRightTile(Tile* tile);
-    Tile* getUpTile();
-    void setUpTile(Tile* tile);
-    Tile* getDownTile();
-    void setDownTile(Tile* tile);
-    bool getDestructibility();
-    void setDestructibility(bool destructibility);
-    bool getPermeability();
-    void setPermeability(bool permeability);
+};
 
-    int number;
+class FloorTile : public Tile
+{
+public:
+    FloorTile(QVector<int> position);
+    void interact() override;
+    void move() override;
+    void undoMove() override;
+    void onDurabilityLoss() override;
 
+};
+
+class RockTile : public Tile
+{
+public:
+    RockTile(QVector<int> position, int durability = 1);
+
+    void interact() override;
+    void move() override;
+    void undoMove() override;
+    void onDurabilityLoss() override;
+
+};
+
+class WallTile : public Tile
+{
+public:
+    WallTile(QVector<int> position);
+
+    void interact() override;
+    void move() override;
+    void undoMove() override;
+    void onDurabilityLoss() override;
 };
 
 #endif // TILE_H
