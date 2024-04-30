@@ -1,26 +1,21 @@
 #include "tile.h"
 
-#include <QImage>
-#include <QImageReader>
-#include <QPixmap>
+#include "gameobject.h"
 #include <QDebug>
 #include <QDir>
 #include <iostream>
 #include <QVector>
 
 
-Tile::Tile()
+Tile::Tile(QVector<int> position, QVector<int> size) : GameObject::GameObject(position, size)
 {
 
 }
 
 /// FLOOR TILE
 
-FloorTile::FloorTile(QVector<int> position)
+FloorTile::FloorTile(QVector<int> position, QVector<int> size) : Tile::Tile(position, size)
 {
-    this->position = position;
-    setPicture("/img/tile1.png");
-    relativeScale = 1;
     isInteractive = false;
     durability = 0;
 }
@@ -35,13 +30,10 @@ void FloorTile::onDurabilityLoss() {}
 
 /// ROCK TILE
 
-RockTile::RockTile(QVector<int> position, int durability)
+RockTile::RockTile(QVector<int> position, QVector<int> size, int durability) : Tile::Tile(position, size)
 {
     interactPriority = 2;
 
-    this->position = position;
-    setPicture("/img/tile2.png");
-    relativeScale = 1;
     isInteractive = true;
     this->durability = durability;
 }
@@ -62,7 +54,7 @@ void RockTile::undoMove() {}
 
 void RockTile::onDurabilityLoss()
 {
-    GameObject* floor = new FloorTile(position);
+    //GameObject* floor = new FloorTile(position);
     delete this;
 
     //CO Z LISTĄ GAMEOBJECTS???
@@ -70,13 +62,10 @@ void RockTile::onDurabilityLoss()
 
 /// WALL TILE
 
-WallTile::WallTile(QVector<int> position)
+WallTile::WallTile(QVector<int> position, QVector<int> size) : Tile::Tile(position, size)
 {
     interactPriority = 2;
 
-    this->position = position;
-    setPicture("/img/tile3.png");
-    relativeScale = 1;
     isInteractive = false;
     this->durability = durability;
 }

@@ -2,6 +2,7 @@
 #include "gamemanager.h"
 
 #include <iostream>
+#include <QDir>
 #include <QApplication>
 #include <QDebug>
 #include <QVector>

@@ -4,6 +4,7 @@
 #include "gameobject.h"
 #include "character.h"
 #include "tile.h"
+#include "graphicobject.h"
 
 #include <QWidget>
 #include <QList>
@@ -11,14 +12,15 @@
 #include <QTimer>
 #include <QVector>
 
+int GameManager::globalScale;
+
 
 GameManager::GameManager(int globalScale, float frameInterval, Level level)
 {
-    GameObject::setGlobalScale(globalScale);
+    GameManager::setGlobalScale(globalScale);
     this->frameInterval = frameInterval;
     this->level = level;
 
-    //TIMER!!!! z updateGame
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
     timer->setInterval(frameInterval);
@@ -27,6 +29,7 @@ GameManager::GameManager(int globalScale, float frameInterval, Level level)
 
 void GameManager::updateGame()
 {
+    /*
     //MOVE
     for (GameObject* object : gameObjects)
     {
@@ -61,13 +64,20 @@ void GameManager::updateGame()
             object->onDurabilityLoss();
     }
 
-    frameCount++;
+    frameCount++;*/
 
     //qDebug() << frameCount;
 
+
+    for (GraphicObject* object : graphicObjects)
+    {
+        object->update();
+    }
+
+
     //UPDATE GRAPHICS MANAGER
-    graphicsManager->setObjectsList(gameObjects);
-    graphicsManager->update();
+    //graphicsManager->setObjectsList(gameObjects);
+    //graphicsManager->update();
 }
 
 void GameManager::createFirstLevel(QWidget* parent)
@@ -81,28 +91,44 @@ void GameManager::createFirstLevel(QWidget* parent)
         {
             if (x == 0 || x == 1 || x == tileWidth - 1 || x == tileWidth - 2 || y == 0 || y == 1 || y == tileHeight - 1 || y == tileHeight - 2)
             {
-                GameObject* newTile = new WallTile(QVector<int>({x * GameObject::getGlobalScale(), y * GameObject::getGlobalScale()}));
+                GameObject* newTile = new WallTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
                 gameObjects.push_back(newTile);
+
+                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile3.png", parent);
+                graphicObjects.push_back(newGTile);
+                newGTile->show();
             }
             else if (x < 5 && y < 5)
             {
-                GameObject* newTile = new FloorTile(QVector<int>({x * GameObject::getGlobalScale(), y * GameObject::getGlobalScale()}));
+                GameObject* newTile = new FloorTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
                 gameObjects.push_back(newTile);
+
+                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile1.png", parent);
+                graphicObjects.push_back(newGTile);
+                newGTile->show();
             }
             else
             {
-                GameObject* newTile = new RockTile(QVector<int>({x * GameObject::getGlobalScale(), y * GameObject::getGlobalScale()}));
+                GameObject* newTile = new RockTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
                 gameObjects.push_back(newTile);
+
+                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile2.png", parent);
+                graphicObjects.push_back(newGTile);
+                newGTile->show();
             }
         }
     }
 
-    GameObject* newPlayer = new Player(QVector<int>({3 * GameObject::getGlobalScale(), 3 * GameObject::getGlobalScale()}));
+    GameObject* newPlayer = new Player(QVector<int>({3 * GameManager::getGlobalScale(), 3 * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
     gameObjects.push_back(newPlayer);
 
-    graphicsManager = new GraphicsManager(QVector<int>({tileWidth * GameObject::getGlobalScale(), tileHeight * GameObject::getGlobalScale()}), parent);
-    graphicsManager->setObjectsList(gameObjects);
-    graphicsManager->show();
+    GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/character.png", parent);
+    graphicObjects.push_back(newGPlayer);
+    newGPlayer->show();
+
+    //graphicsManager = new GraphicsManager(QVector<int>({tileWidth * GameObject::getGlobalScale(), tileHeight * GameObject::getGlobalScale()}), parent);
+    //graphicsManager->setObjectsList(gameObjects);
+    //graphicsManager->show();
 
 }
 
@@ -114,6 +140,54 @@ void GameManager::createSecondLevel(QWidget* parent)
 void GameManager::createThirdLevel(QWidget* parent)
 {
 
+}
+
+int GameManager::getGlobalScale()
+{
+    return globalScale;
+}
+
+void GameManager::setGlobalScale(int scale)
+{
+    if (scale > 0)
+        globalScale = scale;
+    else
+        globalScale = 32;
+}
+
+void GameManager::checkContact(GameObject* object)
+{/*
+    int myX = position[0];
+    int myY = position[1];
+
+    int objectX = object->getPosition()[0];
+    int objectY = object->getPosition()[1];
+
+    int myLeftEdge = myX;
+    int myRightEdge = myX + globalScale * relativeScale;
+    int myUpEdge = myY;
+    int myDownEdge = myY + globalScale * relativeScale;
+
+    int objectLeftEdge = objectX;
+    int objectRightEdge = objectX + globalScale * object->getRelativeScale();
+    int objectUpEdge = objectY;
+    int objectDownEdge = objectY + globalScale * object->getRelativeScale();
+
+    bool horizontalContact = false;
+    bool verticalContact = false;
+
+    if (myX <= objectX && myRightEdge > objectLeftEdge) //kontakt z prawej
+        horizontalContact = true;
+    else if (myX >= objectX && myLeftEdge < objectRightEdge) //kontakt z lewej
+        horizontalContact = true;
+
+    if (myY <= objectY && myDownEdge > objectUpEdge) //kontakt z dołu
+        verticalContact = true;
+    else if (myY >= objectY && myUpEdge < objectDownEdge) //kontakt z góry
+        verticalContact = true;
+
+    if (horizontalContact && verticalContact)
+        objectsInContact.push_back(object);*/
 }
 
 int GameManager::getFrameCount()

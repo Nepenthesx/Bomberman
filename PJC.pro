@@ -12,21 +12,21 @@ SOURCES += \
     character.cpp \
     gamemanager.cpp \
     gameobject.cpp \
+    graphicobject.cpp \
     graphicsmanager.cpp \
     item.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp \
     tile.cpp
 
 HEADERS += \
     character.h \
     gamemanager.h \
     gameobject.h \
+    graphicobject.h \
     graphicsmanager.h \
     item.h \
     mainwindow.h \
-    player.h \
     tile.h
 
 FORMS += \

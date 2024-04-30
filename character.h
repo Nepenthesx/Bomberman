@@ -4,7 +4,7 @@
 #include <windows.h> //do wykrywania przycisków
 
 #include "gameobject.h"
-#include "tile.h"
+#include "gamemanager.h"
 
 #include <QEvent>
 #include <QKeyEvent>
@@ -20,6 +20,8 @@ protected:
     QVector<int> previousPosition;
 
 public:
+    Character(QVector<int> position, QVector<int> size);
+
     int getSpeed();
     void setSpeed(int speed);
 
@@ -33,7 +35,7 @@ class Player : public Character
 {
 
 public:
-    Player(QVector<int> position, int speed = GameObject::getGlobalScale() ,int durability = 3);
+    Player(QVector<int> position, QVector<int> size, int speed = GameManager::getGlobalScale(), int durability = 3);
 
     void interact() override;
     void move() override;

@@ -1,30 +1,23 @@
 #include "gameobject.h"
 
-#include <QImage>
-#include <QImageReader>
-#include <QPixmap>
 #include <QDebug>
 #include <QDir>
 #include <iostream>
 #include <QVector>
 
 
-int GameObject::globalScale;
-
-
-int GameObject::getGlobalScale()
+GameObject::GameObject()
 {
-    return globalScale;
+
 }
 
-void GameObject::setGlobalScale(int scale)
+GameObject::GameObject(QVector<int> position, QVector<int> size)
 {
-    if (scale > 0)
-        globalScale = scale;
-    else
-        globalScale = 32;
+    this->position = position;
+    this->size = size;
 }
 
+/*
 void GameObject::checkContact(GameObject* object)
 {
     int myX = position[0];
@@ -65,6 +58,7 @@ void GameObject::clearObjectsInContact()
 {
     objectsInContact.clear();
 }
+*/
 
 QVector<int> GameObject::getPosition()
 {
@@ -79,57 +73,22 @@ void GameObject::setPosition(int x, int y)
 
 void GameObject::setPosition(QVector<int> position)
 {
-    qDebug() << position[0];
     this->position = position;
 }
 
-QPixmap GameObject::getPicture()
+QVector<int> GameObject::getSize()
 {
-    return picture;
+    return size;
 }
 
-void GameObject::setPicture(QPixmap pic)
+void GameObject::setSize(int x, int y)
 {
-    picture = pic;
+    QVector<int> size({x, y});
+    this->size = size;
 }
-
-void GameObject::setPicture(std::string relativePath)
+void GameObject::setSize(QVector<int> size)
 {
-    QDir dir(QDir::currentPath());
-    std::string spath = "../PJC" + relativePath;
-    QString qpath = QString::fromStdString(spath);
-    qpath = dir.absoluteFilePath(qpath);
-
-    QImageReader reader(qpath);
-    reader.setDecideFormatFromContent(true);
-
-    QImage img = reader.read();
-    if (!img.isNull())
-        picture = QPixmap::fromImage(img);
-    else
-        qDebug() << "Error to load file";
-}
-
-/*
-int GameObject::getGlobalScale()
-{
-    return globalScale;
-}
-
-void GameObject::setGlobalScale(int scale)
-{
-    globalScale = scale;
-}
-*/
-
-float GameObject::getRelativeScale()
-{
-    return relativeScale;
-}
-
-void GameObject::setRelativeScale(float relativeScaleValue)
-{
-    relativeScale = relativeScaleValue;
+    this->size = size;
 }
 
 bool GameObject::getInteractivity()
@@ -152,15 +111,3 @@ void GameObject::setDurability(int durability)
     if (durability >= 0)
         this->durability = durability;
 }
-
-/*
-GameObject::PivotLocation GameObject::getPivotLocation()
-{
-    return pivotLocation;
-}
-
-void GameObject::setPivotLocation(GameObject::PivotLocation pivot)
-{
-    pivotLocation = pivot;
-}
-*/

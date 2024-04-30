@@ -1,9 +1,6 @@
 #include "item.h"
 
 #include "gameobject.h"
-
-#include <QImage>
-#include <QPixmap>
 #include <QTimer>
 #include <QVector>
 
@@ -11,22 +8,24 @@ int Bomb::count;
 int Bomb::maxCount;
 
 
+Item::Item(QVector<int> position, QVector<int> size) : GameObject::GameObject(position, size)
+{
+
+}
+
 void Item::changeTimeoutStatus()
 {
     isTimeout = true;
 }
 
-Bomb::Bomb(QVector<int> position, int activationTime, Bomb::ExplosionShape explosionShape)
+Bomb::Bomb(QVector<int> position, QVector<int> size, int activationTime, Bomb::ExplosionShape explosionShape) : Item::Item(position, size)
 {
     //sprawdź count wszystkich bomb
     if (count <= maxCount)
     {
         interactPriority = 2;
 
-        this->position = position;
         this->explosionShape = explosionShape;
-        setPicture("/img/item3.png");
-        relativeScale = 1;
         isInteractive = false; //chyba że bombę można kopnąć, ale jak na razie nie ma takiej opcji
 
         timer = new QTimer();

@@ -6,6 +6,11 @@
 #include <QVector>
 
 
+Character::Character(QVector<int> position, QVector<int> size) : GameObject::GameObject(position, size)
+{
+
+}
+
 int Character::getSpeed()
 {
     return speed;
@@ -19,31 +24,28 @@ void Character::setSpeed(int speed)
 
 void Character::moveLeft()
 {
-    setPosition(getPosition()[0] - speed, getPosition()[1]);
+    setPosition(position[0] - speed, position[1]);
 }
 
 void Character::moveRight()
 {
-    setPosition(getPosition()[0] + speed, getPosition()[1]);
+    setPosition(position[0] + speed, position[1]);
 }
 
 void Character::moveUp()
 {
-    setPosition(getPosition()[0], getPosition()[1] - speed);
+    setPosition(position[0], position[1] - speed);
 }
 
 void Character::moveDown()
 {
-    setPosition(getPosition()[0], getPosition()[1] + speed);
+    setPosition(position[0], position[1] + speed);
 }
 
-Player::Player(QVector<int> position, int speed, int durability)
+Player::Player(QVector<int> position, QVector<int> size, int speed, int durability) : Character(position, size)
 {
     interactPriority = 2;
 
-    this->position = position;
-    setPicture("/img/character.png");
-    relativeScale = 1;
     isInteractive = true;
     this->durability = durability;
     this->speed = speed;

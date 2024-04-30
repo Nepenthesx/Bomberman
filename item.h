@@ -3,8 +3,6 @@
 
 #include "gameobject.h"
 
-#include <QImage>
-#include <QPixmap>
 #include <QTimer>
 #include <QVector>
 
@@ -15,6 +13,9 @@ class Item : public GameObject
 protected:
     QTimer* timer;
     bool isTimeout = false;
+
+public:
+    Item(QVector<int> position, QVector<int> size);
 
 public slots:
     void changeTimeoutStatus();
@@ -42,7 +43,7 @@ public:
     static int count;
     static int maxCount;
 
-    Bomb(QVector<int> position, int activationTime, ExplosionShape explosionShape);
+    Bomb(QVector<int> position, QVector<int> size, int activationTime, Bomb::ExplosionShape explosionShape);
     static void setMaxCount(int count);
 
     void interact() override;

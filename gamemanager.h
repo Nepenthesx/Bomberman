@@ -3,6 +3,7 @@
 
 #include "graphicsmanager.h"
 #include "gameobject.h"
+#include "graphicobject.h"
 
 #include <QObject>
 #include <QWidget>
@@ -24,11 +25,10 @@ public:enum Level
     };
 
 private:
-    //int globalScale;
-
-    //Matrix<Tile*, Dynamic, Dynamic> tiles; - na potrzeby budowy siatki
     QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
+    QList<GraphicObject*> graphicObjects;
 
+    static int globalScale;
     int frameCount = 0;
     float frameInterval;
     QTimer* timer;
@@ -43,6 +43,9 @@ private:
 public:
     GameManager(int globalScale, float frameInterval = 1000, Level level = GameManager::First);
 
+    static int getGlobalScale();
+    static void setGlobalScale(int scale);
+
     int getFrameCount();
     float getFrameInterval();
     void setFrameInterval(float frameInterval);
@@ -52,6 +55,7 @@ public:
 
     void addObject(GameObject* object);
     void removeObject(GameObject* object);
+    void checkContact(GameObject* object);
 
     void startLevel(QWidget* parent = nullptr);
     void endLevel();

@@ -25,9 +25,9 @@ void GraphicsManager::paintEvent(QPaintEvent *event)
 
     for (GameObject* object : objects)
     {
-        QVector<int> objectPos = object->getPosition();
-        QRect rect(objectPos[0], objectPos[1], object->getRelativeScale() * GameObject::getGlobalScale(), object->getRelativeScale() * GameObject::getGlobalScale());
-        painter.drawPixmap(rect, object->getPicture());
+        //QVector<int> objectPos = object->getPosition();
+        //QRect rect(objectPos[0], objectPos[1], object->getRelativeScale() * GameObject::getGlobalScale(), object->getRelativeScale() * GameObject::getGlobalScale());
+        //painter.drawPixmap(rect, object->getPicture());
     }
 
 }

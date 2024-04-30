@@ -3,8 +3,6 @@
 
 #include "gameobject.h"
 
-#include <QImage>
-#include <QPixmap>
 #include <QVector>
 
 
@@ -13,14 +11,14 @@ class Tile : public GameObject
 protected:
 
 public:
-    Tile();
+    Tile(QVector<int> position, QVector<int> size);
 
 };
 
 class FloorTile : public Tile
 {
 public:
-    FloorTile(QVector<int> position);
+    FloorTile(QVector<int> position, QVector<int> size);
     void interact() override;
     void move() override;
     void undoMove() override;
@@ -31,7 +29,7 @@ public:
 class RockTile : public Tile
 {
 public:
-    RockTile(QVector<int> position, int durability = 1);
+    RockTile(QVector<int> position, QVector<int> size, int durability = 1);
 
     void interact() override;
     void move() override;
@@ -43,7 +41,7 @@ public:
 class WallTile : public Tile
 {
 public:
-    WallTile(QVector<int> position);
+    WallTile(QVector<int> position, QVector<int> size);
 
     void interact() override;
     void move() override;
