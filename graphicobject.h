@@ -7,6 +7,12 @@
 #include <QImage>
 #include <QPixmap>
 #include <QPaintEvent>
+#include <QPainter>
+#include <QList>
+#include <QDebug>
+#include <QVector>
+#include <QDir>
+#include <QImageReader>
 
 
 class GraphicObject : public QWidget
@@ -21,7 +27,7 @@ public:
 
     GameObject* gameObject;
     QPixmap getPicture();
-    void setPicture(QPixmap pic);
+    void setPicture(QPixmap picture);
     void setPicture(std::string graphicRelativePath);
 
 protected:

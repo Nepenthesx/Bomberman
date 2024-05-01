@@ -1,47 +1,21 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include <windows.h> //do wykrywania przycisków
+#include "dynamicobject.h"
+#include "movableobject.h"
 
-#include "gameobject.h"
-#include "gamemanager.h"
-
-#include <QEvent>
-#include <QKeyEvent>
 #include <QVector>
+#include <QDebug>
 
 
-class Character : public GameObject
+class Character : public DynamicObject, public MovableObject
 {
-    Q_OBJECT
-
-protected:
-    int speed;
-    QVector<int> previousPosition;
-
 public:
-    Character(QVector<int> position, QVector<int> size);
-
-    int getSpeed();
-    void setSpeed(int speed);
+    Character(QVector<int> position, QVector<int> size, int durability, int speed);
 
     virtual void update() = 0;
+    virtual void onDurabilityLoss() = 0;
     virtual void move(QVector<int> nextPosition) = 0;
-    void moveLeft();
-    void moveRight();
-    void moveUp();
-    void moveDown();
-};
-
-class Player : public Character
-{
-
-public:
-    Player(QVector<int> position, QVector<int> size, int speed = GameManager::getGlobalScale(), int durability = 3);
-
-    void update() override;
-    void move(QVector<int> nextPosition) override;
-    void onDurabilityLoss() override;
 };
 
 #endif // CHARACTER_H

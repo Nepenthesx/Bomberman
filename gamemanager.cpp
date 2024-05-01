@@ -1,17 +1,5 @@
 #include "gamemanager.h"
 
-#include "graphicsmanager.h"
-#include "gameobject.h"
-#include "character.h"
-#include "tile.h"
-#include "graphicobject.h"
-
-#include <QWidget>
-#include <QList>
-#include <QSet>
-#include <QDebug>
-#include <QTimer>
-#include <QVector>
 
 int GameManager::globalScale;
 QList<GameObject*> GameManager::gameObjects;
@@ -31,55 +19,17 @@ GameManager::GameManager(int globalScale, float frameInterval, Level level)
 
 void GameManager::updateGame()
 {
-
-    //MOVE
     for (GameObject* object : gameObjects)
     {
         object->update();
     }
-    /*
-    //CHECK CONTACT
-    for (GameObject* object : gameObjects)
-    {
-        //wyczyść kolizje z poprzedniego update
-        object->clearObjectsInContact();
 
-        for (GameObject* innerObject : gameObjects)
-        {
-            //jeśli nie jestem to ja
-            //oraz mogę sprawdzać tylko obiekty wchodzące w interakcje (np. podłoga jest bez sensu do sprawdzania)
-            if (object != innerObject && innerObject->getInteractivity())
-                object->checkContact(innerObject);
-        }
-    }
-
-    //INTERACT
-    for (GameObject* object : gameObjects)
-    {
-        object->interact();
-    }
-
-    //IF ZERO DURABILITY
-    for (GameObject* object : gameObjects)
-    {
-        if (object->getDurability() <= 0)
-            object->onDurabilityLoss();
-    }
-
-    frameCount++;*/
-
-    //qDebug() << frameCount;
-
+    frameCount++;
 
     for (GraphicObject* object : graphicObjects)
     {
         object->update();
     }
-
-
-    //UPDATE GRAPHICS MANAGER
-    //graphicsManager->setObjectsList(gameObjects);
-    //graphicsManager->update();
 }
 
 void GameManager::createFirstLevel(QWidget* parent)
@@ -127,11 +77,6 @@ void GameManager::createFirstLevel(QWidget* parent)
     GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/character.png", parent);
     graphicObjects.push_back(newGPlayer);
     newGPlayer->show();
-
-    //graphicsManager = new GraphicsManager(QVector<int>({tileWidth * GameObject::getGlobalScale(), tileHeight * GameObject::getGlobalScale()}), parent);
-    //graphicsManager->setObjectsList(gameObjects);
-    //graphicsManager->show();
-
 }
 
 void GameManager::createSecondLevel(QWidget* parent)
@@ -193,6 +138,37 @@ void GameManager::removeObject(GameObject* object)
     gameObjects.removeOne(object);
 }
 
+void GameManager::startLevel(QWidget* parent)
+{
+    frameCount = 0;
+
+    switch (level)
+    {
+    case GameManager::First:
+        createFirstLevel(parent);
+        break;
+
+    case GameManager::Second:
+        createSecondLevel(parent);
+        break;
+
+    case GameManager::Third:
+        createThirdLevel(parent);
+        break;
+
+    }
+}
+
+void GameManager::endLevel()
+{
+    for (GameObject* object : gameObjects)
+    {
+        delete object;
+    }
+
+    gameObjects.clear();
+}
+
 QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
 {
     QList<GameObject*> objectsInRange;
@@ -206,10 +182,10 @@ QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
     QVector<int> objectPositionL = QVector<int>({objectBasePosition[0] - range, objectBasePosition[1]});
     objectsInRange.append(getObjectsInContact(objectPositionL, object->getSize()));
     //GÓRA
-    QVector<int> objectPositionU = QVector<int>({objectBasePosition[0], objectBasePosition[1] + range});
+    QVector<int> objectPositionU = QVector<int>({objectBasePosition[0], objectBasePosition[1] - range});
     objectsInRange.append(getObjectsInContact(objectPositionU, object->getSize()));
     //DÓŁ
-    QVector<int> objectPositionD = QVector<int>({objectBasePosition[0], objectBasePosition[1] - range});
+    QVector<int> objectPositionD = QVector<int>({objectBasePosition[0], objectBasePosition[1] + range});
     objectsInRange.append(getObjectsInContact(objectPositionD, object->getSize()));
 
 
@@ -331,35 +307,4 @@ bool GameManager::checkContact(GameObject* firstObject, GameObject* secondObject
     else
         return false;
 }*/
-
-void GameManager::startLevel(QWidget* parent)
-{
-    frameCount = 0;
-
-    switch (level)
-    {
-    case GameManager::First:
-        createFirstLevel(parent);
-        break;
-
-    case GameManager::Second:
-        createSecondLevel(parent);
-        break;
-
-    case GameManager::Third:
-        createThirdLevel(parent);
-        break;
-
-    }
-}
-
-void GameManager::endLevel()
-{
-    for (GameObject* object : gameObjects)
-    {
-        delete object;
-    }
-
-    gameObjects.clear();
-}
 

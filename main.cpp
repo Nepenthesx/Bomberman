@@ -1,11 +1,9 @@
 #include "mainwindow.h"
 #include "gamemanager.h"
 
-#include <iostream>
-#include <QDir>
 #include <QApplication>
 #include <QDebug>
-#include <QVector>
+#include <iostream>
 
 
 int main(int argc, char *argv[])

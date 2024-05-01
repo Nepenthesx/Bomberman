@@ -1,79 +1,32 @@
-#include "item.h"
-
-#include "gameobject.h"
-#include <QTimer>
-#include <QVector>
-
-int Bomb::count;
-int Bomb::maxCount;
+#include "bomb.h"
 
 
-Item::Item(QVector<int> position, QVector<int> size) : GameObject::GameObject(position, size)
+Bomb::Bomb(QVector<int> position, QVector<int> size, int durability, int lifetime, Bomb::ExplosionShape explosionShape) : DynamicObject(position, size, durability), TemporaryObject(lifetime)
 {
-
-}
-
-void Item::changeTimeoutStatus()
-{
-    isTimeout = true;
-}
-
-Bomb::Bomb(QVector<int> position, QVector<int> size, int activationTime, Bomb::ExplosionShape explosionShape) : Item::Item(position, size)
-{
-    //sprawdź count wszystkich bomb
-    if (count <= maxCount)
-    {
-        interactPriority = 2;
-
-        this->explosionShape = explosionShape;
-        isInteractive = false; //chyba że bombę można kopnąć, ale jak na razie nie ma takiej opcji
-
-        timer = new QTimer();
-        connect(timer, SIGNAL(timeout()), this, SLOT(changeTimeoutStatus()));
-        timer->setInterval(activationTime);
-        timer->start();
-
-        count++;
-    }
+    //może set?
+    this->explosionShape = explosionShape;
 }
 
 void Bomb::update()
 {
+    if (isTimeout)
+        onTimeout();
+}
 
+void Bomb::onDurabilityLoss()
+{
+    explode();
+    delete this;
+}
+
+void Bomb::onTimeout()
+{
+    takeDamage(1);
 }
 
 void Bomb::explode()
 {
-    //wszystkim objectsInContact obniża durability
-}
-
-void Bomb::setMaxCount(int count)
-{
-    if (maxCount > 0)
-        maxCount = count;
-}
-
-/*
-void Bomb::interact()
-{
-    if (isTimeout)
-    {
-        explode();
-
-        count--;
-    }
-}
-
-void Bomb::move() {}
-
-void Bomb::undoMove() {}
-*/
-
-void Bomb::onDurabilityLoss() {}
-
-/*
-void Bomb::checkContact(GameObject* object)
-{
+    /* POWIĄZAĆ Z GAMEMANAGER::CHECK CONTACT
     int myX = position(0);
     int myY = position(1);
 
@@ -137,4 +90,6 @@ void Bomb::checkContact(GameObject* object)
 
     if (horizontalContact && verticalContact)
         objectsInContact.push_back(object);
-}*/
+    */
+    //ZNALEŹĆ LISTĘ OBIEKTÓW W KONTAKCIE (TEŻ W ZALEŻNOŚCI OD KLASY) I WYWOŁAĆ U NICH TAKEDAMAGE
+}

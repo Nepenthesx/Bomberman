@@ -9,25 +9,37 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bomb.cpp \
     character.cpp \
+    dynamicobject.cpp \
+    floortile.cpp \
     gamemanager.cpp \
     gameobject.cpp \
     graphicobject.cpp \
-    graphicsmanager.cpp \
-    item.cpp \
     main.cpp \
     mainwindow.cpp \
-    tile.cpp
+    movableobject.cpp \
+    player.cpp \
+    rocktile.cpp \
+    staticobject.cpp \
+    temporaryobject.cpp \
+    walltile.cpp
 
 HEADERS += \
+    bomb.h \
     character.h \
+    dynamicobject.h \
+    floortile.h \
     gamemanager.h \
     gameobject.h \
     graphicobject.h \
-    graphicsmanager.h \
-    item.h \
     mainwindow.h \
-    tile.h
+    movableobject.h \
+    player.h \
+    rocktile.h \
+    staticobject.h \
+    temporaryobject.h \
+    walltile.h
 
 FORMS += \
     mainwindow.ui

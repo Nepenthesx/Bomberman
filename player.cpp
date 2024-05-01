@@ -1,117 +1,56 @@
-/*
 #include "player.h"
-#include "gameobject.h"
-#include "tile.h"
-
-#include <QEvent>
-#include <QKeyEvent>
-#include <QDebug>
-#include <Eigen/Dense>
-
-using namespace std;
-using namespace Eigen;
+#include "gamemanager.h"
 
 
-Player::Player(Vector2i positionVector, Tile* currentTilePointer, GameObject::PivotLocation pivot, int speed, string relativePath, float relativeScale = 1)
+Player::Player(QVector<int> position, QVector<int> size, int durability, int speed) : Character(position, size, durability, speed)
 {
-    setPosition(positionVector(0), positionVector(1));
-    setCurrentTile(currentTilePointer);
-    setPivotLocation(pivot);
-    setSpeed(speed);
-    setPicture(relativePath);
-    setRelativeScale(relativeScale);
+
 }
 
-Tile* Player::getCurrentTile()
+void Player::update()
 {
-    return currentTile;
+    //QList<GameObject*> objectsInRange(GameManager::getObjectsInRange(this, speed).count());
+
+    if (GetAsyncKeyState(VK_LEFT))
+    {
+        qDebug() << "Left";
+        move(QVector<int>({position[0] - speed, position[1]}));
+    }
+    if (GetAsyncKeyState(VK_RIGHT))
+    {
+        qDebug() << "Right";
+        move(QVector<int>({position[0] + speed, position[1]}));
+    }
+    if (GetAsyncKeyState(VK_UP))
+    {
+        qDebug() << "Up";
+        move(QVector<int>({position[0], position[1] - speed}));
+    }
+    if (GetAsyncKeyState(VK_DOWN))
+    {
+        qDebug() << "Down";
+        move(QVector<int>({position[0], position[1] + speed}));
+    }
 }
 
-void Player::setCurrentTile(Tile *tile)
+void Player::move(QVector<int> nextPosition)
 {
-    currentTile = tile;
-}
-
-int GameObject::globalScale;
-
-void Player::updateCurrentTile()
-{
-    int tileX = getCurrentTile()->getPosition()(0);
-    int tileY = getCurrentTile()->getPosition()(1);
-
-    int x = getPosition()(0);
-    int y = getPosition()(1);
-
-    if (x > tileX + getCurrentTile()->getRelativeScale() * globalScale / 2)
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(nextPosition, size));
+    for (GameObject* object : objectsInContact)
     {
-        setCurrentTile(getCurrentTile()->getRightTile());
-    }
-    if (x < tileX - getCurrentTile()->getRelativeScale() * globalScale / 2)
-    {
-        setCurrentTile(getCurrentTile()->getLeftTile());
-    }
-    if (y > tileY + getCurrentTile()->getRelativeScale() * globalScale / 2)
-    {
-        setCurrentTile(getCurrentTile()->getDownTile());
-    }
-    if (y < tileY - getCurrentTile()->getRelativeScale() * globalScale / 2)
-    {
-        setCurrentTile(getCurrentTile()->getUpTile());
+        if(dynamic_cast<WallTile*>(object) || dynamic_cast<RockTile*>(object))
+        {
+            qDebug() << "Collision!";
+            return;
+        }
     }
 
-    qDebug() << currentTile->number;
+    //kolizja nie wystąpiła - zrób ruch
+    setPosition(nextPosition);
 }
 
-int Player::getSpeed()
+void Player::onDurabilityLoss()
 {
-    return speed;
+    qDebug() << "Game Over!";
+    delete this;
 }
-
-void Player::setSpeed(int speedValue)
-{
-    speed = speedValue;
-}
-
-void Player::moveLeft()
-{
-    setPosition(getPosition()(0) - getSpeed(), getPosition()(1));
-    updateCurrentTile();
-
-    if (currentTile == nullptr || !currentTile->getPermeability())
-        setPosition(getPosition()(0) + getSpeed(), getPosition()(1));
-
-    updateCurrentTile();
-}
-
-void Player::moveRight()
-{
-    setPosition(getPosition()(0) + getSpeed(), getPosition()(1));
-    updateCurrentTile();
-
-    if (currentTile == nullptr || !currentTile->getPermeability())
-        setPosition(getPosition()(0) - getSpeed(), getPosition()(1));
-
-    updateCurrentTile();
-}
-
-void Player::moveUp()
-{
-    setPosition(getPosition()(0), getPosition()(1) - getSpeed());
-    updateCurrentTile();
-
-    if (currentTile == nullptr || !currentTile->getPermeability())
-        setPosition(getPosition()(0), getPosition()(1) + getSpeed());
-
-    updateCurrentTile();
-}
-
-void Player::moveDown()
-{
-    setPosition(getPosition()(0), getPosition()(1) + getSpeed());
-    updateCurrentTile();
-
-    if (currentTile == nullptr || !currentTile->getPermeability())
-        setPosition(getPosition()(0), getPosition()(1) - getSpeed());
-
-    updateCurrentTile();
-}*/

@@ -1,15 +1,5 @@
 #include "graphicobject.h"
 
-#include "gameobject.h"
-#include "gamemanager.h"
-#include <QWidget>
-#include <QPainter>
-#include <QList>
-#include <QDebug>
-#include <QVector>
-#include <QDir>
-#include <QImageReader>
-
 
 GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent) : QWidget (parent)
 {
@@ -22,9 +12,9 @@ QPixmap GraphicObject::getPicture()
     return picture;
 }
 
-void GraphicObject::setPicture(QPixmap pic)
+void GraphicObject::setPicture(QPixmap picture)
 {
-    picture = pic;
+    this->picture = picture;
 }
 
 void GraphicObject::setPicture(std::string graphicRelativePath)
