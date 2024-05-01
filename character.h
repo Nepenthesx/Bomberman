@@ -25,6 +25,8 @@ public:
     int getSpeed();
     void setSpeed(int speed);
 
+    virtual void update() = 0;
+    virtual void move(QVector<int> nextPosition) = 0;
     void moveLeft();
     void moveRight();
     void moveUp();
@@ -37,9 +39,8 @@ class Player : public Character
 public:
     Player(QVector<int> position, QVector<int> size, int speed = GameManager::getGlobalScale(), int durability = 3);
 
-    void interact() override;
-    void move() override;
-    void undoMove() override;
+    void update() override;
+    void move(QVector<int> nextPosition) override;
     void onDurabilityLoss() override;
 };
 

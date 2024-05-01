@@ -20,13 +20,25 @@ FloorTile::FloorTile(QVector<int> position, QVector<int> size) : Tile::Tile(posi
     durability = 0;
 }
 
+void FloorTile::update()
+{
+
+}
+
+void FloorTile::onDurabilityLoss()
+{
+
+}
+
+/*
 void FloorTile::interact() {}
 
 void FloorTile::move() {}
 
 void FloorTile::undoMove() {}
 
-void FloorTile::onDurabilityLoss() {}
+
+*/
 
 /// ROCK TILE
 
@@ -38,6 +50,12 @@ RockTile::RockTile(QVector<int> position, QVector<int> size, int durability) : T
     this->durability = durability;
 }
 
+void RockTile::update()
+{
+
+}
+
+/*
 void RockTile::interact()
 {
     for (GameObject* object : objectsInContact)
@@ -47,10 +65,13 @@ void RockTile::interact()
         qDebug() << "Collision!";
     }
 }
+*/
 
+/*
 void RockTile::move() {}
 
 void RockTile::undoMove() {}
+*/
 
 void RockTile::onDurabilityLoss()
 {
@@ -70,6 +91,12 @@ WallTile::WallTile(QVector<int> position, QVector<int> size) : Tile::Tile(positi
     this->durability = durability;
 }
 
+void WallTile::update()
+{
+
+}
+
+/*
 void WallTile::interact()
 {
     for (GameObject* object : objectsInContact)
@@ -82,5 +109,6 @@ void WallTile::interact()
 void WallTile::move() {}
 
 void WallTile::undoMove() {}
+*/
 
 void WallTile::onDurabilityLoss() {}

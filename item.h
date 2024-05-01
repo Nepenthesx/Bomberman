@@ -16,6 +16,7 @@ protected:
 
 public:
     Item(QVector<int> position, QVector<int> size);
+    void update() = 0;
 
 public slots:
     void changeTimeoutStatus();
@@ -44,11 +45,9 @@ public:
     static int maxCount;
 
     Bomb(QVector<int> position, QVector<int> size, int activationTime, Bomb::ExplosionShape explosionShape);
+    void update() override;
     static void setMaxCount(int count);
 
-    void interact() override;
-    void move() override;
-    void undoMove() override;
     void onDurabilityLoss() override;
 
     //void checkContact(GameObject* object) override; //bardzo ważne! nadpisuje zwyczajne sprawdzanie kontaktu po pokryciu kafelków

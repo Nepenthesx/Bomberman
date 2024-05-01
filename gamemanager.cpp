@@ -8,11 +8,13 @@
 
 #include <QWidget>
 #include <QList>
+#include <QSet>
 #include <QDebug>
 #include <QTimer>
 #include <QVector>
 
 int GameManager::globalScale;
+QList<GameObject*> GameManager::gameObjects;
 
 
 GameManager::GameManager(int globalScale, float frameInterval, Level level)
@@ -29,13 +31,13 @@ GameManager::GameManager(int globalScale, float frameInterval, Level level)
 
 void GameManager::updateGame()
 {
-    /*
+
     //MOVE
     for (GameObject* object : gameObjects)
     {
-        object->move();
+        object->update();
     }
-
+    /*
     //CHECK CONTACT
     for (GameObject* object : gameObjects)
     {
@@ -155,41 +157,6 @@ void GameManager::setGlobalScale(int scale)
         globalScale = 32;
 }
 
-void GameManager::checkContact(GameObject* object)
-{/*
-    int myX = position[0];
-    int myY = position[1];
-
-    int objectX = object->getPosition()[0];
-    int objectY = object->getPosition()[1];
-
-    int myLeftEdge = myX;
-    int myRightEdge = myX + globalScale * relativeScale;
-    int myUpEdge = myY;
-    int myDownEdge = myY + globalScale * relativeScale;
-
-    int objectLeftEdge = objectX;
-    int objectRightEdge = objectX + globalScale * object->getRelativeScale();
-    int objectUpEdge = objectY;
-    int objectDownEdge = objectY + globalScale * object->getRelativeScale();
-
-    bool horizontalContact = false;
-    bool verticalContact = false;
-
-    if (myX <= objectX && myRightEdge > objectLeftEdge) //kontakt z prawej
-        horizontalContact = true;
-    else if (myX >= objectX && myLeftEdge < objectRightEdge) //kontakt z lewej
-        horizontalContact = true;
-
-    if (myY <= objectY && myDownEdge > objectUpEdge) //kontakt z dołu
-        verticalContact = true;
-    else if (myY >= objectY && myUpEdge < objectDownEdge) //kontakt z góry
-        verticalContact = true;
-
-    if (horizontalContact && verticalContact)
-        objectsInContact.push_back(object);*/
-}
-
 int GameManager::getFrameCount()
 {
     return frameCount;
@@ -225,6 +192,145 @@ void GameManager::removeObject(GameObject* object)
 {
     gameObjects.removeOne(object);
 }
+
+QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
+{
+    QList<GameObject*> objectsInRange;
+
+    QVector<int> objectBasePosition = object->getPosition();
+
+    //PRAWO
+    QVector<int> objectPositionR = QVector<int>({objectBasePosition[0] + range, objectBasePosition[1]});
+    objectsInRange.append(getObjectsInContact(objectPositionR, object->getSize()));
+    //LEWO
+    QVector<int> objectPositionL = QVector<int>({objectBasePosition[0] - range, objectBasePosition[1]});
+    objectsInRange.append(getObjectsInContact(objectPositionL, object->getSize()));
+    //GÓRA
+    QVector<int> objectPositionU = QVector<int>({objectBasePosition[0], objectBasePosition[1] + range});
+    objectsInRange.append(getObjectsInContact(objectPositionU, object->getSize()));
+    //DÓŁ
+    QVector<int> objectPositionD = QVector<int>({objectBasePosition[0], objectBasePosition[1] - range});
+    objectsInRange.append(getObjectsInContact(objectPositionD, object->getSize()));
+
+
+    //USUŃ DUPLIKATY
+    QSet<GameObject*> set(objectsInRange.begin(), objectsInRange.end());
+
+    return set.values();
+}
+
+QList<GameObject*> GameManager::getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize)
+{
+    QList<GameObject*> objectsInContact;
+
+    for (GameObject* listObject : gameObjects)
+    {
+        if (checkContact(objectPosition, objectSize, listObject->getPosition(), listObject->getSize()))
+        {
+            objectsInContact.push_back(listObject);
+        }
+    }
+
+    return objectsInContact;
+}
+
+bool GameManager::checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize)
+{
+    int firstX = firstObjectPosition[0];
+    int firstY = firstObjectPosition[1];
+    int firstWidth = firstObjectSize[0];
+    int firstHeight = firstObjectSize[1];
+
+    int secondX = secondObjectPosition[0];
+    int secondY = secondObjectPosition[1];
+    int secondWidth = secondObjectSize[0];
+    int secondHeight = secondObjectSize[1];
+
+    int firstLeftEdge = firstX;
+    int firstRightEdge = firstX + firstWidth;
+    int firstUpEdge = firstY;
+    int firstDownEdge = firstY + firstHeight;
+
+    int secondLeftEdge = secondX;
+    int secondRightEdge = secondX + secondWidth;
+    int secondUpEdge = secondY;
+    int secondDownEdge = secondY + secondHeight;
+
+    bool horizontalContact = false;
+    bool verticalContact = false;
+
+    if (firstX <= secondX && firstRightEdge > secondLeftEdge) //kontakt z prawej
+        horizontalContact = true;
+    else if (firstX >= secondX && firstLeftEdge < secondRightEdge) //kontakt z lewej
+        horizontalContact = true;
+
+    if (firstY <= secondY && firstDownEdge > secondUpEdge) //kontakt z dołu
+        verticalContact = true;
+    else if (firstY >= secondY && firstUpEdge < secondDownEdge) //kontakt z góry
+        verticalContact = true;
+
+    if (horizontalContact && verticalContact)
+        return true;
+    else
+        return false;
+}
+
+/*
+QList<GameObject*> GameManager::getObjectsInContact(GameObject* object)
+{
+    QList<GameObject*> objectsInContact;
+
+    for (GameObject* listObject : gameObjects)
+    {
+        if (listObject != object && checkContact(object, listObject))
+        {
+            objectsInContact.push_back(listObject);
+        }
+    }
+
+    return objectsInContact;
+}
+
+bool GameManager::checkContact(GameObject* firstObject, GameObject* secondObject)
+{
+    int firstX = firstObject->getPosition()[0];
+    int firstY = firstObject->getPosition()[1];
+    int firstWidth = firstObject->getSize()[0];
+    int firstHeight = firstObject->getSize()[1];
+
+    int secondX = secondObject->getPosition()[0];
+    int secondY = secondObject->getPosition()[1];
+    int secondWidth = secondObject->getSize()[0];
+    int secondHeight = secondObject->getSize()[1];
+
+    int firstLeftEdge = firstX;
+    int firstRightEdge = firstX + firstWidth;
+    int firstUpEdge = firstY;
+    int firstDownEdge = firstY + firstHeight;
+
+    int secondLeftEdge = secondX;
+    int secondRightEdge = secondX + secondWidth;
+    int secondUpEdge = secondY;
+    int secondDownEdge = secondY + secondHeight;
+
+    bool horizontalContact = false;
+    bool verticalContact = false;
+
+    if (firstX <= secondX && firstRightEdge > secondLeftEdge) //kontakt z prawej
+        horizontalContact = true;
+    else if (firstX >= secondX && firstLeftEdge < secondRightEdge) //kontakt z lewej
+        horizontalContact = true;
+
+    if (firstY <= secondY && firstDownEdge > secondUpEdge) //kontakt z dołu
+        verticalContact = true;
+    else if (firstY >= secondY && firstUpEdge < secondDownEdge) //kontakt z góry
+        verticalContact = true;
+
+    if (horizontalContact && verticalContact)
+        return true;
+    else
+        return false;
+}*/
 
 void GameManager::startLevel(QWidget* parent)
 {

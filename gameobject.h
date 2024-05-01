@@ -28,9 +28,8 @@ public:
 
 
     void clearObjectsInContact();
-    virtual void interact() = 0;
-    virtual void move() = 0;
-    virtual void undoMove() = 0;
+    virtual void update() = 0;
+
     virtual void onDurabilityLoss() = 0;
 
 

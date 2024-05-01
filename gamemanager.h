@@ -25,7 +25,7 @@ public:enum Level
     };
 
 private:
-    QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
+    static QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
     QList<GraphicObject*> graphicObjects;
 
     static int globalScale;
@@ -55,7 +55,12 @@ public:
 
     void addObject(GameObject* object);
     void removeObject(GameObject* object);
-    void checkContact(GameObject* object);
+
+    static QList<GameObject*> getObjectsInRange(GameObject* object, int range);
+    static QList<GameObject*> getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize);
+    static bool checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize);
+    //QList<GameObject*> getObjectsInContact(GameObject* object);
+    //bool checkContact(GameObject* firstObject, GameObject* secondObject);
 
     void startLevel(QWidget* parent = nullptr);
     void endLevel();

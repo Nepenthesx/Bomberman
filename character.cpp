@@ -1,6 +1,7 @@
 #include "character.h"
 
 #include "gameobject.h"
+#include "tile.h"
 #include <windows.h>
 #include <QDebug>
 #include <QVector>
@@ -24,6 +25,18 @@ void Character::setSpeed(int speed)
 
 void Character::moveLeft()
 {
+    QVector<int> nextPosition(position[0] - speed, position[1]);
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(nextPosition, size));
+    for (GameObject* object : objectsInContact)
+    {
+        if(dynamic_cast<WallTile*>(object) || dynamic_cast<RockTile*>(object))
+        {
+            qDebug() << "Collision!";
+            return;
+        }
+    }
+
+    //kolizja nie wystąpiła - zrób ruch
     setPosition(position[0] - speed, position[1]);
 }
 
@@ -51,41 +64,71 @@ Player::Player(QVector<int> position, QVector<int> size, int speed, int durabili
     this->speed = speed;
 }
 
-void Player::interact()
+void Player::update()
 {
-
-}
-
-void Player::move()
-{
-    previousPosition = position;
+    QList<GameObject*> objectsInRange(GameManager::getObjectsInRange(this, speed).count());
 
     if (GetAsyncKeyState(VK_LEFT))
     {
         qDebug() << "Left";
-        moveLeft();
+        move(QVector<int>({position[0] - speed, position[1]}));
+        //moveLeft();
     }
     if (GetAsyncKeyState(VK_RIGHT))
     {
         qDebug() << "Right";
-        moveRight();
+        move(QVector<int>({position[0] + speed, position[1]}));
+        //moveRight();
     }
     if (GetAsyncKeyState(VK_UP))
     {
         qDebug() << "Up";
-        moveUp();
+        move(QVector<int>({position[0], position[1] - speed}));
+        //moveUp();
     }
     if (GetAsyncKeyState(VK_DOWN))
     {
         qDebug() << "Down";
-        moveDown();
+        move(QVector<int>({position[0], position[1] + speed}));
+        //moveDown();
     }
 }
 
+/*
+void Player::interact()
+{
+
+}
+*/
+
+void Player::move(QVector<int> nextPosition)
+{
+    //previousPosition = position;
+
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(nextPosition, size));
+    for (GameObject* object : objectsInContact)
+    {
+        if(dynamic_cast<WallTile*>(object) || dynamic_cast<RockTile*>(object) || dynamic_cast<Character*>(object))
+        {
+            qDebug() << "Collision!";
+            return;
+        }
+    }
+
+    //kolizja nie wystąpiła - zrób ruch
+    setPosition(nextPosition);
+
+
+
+    //qDebug() << GameManager::getObjectsInRange(this, speed).count();
+}
+
+/*
 void Player::undoMove()
 {
     position = previousPosition;
 }
+*/
 
 void Player::onDurabilityLoss()
 {

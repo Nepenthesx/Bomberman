@@ -37,6 +37,11 @@ Bomb::Bomb(QVector<int> position, QVector<int> size, int activationTime, Bomb::E
     }
 }
 
+void Bomb::update()
+{
+
+}
+
 void Bomb::explode()
 {
     //wszystkim objectsInContact obniża durability
@@ -48,6 +53,7 @@ void Bomb::setMaxCount(int count)
         maxCount = count;
 }
 
+/*
 void Bomb::interact()
 {
     if (isTimeout)
@@ -61,6 +67,7 @@ void Bomb::interact()
 void Bomb::move() {}
 
 void Bomb::undoMove() {}
+*/
 
 void Bomb::onDurabilityLoss() {}
 
