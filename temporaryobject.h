@@ -8,12 +8,11 @@ class TemporaryObject : public QObject
 {
     Q_OBJECT
 
-private:
+protected:
     QTimer* timer;
+    bool isTimeout = false;
 
     void setTimer(int lifetime);
-protected:
-    bool isTimeout = false;
 public:
     TemporaryObject(int lifetime);
     virtual void onTimeout() = 0;

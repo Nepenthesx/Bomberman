@@ -1,10 +1,11 @@
 #include "graphicobject.h"
 
 
-GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent) : QWidget (parent)
+GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority) : QWidget (parent)
 {
     this->gameObject = gameObject;
     setPicture(graphicRelativePath);
+    setDrawingPriority(drawingPriority);
 }
 
 QPixmap GraphicObject::getPicture()
@@ -32,6 +33,38 @@ void GraphicObject::setPicture(std::string graphicRelativePath)
         picture = QPixmap::fromImage(img);
     else
         qDebug() << "Error to load file";
+}
+
+int GraphicObject::getDrawingPriority()
+{
+    return drawingPriority;
+}
+
+void GraphicObject::setDrawingPriority(int drawingPriority)
+{
+    if (drawingPriority >= 0)
+        this->drawingPriority = drawingPriority;
+    else
+        drawingPriority = 0;
+}
+
+GameObject* GraphicObject::getGameObject()
+{
+    return gameObject;
+}
+
+bool comparePriority(GraphicObject* a, GraphicObject* b)
+{
+    return (a->getDrawingPriority() < b->getDrawingPriority());
+}
+
+void GraphicObject::sortByPriority(QList<GraphicObject*> objectsList)
+{
+    std::sort(objectsList.begin(), objectsList.end(), comparePriority);
+    for(QWidget* object : objectsList)
+    {
+        object->raise();
+    }
 }
 
 void GraphicObject::paintEvent(QPaintEvent*)

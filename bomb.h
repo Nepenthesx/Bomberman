@@ -3,17 +3,14 @@
 
 #include "dynamicobject.h"
 #include "temporaryobject.h"
+#include "bomber.h"
+#include <QSet>
 
 class Bomb : public DynamicObject, public TemporaryObject
 {
-public:enum ExplosionShape
-    {
-        Cross,
-        Square
-    };
 
 private:
-    ExplosionShape explosionShape;
+    Bomber* owner;
     //int count;
     //int maxCount; - to cecha gracza, nie bomby
     //int maxCount; //ile może istnieć bomb na raz, powiązać z wartością statyczną - jednak nie, bo wtedy bomby gracza musiałaby być innym obiektem niż bomby przeciwnika
@@ -21,8 +18,11 @@ private:
 
     void explode();
 
+protected:
+    QSet<QVector<int>> relativeExplosionPositions;
+
 public:
-    Bomb(QVector<int> position, QVector<int> size, int durability = 1, int lifetime = 5000, Bomb::ExplosionShape explosionShape = Bomb::Cross);
+    Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability);
 
     void update() override;
     void onDurabilityLoss() override;

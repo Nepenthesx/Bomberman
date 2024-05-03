@@ -7,6 +7,9 @@
 #include "floortile.h"
 #include "rocktile.h"
 #include "walltile.h"
+#include "bomb.h"
+#include "crossbomb.h"
+#include "bomber.h"
 
 #include <QObject>
 #include <QWidget>
@@ -31,7 +34,8 @@ public:enum Level
 
 private:
     static QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
-    QList<GraphicObject*> graphicObjects;
+    static QList<GraphicObject*> graphicObjects;
+    static QWidget* widgetParent;
 
     static int globalScale;
     int frameCount = 0;
@@ -40,12 +44,12 @@ private:
 
     Level level;
 
-    void createFirstLevel(QWidget* parent = nullptr);
-    void createSecondLevel(QWidget* parent = nullptr);
-    void createThirdLevel(QWidget* parent = nullptr);
+    void createFirstLevel();
+    void createSecondLevel();
+    void createThirdLevel();
 
 public:
-    GameManager(int globalScale, float frameInterval = 1000, Level level = GameManager::First);
+    GameManager(int globalScale, float frameInterval = 1000, Level level = GameManager::First, QWidget* widgetParent = nullptr);
 
     static int getGlobalScale();
     static void setGlobalScale(int scale);
@@ -57,14 +61,18 @@ public:
     Level getLevel();
     void setLevel(Level level);
 
-    void addObject(GameObject* object);
-    void removeObject(GameObject* object);
+    static void addObject(GameObject* object);
+    static void removeObject(GameObject* object);
 
-    void startLevel(QWidget* parent = nullptr);
+    void startLevel();
     void endLevel();
+
+    static void createBomb(Bomber* owner, QVector<int> position, int explosionPower, Bomber::BombType bombType);
+    static void createFloor(QVector<int> position);
 
     static QList<GameObject*> getObjectsInRange(GameObject* object, int range);
     static QList<GameObject*> getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize);
+    static QSet<GameObject*> getObjectsInContactArea(QVector<int> basePosition, QSet<QVector<int>> relativePositions, QVector<int> objectSize);
     static bool checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize);
 
 public slots:

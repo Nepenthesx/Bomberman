@@ -20,15 +20,21 @@ class GraphicObject : public QWidget
     Q_OBJECT
 
 private:
+    GameObject* gameObject;
     QPixmap picture;
+    int drawingPriority;
 
 public:
-    GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent);
+    GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority);
 
-    GameObject* gameObject;
     QPixmap getPicture();
     void setPicture(QPixmap picture);
     void setPicture(std::string graphicRelativePath);
+    int getDrawingPriority();
+    void setDrawingPriority(int drawingPriority);
+    GameObject* getGameObject();
+
+    static void sortByPriority(QList<GraphicObject*> objectsList);
 
 protected:
     void paintEvent(QPaintEvent*);

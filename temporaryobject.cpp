@@ -17,4 +17,5 @@ void TemporaryObject::setTimer(int lifetime)
 void TemporaryObject::changeTimeoutStatus()
 {
     isTimeout = true;
+    delete timer;
 }

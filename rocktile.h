@@ -2,6 +2,7 @@
 #define ROCKTILE_H
 
 #include "dynamicobject.h"
+#include <QDebug>
 
 class RockTile : public DynamicObject
 {

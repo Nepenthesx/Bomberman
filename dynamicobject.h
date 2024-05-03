@@ -6,7 +6,7 @@
 
 class DynamicObject : public GameObject
 {
-private:
+protected:
     int durability;
 
     int getDurability();

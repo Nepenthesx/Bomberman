@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     MainWindow mainWindow;
     mainWindow.show();
 
-    GameManager gameManager(32, 100, GameManager::First);
-    gameManager.startLevel(mainWindow.centralWidget());
+    GameManager gameManager(32, 100, GameManager::First, mainWindow.centralWidget());
+    gameManager.startLevel();
 
     // 50/3 = 60 fps
     //GraphicsManager graphicsManager(mainWindow.centralWidget(), Vector2i(20, 10), 32, 12.5);

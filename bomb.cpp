@@ -1,22 +1,29 @@
 #include "bomb.h"
+#include "gamemanager.h"
+#include <typeinfo>
 
 
-Bomb::Bomb(QVector<int> position, QVector<int> size, int durability, int lifetime, Bomb::ExplosionShape explosionShape) : DynamicObject(position, size, durability), TemporaryObject(lifetime)
+Bomb::Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability) : DynamicObject(position, size, durability), TemporaryObject(lifetime)
 {
     //może set?
-    this->explosionShape = explosionShape;
+    this->owner = owner;
+    this->explosionPower = explosionPower;
 }
 
 void Bomb::update()
 {
     if (isTimeout)
         onTimeout();
+    if (getDurability() <= 0)
+        onDurabilityLoss();
 }
 
 void Bomb::onDurabilityLoss()
 {
+    qDebug() << "Explode!";
     explode();
-    delete this;
+    owner->decrementBombCount();
+    GameManager::removeObject(this);
 }
 
 void Bomb::onTimeout()
@@ -26,6 +33,23 @@ void Bomb::onTimeout()
 
 void Bomb::explode()
 {
+    QSet objectsInContact(GameManager::getObjectsInContactArea(getPosition(), relativeExplosionPositions, getSize()));
+    qDebug() << objectsInContact.count();
+
+    // for(QSet<GameObject*>::iterator it = objectsInContact.begin(); it != objectsInContact.end() ; it++)
+    for (GameObject* object : objectsInContact)
+    {
+        if (DynamicObject* dynamicObject = dynamic_cast<DynamicObject*>(object))
+        {
+            if (dynamicObject != this)
+            {
+                dynamicObject->takeDamage(1);
+                qDebug() << "Damaged!";
+            }
+        }
+    }
+
+
     /* POWIĄZAĆ Z GAMEMANAGER::CHECK CONTACT
     int myX = position(0);
     int myY = position(1);

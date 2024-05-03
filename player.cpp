@@ -2,15 +2,19 @@
 #include "gamemanager.h"
 
 
-Player::Player(QVector<int> position, QVector<int> size, int durability, int speed) : Character(position, size, durability, speed)
+Player::Player(QVector<int> position, QVector<int> size, int durability, int speed, int maxBombCount, int bombPower, Bomber::BombType bombType)
+    : Bomber(position, size, durability, speed, maxBombCount, bombPower, bombType)
 {
 
 }
 
 void Player::update()
 {
-    //QList<GameObject*> objectsInRange(GameManager::getObjectsInRange(this, speed).count());
+    //ŻYCIE
+    if (getDurability() <= 0)
+        onDurabilityLoss();
 
+    //RUCH
     if (GetAsyncKeyState(VK_LEFT))
     {
         qDebug() << "Left";
@@ -30,6 +34,12 @@ void Player::update()
     {
         qDebug() << "Down";
         move(QVector<int>({position[0], position[1] + speed}));
+    }
+    //BOMBA
+    if(GetAsyncKeyState(VK_SPACE))
+    {
+        qDebug() << "Set Bomb";
+        placeBomb();
     }
 }
 
@@ -52,5 +62,7 @@ void Player::move(QVector<int> nextPosition)
 void Player::onDurabilityLoss()
 {
     qDebug() << "Game Over!";
-    delete this;
+    GameManager::removeObject(this);
 }
+
+

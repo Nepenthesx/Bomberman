@@ -6,18 +6,13 @@
 #include <QVector>
 
 
-class GameObject : public QObject
+class GameObject
 {
-    Q_OBJECT
-
 private:
-
 
 protected:
     QVector<int> position;
     QVector<int> size;
-
-
 
 public:
     GameObject(QVector<int> position, QVector<int> size);
@@ -32,8 +27,6 @@ public:
     QVector<int> getSize();
     void setSize(int x, int y);
     void setSize(QVector<int> size);
-
-
 
 };
 

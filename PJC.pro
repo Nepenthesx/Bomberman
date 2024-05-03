@@ -10,7 +10,9 @@ CONFIG += c++17
 
 SOURCES += \
     bomb.cpp \
+    bomber.cpp \
     character.cpp \
+    crossbomb.cpp \
     dynamicobject.cpp \
     floortile.cpp \
     gamemanager.cpp \
@@ -21,13 +23,16 @@ SOURCES += \
     movableobject.cpp \
     player.cpp \
     rocktile.cpp \
+    squarebomb.cpp \
     staticobject.cpp \
     temporaryobject.cpp \
     walltile.cpp
 
 HEADERS += \
     bomb.h \
+    bomber.h \
     character.h \
+    crossbomb.h \
     dynamicobject.h \
     floortile.h \
     gamemanager.h \
@@ -37,6 +42,7 @@ HEADERS += \
     movableobject.h \
     player.h \
     rocktile.h \
+    squarebomb.h \
     staticobject.h \
     temporaryobject.h \
     walltile.h
