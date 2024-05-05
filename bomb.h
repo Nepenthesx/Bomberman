@@ -11,9 +11,6 @@ class Bomb : public DynamicObject, public TemporaryObject
 
 private:
     Bomber* owner;
-    //int count;
-    //int maxCount; - to cecha gracza, nie bomby
-    //int maxCount; //ile może istnieć bomb na raz, powiązać z wartością statyczną - jednak nie, bo wtedy bomby gracza musiałaby być innym obiektem niż bomby przeciwnika
     int explosionPower;
 
     void explode();

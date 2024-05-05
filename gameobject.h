@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QList>
 #include <QVector>
-
+#include <QDebug>
 
 class GameObject
 {
@@ -16,7 +16,7 @@ protected:
 
 public:
     GameObject(QVector<int> position, QVector<int> size);
-
+    virtual ~GameObject() {qDebug() << "Destroyed!";}
 
     virtual void update() = 0;
 

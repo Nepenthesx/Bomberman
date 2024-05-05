@@ -1,5 +1,7 @@
 #include "gamemanager.h"
 
+#include "qdatastream.h"
+
 
 int GameManager::globalScale;
 QList<GameObject*> GameManager::gameObjects;
@@ -34,6 +36,8 @@ void GameManager::updateGame()
     }
 
     frameCount++;
+
+    qDebug() << frameCount;
 }
 
 void GameManager::createFirstLevel()
@@ -78,7 +82,7 @@ void GameManager::createFirstLevel()
     GameObject* newPlayer = new Player(QVector<int>({3 * GameManager::getGlobalScale(), 3 * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
     gameObjects.push_back(newPlayer);
 
-    GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/character.png", widgetParent, 2);
+    GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/character.png", widgetParent, 3);
     graphicObjects.push_back(newGPlayer);
     newGPlayer->show();
 }
@@ -181,7 +185,7 @@ void GameManager::endLevel()
 {
     for (GameObject* object : gameObjects)
     {
-        delete object;
+        removeObject(object);
     }
 
     gameObjects.clear();
@@ -197,6 +201,7 @@ void GameManager::createBomb(Bomber* owner, QVector<int> position, int explosion
         newBomb = new CrossBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
         break;
     case Bomber::Square:
+        newBomb = new SquareBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
         break;
     default:
         newBomb = new CrossBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
@@ -205,7 +210,7 @@ void GameManager::createBomb(Bomber* owner, QVector<int> position, int explosion
 
     gameObjects.push_back(newBomb);
 
-    GraphicObject* newGBomb = new GraphicObject(newBomb, "/img/item3.png", widgetParent, 1);
+    GraphicObject* newGBomb = new GraphicObject(newBomb, "/img/item3.png", widgetParent, 2);
     graphicObjects.push_back(newGBomb);
     newGBomb->show();
 }
@@ -220,6 +225,25 @@ void GameManager::createFloor(QVector<int> position)
     newGTile->show();
 }
 
+void GameManager::createBombUpgrade(QVector<int> position)
+{
+    GameObject* newUpgrade = new BombUpgrade(position,QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
+    gameObjects.push_back(newUpgrade);
+
+    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/item1.png", widgetParent, 1);
+    graphicObjects.push_back(newGUpgrade);
+    newGUpgrade->show();
+}
+
+void GameManager::createPowerUpgrade(QVector<int> position)
+{
+    GameObject* newUpgrade = new PowerUpgrade(position,QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
+    gameObjects.push_back(newUpgrade);
+
+    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/item2.png", widgetParent, 1);
+    graphicObjects.push_back(newGUpgrade);
+    newGUpgrade->show();
+}
 
 QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
 {

@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     bomb.cpp \
     bomber.cpp \
+    bombupgrade.cpp \
     character.cpp \
     crossbomb.cpp \
     dynamicobject.cpp \
@@ -18,10 +19,12 @@ SOURCES += \
     gamemanager.cpp \
     gameobject.cpp \
     graphicobject.cpp \
+    item.cpp \
     main.cpp \
     mainwindow.cpp \
     movableobject.cpp \
     player.cpp \
+    powerupgrade.cpp \
     rocktile.cpp \
     squarebomb.cpp \
     staticobject.cpp \
@@ -31,6 +34,7 @@ SOURCES += \
 HEADERS += \
     bomb.h \
     bomber.h \
+    bombupgrade.h \
     character.h \
     crossbomb.h \
     dynamicobject.h \
@@ -38,9 +42,11 @@ HEADERS += \
     gamemanager.h \
     gameobject.h \
     graphicobject.h \
+    item.h \
     mainwindow.h \
     movableobject.h \
     player.h \
+    powerupgrade.h \
     rocktile.h \
     squarebomb.h \
     staticobject.h \

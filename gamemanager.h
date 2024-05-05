@@ -9,6 +9,7 @@
 #include "walltile.h"
 #include "bomb.h"
 #include "crossbomb.h"
+#include "squarebomb.h"
 #include "bomber.h"
 
 #include <QObject>
@@ -69,6 +70,8 @@ public:
 
     static void createBomb(Bomber* owner, QVector<int> position, int explosionPower, Bomber::BombType bombType);
     static void createFloor(QVector<int> position);
+    static void createBombUpgrade(QVector<int> position);
+    static void createPowerUpgrade(QVector<int> position);
 
     static QList<GameObject*> getObjectsInRange(GameObject* object, int range);
     static QList<GameObject*> getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize);

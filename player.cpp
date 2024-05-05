@@ -41,6 +41,9 @@ void Player::update()
         qDebug() << "Set Bomb";
         placeBomb();
     }
+
+    //PRZEDMIOT
+    pickItem();
 }
 
 void Player::move(QVector<int> nextPosition)
@@ -63,6 +66,34 @@ void Player::onDurabilityLoss()
 {
     qDebug() << "Game Over!";
     GameManager::removeObject(this);
+}
+
+void Player::pickItem()
+{
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(getPosition(), size));
+
+    for (GameObject* object : objectsInContact)
+    {
+        if (dynamic_cast<BombUpgrade*>(object))
+        {
+            qDebug() << "Picked Bomb Upgrade!";
+
+            if (bombType == Player::Cross)
+                setBombType(Player::Square);
+            else if(bombType == Player::Square)
+                setBombType(Player::Cross);
+
+            GameManager::removeObject(object);
+        }
+        else if (dynamic_cast<PowerUpgrade*>(object))
+        {
+            qDebug() << "Picked Power Upgrade!";
+
+            setBombPower(bombPower + 1);
+
+            GameManager::removeObject(object);
+        }
+    }
 }
 
 

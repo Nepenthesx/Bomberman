@@ -17,12 +17,11 @@ protected:
     int bombPower;
     Bomber::BombType bombType;
 
-
     void setMaxBombCount(int maxBombCount);
     void setBombPower(int bombPower);
     void setBombType(Bomber::BombType bombType);
 public:
-    Bomber(QVector<int> position, QVector<int> size, int durability, int speed, int maxBombCount, int bombPower, Bomber::BombType explosionShape);
+    Bomber(QVector<int> position, QVector<int> size, int durability, int speed, int maxBombCount, int bombPower, Bomber::BombType bombType);
     virtual void update() = 0;
     virtual void onDurabilityLoss() = 0;
     virtual void move(QVector<int> nextPosition) = 0;

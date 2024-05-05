@@ -3,7 +3,7 @@
 
 #include "bomb.h"
 
-class SquareBomb : Bomb
+class SquareBomb : public Bomb
 {
 public:
     SquareBomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime = 2000, int durability = 1);
