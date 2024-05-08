@@ -2,7 +2,8 @@
 
 #include "gamemanager.h"
 
-Item::Item(QVector<int> position, QVector<int> size, int lifetime, int durability) : DynamicObject(position, size, durability), TemporaryObject(lifetime)
+Item::Item(QVector<int> position, QVector<int> size, int lifetime, int durability)
+    : DynamicObject(position, size, durability), TemporaryObject(lifetime)
 {
 
 }
@@ -17,8 +18,7 @@ void Item::update()
 
 void Item::onDurabilityLoss()
 {
-    qDebug() << "Disappear!";
-    GameManager::removeObject(this);
+    desactive();
 }
 
 void Item::onTimeout()

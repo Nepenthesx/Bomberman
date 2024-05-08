@@ -3,8 +3,16 @@
 SquareBomb::SquareBomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability)
     : Bomb(owner, position, size, explosionPower, lifetime, durability)
 {
-    qDebug() << "Square";
 
+    for (int i = -explosionPower; i <= explosionPower; i++)
+    {
+        for (int j = -explosionPower; j <= explosionPower; j++)
+        {
+            relativeExplosionPositions.insert(QVector<int>({i, j}));
+        }
+    }
+
+    /*
     switch (explosionPower)
     {
     case 0:
@@ -94,5 +102,5 @@ SquareBomb::SquareBomb(Bomber* owner, QVector<int> position, QVector<int> size, 
         relativeExplosionPositions = QSet<QVector<int>> {
             QVector<int>({0, 0}),
         };
-    }
+    }*/
 }

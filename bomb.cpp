@@ -3,7 +3,8 @@
 #include <typeinfo>
 
 
-Bomb::Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability) : DynamicObject(position, size, durability), TemporaryObject(lifetime)
+Bomb::Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability)
+    : DynamicObject(position, size, durability), TemporaryObject(lifetime)
 {
     //może set?
     this->owner = owner;
@@ -23,7 +24,7 @@ void Bomb::onDurabilityLoss()
     qDebug() << "Explode!";
     explode();
     owner->decrementBombCount();
-    GameManager::removeObject(this);
+    desactive();
 }
 
 void Bomb::onTimeout()
@@ -34,7 +35,6 @@ void Bomb::onTimeout()
 void Bomb::explode()
 {
     QSet objectsInContact(GameManager::getObjectsInContactArea(getPosition(), relativeExplosionPositions, getSize()));
-    qDebug() << objectsInContact.count();
 
     // for(QSet<GameObject*>::iterator it = objectsInContact.begin(); it != objectsInContact.end() ; it++)
     for (GameObject* object : objectsInContact)

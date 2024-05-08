@@ -1,7 +1,8 @@
 #include "graphicobject.h"
 
 
-GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority) : QWidget (parent)
+GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority)
+    : QWidget (parent)
 {
     this->gameObject = gameObject;
     setPicture(graphicRelativePath);
@@ -11,11 +12,6 @@ GraphicObject::GraphicObject(GameObject* gameObject, std::string graphicRelative
 QPixmap GraphicObject::getPicture()
 {
     return picture;
-}
-
-void GraphicObject::setPicture(QPixmap picture)
-{
-    this->picture = picture;
 }
 
 void GraphicObject::setPicture(std::string graphicRelativePath)

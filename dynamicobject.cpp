@@ -1,7 +1,8 @@
 #include "dynamicobject.h"
 
 
-DynamicObject::DynamicObject(QVector<int> position, QVector<int> size, int durability) : GameObject::GameObject(position, size)
+DynamicObject::DynamicObject(QVector<int> position, QVector<int> size, int durability)
+    : GameObject::GameObject(position, size)
 {
     setDurability(durability);
 }

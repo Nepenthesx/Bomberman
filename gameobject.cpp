@@ -7,20 +7,22 @@ GameObject::GameObject(QVector<int> position, QVector<int> size)
     setSize(size);
 }
 
+GameObject::~GameObject()
+{
+    qDebug() << "Destroyed!";
+}
+
 QVector<int> GameObject::getPosition()
 {
     return position;
 }
 
-void GameObject::setPosition(int x, int y)
-{
-    QVector<int> pos({x, y}); //wykazuje bledy
-    position = pos;
-}
-
 void GameObject::setPosition(QVector<int> position)
 {
-    this->position = position;
+    if (position[0] >= 0 && position[1] >= 0)
+    {
+        this->position = position;
+    }
 }
 
 QVector<int> GameObject::getSize()
@@ -28,12 +30,20 @@ QVector<int> GameObject::getSize()
     return size;
 }
 
-void GameObject::setSize(int x, int y)
-{
-    QVector<int> size({x, y});
-    this->size = size;
-}
 void GameObject::setSize(QVector<int> size)
 {
-    this->size = size;
+    if (size[0] >= 0 && size[1] >= 0)
+    {
+        this->size = size;
+    }
+}
+
+bool GameObject::checkActivity()
+{
+    return isActive;
+}
+
+void GameObject::desactive()
+{
+    isActive = false;
 }

@@ -27,10 +27,7 @@ public:
     virtual void move(QVector<int> nextPosition) = 0;
     void placeBomb();
 
-    //getset
     int getBombCount();
-    void setBombCount(int bombCount);
-    //lub
     void decrementBombCount();
 };
 

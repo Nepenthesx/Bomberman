@@ -6,7 +6,7 @@
 class SquareBomb : public Bomb
 {
 public:
-    SquareBomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime = 2000, int durability = 1);
+    SquareBomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime = 4000, int durability = 1);
 };
 
 #endif // SQUAREBOMB_H

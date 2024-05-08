@@ -10,6 +10,9 @@
 #include "bomb.h"
 #include "crossbomb.h"
 #include "squarebomb.h"
+#include "bombtypeupgrade.h"
+#include "bombpowerupgrade.h"
+#include "bombcountupgrade.h"
 #include "bomber.h"
 
 #include <QObject>
@@ -26,31 +29,20 @@ class GameManager : public QObject
 {
     Q_OBJECT
 
-public:enum Level
-    {
-        First,
-        Second,
-        Third
-    };
-
 private:
     static QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
     static QList<GraphicObject*> graphicObjects;
-    static QWidget* widgetParent;
+    static QWidget* window;
 
     static int globalScale;
     int frameCount = 0;
     float frameInterval;
     QTimer* timer;
 
-    Level level;
-
-    void createFirstLevel();
-    void createSecondLevel();
-    void createThirdLevel();
+    void removeObject(GameObject* object);
 
 public:
-    GameManager(int globalScale, float frameInterval = 1000, Level level = GameManager::First, QWidget* widgetParent = nullptr);
+    GameManager(int globalScale, QWidget* window, float frameInterval = 1000);
 
     static int getGlobalScale();
     static void setGlobalScale(int scale);
@@ -59,19 +51,18 @@ public:
     float getFrameInterval();
     void setFrameInterval(float frameInterval);
 
-    Level getLevel();
-    void setLevel(Level level);
-
-    static void addObject(GameObject* object);
-    static void removeObject(GameObject* object);
-
     void startLevel();
-    void endLevel();
+    static void endLevel();
 
-    static void createBomb(Bomber* owner, QVector<int> position, int explosionPower, Bomber::BombType bombType);
-    static void createFloor(QVector<int> position);
-    static void createBombUpgrade(QVector<int> position);
-    static void createPowerUpgrade(QVector<int> position);
+    static void createFloorTile(QVector<int> position);
+    static void createRockTile(QVector<int> position);
+    static void createWallTile(QVector<int> position);
+    static void createPlayer(QVector<int> position, int speed);
+    static void createEnemy(QVector<int> position, int speed);
+    static void createBomb(QVector<int> position, Bomber* owner, int explosionPower, Bomber::BombType bombType);
+    static void createBombTypeUpgrade(QVector<int> position);
+    static void createBombPowerUpgrade(QVector<int> position);
+    static void createBombCountUpgrade(QVector<int> position);
 
     static QList<GameObject*> getObjectsInRange(GameObject* object, int range);
     static QList<GameObject*> getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize);
@@ -79,7 +70,7 @@ public:
     static bool checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize);
 
 public slots:
-    void updateGame(); //DODAĆ TIMER
+    void updateGame();
 };
 
 #endif // GAMEMANAGER_H

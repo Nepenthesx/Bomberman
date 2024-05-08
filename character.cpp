@@ -1,7 +1,8 @@
 #include "character.h"
 
 
-Character::Character(QVector<int> position, QVector<int> size, int durability, int speed) : DynamicObject::DynamicObject(position, size, durability), MovableObject::MovableObject(speed)
+Character::Character(QVector<int> position, QVector<int> size, int durability, int speed)
+    : DynamicObject::DynamicObject(position, size, durability), MovableObject::MovableObject(speed)
 {
 
 }

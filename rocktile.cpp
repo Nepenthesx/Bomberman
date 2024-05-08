@@ -4,7 +4,8 @@
 #include <stdlib.h>
 
 
-RockTile::RockTile(QVector<int> position, QVector<int> size, int durability) : DynamicObject::DynamicObject(position, size, durability)
+RockTile::RockTile(QVector<int> position, QVector<int> size, int durability)
+    : DynamicObject::DynamicObject(position, size, durability)
 {
     srand(0);
 }
@@ -17,15 +18,16 @@ void RockTile::update()
 
 void RockTile::onDurabilityLoss()
 {
-    qDebug() << "Destroyed!";
-    GameManager::createFloor(getPosition());
+    GameManager::createFloorTile(getPosition());
 
-    int num = rand() % 2 + 1;
-    qDebug() << num;
+    int num = rand() % 10 + 1;
+
     if(num == 1)
-        GameManager::createBombUpgrade(getPosition());
+        GameManager::createBombTypeUpgrade(getPosition());
     else if (num == 2)
-        GameManager::createPowerUpgrade(getPosition());
+        GameManager::createBombPowerUpgrade(getPosition());
+    else if (num == 3)
+        GameManager::createBombCountUpgrade(getPosition());
 
-    GameManager::removeObject(this);
+    desactive();
 }

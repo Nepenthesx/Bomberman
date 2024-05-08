@@ -6,15 +6,14 @@
 int GameManager::globalScale;
 QList<GameObject*> GameManager::gameObjects;
 QList<GraphicObject*> GameManager::graphicObjects;
-QWidget* GameManager::widgetParent;
+QWidget* GameManager::window;
 
 
-GameManager::GameManager(int globalScale, float frameInterval, Level level, QWidget* widgetParent)
+GameManager::GameManager(int globalScale, QWidget* window, float frameInterval)
 {
     GameManager::setGlobalScale(globalScale);
-    this->frameInterval = frameInterval;
-    this->level = level;
-    this->widgetParent = widgetParent;
+    setFrameInterval(frameInterval);
+    this->window = window;
 
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
@@ -24,9 +23,19 @@ GameManager::GameManager(int globalScale, float frameInterval, Level level, QWid
 
 void GameManager::updateGame()
 {
+    QVector<GameObject*> objectsToDestroy;
+
     for (GameObject* object : gameObjects)
     {
-        object->update();
+        if (object->checkActivity())
+            object->update();
+        else
+            objectsToDestroy.push_back(object);
+    }
+
+    for (GameObject* object : objectsToDestroy)
+    {
+        removeObject(object);
     }
 
     GraphicObject::sortByPriority(graphicObjects);
@@ -36,65 +45,6 @@ void GameManager::updateGame()
     }
 
     frameCount++;
-
-    qDebug() << frameCount;
-}
-
-void GameManager::createFirstLevel()
-{
-    int tileHeight = 10;
-    int tileWidth = 20;
-
-    for (int y = 0; y < tileHeight; y++)
-    {
-        for (int x = 0; x < tileWidth; x++)
-        {
-            if (x == 0 || x == 1 || x == tileWidth - 1 || x == tileWidth - 2 || y == 0 || y == 1 || y == tileHeight - 1 || y == tileHeight - 2)
-            {
-                GameObject* newTile = new WallTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
-                gameObjects.push_back(newTile);
-
-                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile3.png", widgetParent, 0);
-                graphicObjects.push_back(newGTile);
-                newGTile->show();
-            }
-            else if (x < 5 && y < 5)
-            {
-                GameObject* newTile = new FloorTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
-                gameObjects.push_back(newTile);
-
-                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile1.png", widgetParent, 0);
-                graphicObjects.push_back(newGTile);
-                newGTile->show();
-            }
-            else
-            {
-                GameObject* newTile = new RockTile(QVector<int>({x * GameManager::getGlobalScale(), y * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
-                gameObjects.push_back(newTile);
-
-                GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile2.png", widgetParent, 0);
-                graphicObjects.push_back(newGTile);
-                newGTile->show();
-            }
-        }
-    }
-
-    GameObject* newPlayer = new Player(QVector<int>({3 * GameManager::getGlobalScale(), 3 * GameManager::getGlobalScale()}), QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
-    gameObjects.push_back(newPlayer);
-
-    GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/character.png", widgetParent, 3);
-    graphicObjects.push_back(newGPlayer);
-    newGPlayer->show();
-}
-
-void GameManager::createSecondLevel()
-{
-
-}
-
-void GameManager::createThirdLevel()
-{
-
 }
 
 int GameManager::getGlobalScale()
@@ -128,21 +78,6 @@ void GameManager::setFrameInterval(float frameInterval)
         this->frameInterval = 500;
 }
 
-GameManager::Level GameManager::getLevel()
-{
-    return level;
-}
-
-void GameManager::setLevel(GameManager::Level level)
-{
-    this->level = level;
-}
-
-void GameManager::addObject(GameObject* object)
-{
-    gameObjects.push_back(object);
-}
-
 void GameManager::removeObject(GameObject* object)
 {
     gameObjects.removeOne(object);
@@ -164,83 +99,146 @@ void GameManager::startLevel()
 {
     frameCount = 0;
 
-    switch (level)
+    int tileHeight = 10;
+    int tileWidth = 20;
+
+    for (int y = 0; y < tileHeight; y++)
     {
-    case GameManager::First:
-        createFirstLevel();
-        break;
-
-    case GameManager::Second:
-        createSecondLevel();
-        break;
-
-    case GameManager::Third:
-        createThirdLevel();
-        break;
-
+        for (int x = 0; x < tileWidth; x++)
+        {
+            if (x == 0 || x == 1 || x == tileWidth - 1 || x == tileWidth - 2 || y == 0 || y == 1 || y == tileHeight - 1 || y == tileHeight - 2)
+                createWallTile(QVector<int>({x * globalScale, y * globalScale}));
+            else if (x < 5 && y < 5)
+                createFloorTile(QVector<int>({x * globalScale, y * globalScale}));
+            else
+                createRockTile(QVector<int>({x * globalScale, y * globalScale}));
+        }
     }
+
+    createPlayer(QVector<int>({3 * globalScale, 3 * globalScale}), globalScale);
 }
 
 void GameManager::endLevel()
 {
     for (GameObject* object : gameObjects)
     {
-        removeObject(object);
+        object->desactive();
     }
-
-    gameObjects.clear();
 }
 
-void GameManager::createBomb(Bomber* owner, QVector<int> position, int explosionPower, Bomber::BombType bombType)
+void GameManager::createFloorTile(QVector<int> position)
 {
-    GameObject* newBomb;
-    //GameObject* newPlayer = new Player();
-    switch (bombType)
-    {
-    case Bomber::Cross:
-        newBomb = new CrossBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
-        break;
-    case Bomber::Square:
-        newBomb = new SquareBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
-        break;
-    default:
-        newBomb = new CrossBomb(owner, position, QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}), explosionPower);
-        break;
-    }
+    QVector<int> size(globalScale, globalScale);
 
-    gameObjects.push_back(newBomb);
-
-    GraphicObject* newGBomb = new GraphicObject(newBomb, "/img/item3.png", widgetParent, 2);
-    graphicObjects.push_back(newGBomb);
-    newGBomb->show();
-}
-
-void GameManager::createFloor(QVector<int> position)
-{
-    GameObject* newTile = new FloorTile(position,QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
+    GameObject* newTile = new FloorTile(position, size);
     gameObjects.push_back(newTile);
 
-    GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile1.png", widgetParent, 0);
+    GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile1.png", window, 0);
     graphicObjects.push_back(newGTile);
     newGTile->show();
 }
 
-void GameManager::createBombUpgrade(QVector<int> position)
+void GameManager::createRockTile(QVector<int> position)
 {
-    GameObject* newUpgrade = new BombUpgrade(position,QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newTile = new RockTile(position, size);
+    gameObjects.push_back(newTile);
+
+    GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile2.png", window, 0);
+    graphicObjects.push_back(newGTile);
+    newGTile->show();
+}
+
+void GameManager::createWallTile(QVector<int> position)
+{
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newTile = new WallTile(position, size);
+    gameObjects.push_back(newTile);
+
+    GraphicObject* newGTile = new GraphicObject(newTile, "/img/tile3.png", window, 0);
+    graphicObjects.push_back(newGTile);
+    newGTile->show();
+}
+
+void GameManager::createPlayer(QVector<int> position, int speed)
+{
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newPlayer = new Player(position, size, speed);
+    gameObjects.push_back(newPlayer);
+
+    GraphicObject* newGPlayer = new GraphicObject(newPlayer, "/img/player.png", window, 3);
+    graphicObjects.push_back(newGPlayer);
+    newGPlayer->show();
+}
+
+void GameManager::createEnemy(QVector<int> position, int speed)
+{
+    QVector<int> size(globalScale, globalScale);
+}
+
+void GameManager::createBomb(QVector<int> position, Bomber* owner, int explosionPower, Bomber::BombType bombType)
+{
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newBomb;
+    GraphicObject* newGBomb;
+
+    switch (bombType)
+    {
+    case Bomber::Cross:
+        newBomb = new CrossBomb(owner, position, size, explosionPower);
+        newGBomb = new GraphicObject(newBomb, "/img/bomb1.png", window, 2);
+        break;
+    case Bomber::Square:
+        newBomb = new SquareBomb(owner, position, size, explosionPower);
+        newGBomb = new GraphicObject(newBomb, "/img/bomb2.png", window, 2);
+        break;
+    default:
+        newBomb = new CrossBomb(owner, position, size, explosionPower);
+        newGBomb = new GraphicObject(newBomb, "/img/bomb1.png", window, 2);
+        break;
+    }
+
+    gameObjects.push_back(newBomb);
+    graphicObjects.push_back(newGBomb);
+    newGBomb->show();
+}
+
+void GameManager::createBombTypeUpgrade(QVector<int> position)
+{
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newUpgrade = new BombTypeUpgrade(position, size);
     gameObjects.push_back(newUpgrade);
 
-    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/item1.png", widgetParent, 1);
+    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/upgrade1.png", window, 1);
     graphicObjects.push_back(newGUpgrade);
     newGUpgrade->show();
 }
 
-void GameManager::createPowerUpgrade(QVector<int> position)
+void GameManager::createBombPowerUpgrade(QVector<int> position)
 {
-    GameObject* newUpgrade = new PowerUpgrade(position,QVector<int>({GameManager::getGlobalScale(), GameManager::getGlobalScale()}));
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newUpgrade = new BombPowerUpgrade(position, size);
     gameObjects.push_back(newUpgrade);
 
-    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/item2.png", widgetParent, 1);
+    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/upgrade2.png", window, 1);
+    graphicObjects.push_back(newGUpgrade);
+    newGUpgrade->show();
+}
+
+void GameManager::createBombCountUpgrade(QVector<int> position)
+{
+    QVector<int> size(globalScale, globalScale);
+
+    GameObject* newUpgrade = new BombCountUpgrade(position, size);
+    gameObjects.push_back(newUpgrade);
+
+    GraphicObject* newGUpgrade = new GraphicObject(newUpgrade, "/img/upgrade3.png", window, 1);
     graphicObjects.push_back(newGUpgrade);
     newGUpgrade->show();
 }
@@ -292,7 +290,7 @@ QSet<GameObject*> GameManager::getObjectsInContactArea(QVector<int> basePosition
     QSet<QVector<int>> globalObjectPositions;
     for(QVector<int> relativePosition : relativePositions)
     {
-        QVector<int> globalPosition({basePosition[0] + GameManager::getGlobalScale() * relativePosition[0], basePosition[1] + GameManager::getGlobalScale() * relativePosition[1]});
+        QVector<int> globalPosition({basePosition[0] + globalScale * relativePosition[0], basePosition[1] + globalScale * relativePosition[1]});
         globalObjectPositions.insert(globalPosition);
     }
 
@@ -349,61 +347,4 @@ bool GameManager::checkContact(QVector<int> firstObjectPosition, QVector<int> fi
     else
         return false;
 }
-
-/*
-QList<GameObject*> GameManager::getObjectsInContact(GameObject* object)
-{
-    QList<GameObject*> objectsInContact;
-
-    for (GameObject* listObject : gameObjects)
-    {
-        if (listObject != object && checkContact(object, listObject))
-        {
-            objectsInContact.push_back(listObject);
-        }
-    }
-
-    return objectsInContact;
-}
-
-bool GameManager::checkContact(GameObject* firstObject, GameObject* secondObject)
-{
-    int firstX = firstObject->getPosition()[0];
-    int firstY = firstObject->getPosition()[1];
-    int firstWidth = firstObject->getSize()[0];
-    int firstHeight = firstObject->getSize()[1];
-
-    int secondX = secondObject->getPosition()[0];
-    int secondY = secondObject->getPosition()[1];
-    int secondWidth = secondObject->getSize()[0];
-    int secondHeight = secondObject->getSize()[1];
-
-    int firstLeftEdge = firstX;
-    int firstRightEdge = firstX + firstWidth;
-    int firstUpEdge = firstY;
-    int firstDownEdge = firstY + firstHeight;
-
-    int secondLeftEdge = secondX;
-    int secondRightEdge = secondX + secondWidth;
-    int secondUpEdge = secondY;
-    int secondDownEdge = secondY + secondHeight;
-
-    bool horizontalContact = false;
-    bool verticalContact = false;
-
-    if (firstX <= secondX && firstRightEdge > secondLeftEdge) //kontakt z prawej
-        horizontalContact = true;
-    else if (firstX >= secondX && firstLeftEdge < secondRightEdge) //kontakt z lewej
-        horizontalContact = true;
-
-    if (firstY <= secondY && firstDownEdge > secondUpEdge) //kontakt z dołu
-        verticalContact = true;
-    else if (firstY >= secondY && firstUpEdge < secondDownEdge) //kontakt z góry
-        verticalContact = true;
-
-    if (horizontalContact && verticalContact)
-        return true;
-    else
-        return false;
-}*/
 

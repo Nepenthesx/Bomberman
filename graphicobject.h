@@ -28,7 +28,6 @@ public:
     GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority);
 
     QPixmap getPicture();
-    void setPicture(QPixmap picture);
     void setPicture(std::string graphicRelativePath);
     int getDrawingPriority();
     void setDrawingPriority(int drawingPriority);

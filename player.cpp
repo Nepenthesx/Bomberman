@@ -2,7 +2,7 @@
 #include "gamemanager.h"
 
 
-Player::Player(QVector<int> position, QVector<int> size, int durability, int speed, int maxBombCount, int bombPower, Bomber::BombType bombType)
+Player::Player(QVector<int> position, QVector<int> size, int speed, int durability, int maxBombCount, int bombPower, Bomber::BombType bombType)
     : Bomber(position, size, durability, speed, maxBombCount, bombPower, bombType)
 {
 
@@ -65,7 +65,8 @@ void Player::move(QVector<int> nextPosition)
 void Player::onDurabilityLoss()
 {
     qDebug() << "Game Over!";
-    GameManager::removeObject(this);
+    GameManager::endLevel();
+    //desactive();
 }
 
 void Player::pickItem()
@@ -74,25 +75,34 @@ void Player::pickItem()
 
     for (GameObject* object : objectsInContact)
     {
-        if (dynamic_cast<BombUpgrade*>(object))
+        if (dynamic_cast<BombTypeUpgrade*>(object))
         {
-            qDebug() << "Picked Bomb Upgrade!";
+            qDebug() << "Picked BombType Upgrade!";
 
             if (bombType == Player::Cross)
                 setBombType(Player::Square);
-            else if(bombType == Player::Square)
+            else if (bombType == Player::Square)
                 setBombType(Player::Cross);
 
-            GameManager::removeObject(object);
+            object->desactive();
         }
-        else if (dynamic_cast<PowerUpgrade*>(object))
+        else if (dynamic_cast<BombPowerUpgrade*>(object))
         {
-            qDebug() << "Picked Power Upgrade!";
+            qDebug() << "Picked BombPower Upgrade!";
 
             setBombPower(bombPower + 1);
 
-            GameManager::removeObject(object);
+            object->desactive();
         }
+        else if (dynamic_cast<BombCountUpgrade*>(object))
+        {
+            qDebug() << "Picked BombCount Upgrade!";
+
+            setMaxBombCount(maxBombCount + 1);
+
+            object->desactive();
+        }
+
     }
 }
 

@@ -10,8 +10,10 @@ CONFIG += c++17
 
 SOURCES += \
     bomb.cpp \
+    bombcountupgrade.cpp \
     bomber.cpp \
-    bombupgrade.cpp \
+    bombpowerupgrade.cpp \
+    bombtypeupgrade.cpp \
     character.cpp \
     crossbomb.cpp \
     dynamicobject.cpp \
@@ -24,7 +26,6 @@ SOURCES += \
     mainwindow.cpp \
     movableobject.cpp \
     player.cpp \
-    powerupgrade.cpp \
     rocktile.cpp \
     squarebomb.cpp \
     staticobject.cpp \
@@ -33,8 +34,10 @@ SOURCES += \
 
 HEADERS += \
     bomb.h \
+    bombcountupgrade.h \
     bomber.h \
-    bombupgrade.h \
+    bombpowerupgrade.h \
+    bombtypeupgrade.h \
     character.h \
     crossbomb.h \
     dynamicobject.h \
@@ -46,7 +49,6 @@ HEADERS += \
     mainwindow.h \
     movableobject.h \
     player.h \
-    powerupgrade.h \
     rocktile.h \
     squarebomb.h \
     staticobject.h \
