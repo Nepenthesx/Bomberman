@@ -17,6 +17,7 @@ SOURCES += \
     character.cpp \
     crossbomb.cpp \
     dynamicobject.cpp \
+    enemy.cpp \
     floortile.cpp \
     gamemanager.cpp \
     gameobject.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     character.h \
     crossbomb.h \
     dynamicobject.h \
+    enemy.h \
     floortile.h \
     gamemanager.h \
     gameobject.h \

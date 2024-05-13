@@ -10,7 +10,7 @@ Item::Item(QVector<int> position, QVector<int> size, int lifetime, int durabilit
 
 void Item::update()
 {
-    if (isTimeout)
+    if (checkTimeout())
         onTimeout();
     if (getDurability() <= 0)
         onDurabilityLoss();

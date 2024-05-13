@@ -5,6 +5,7 @@ GameObject::GameObject(QVector<int> position, QVector<int> size)
 {
     setPosition(position);
     setSize(size);
+    isActive = true;
 }
 
 GameObject::~GameObject()

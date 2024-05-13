@@ -35,7 +35,7 @@ public:
 
     static void sortByPriority(QList<GraphicObject*> objectsList);
 
-protected:
+private:
     void paintEvent(QPaintEvent*);
 
 };

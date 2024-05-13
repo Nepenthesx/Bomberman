@@ -9,11 +9,12 @@ Bomb::Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosio
     //może set?
     this->owner = owner;
     this->explosionPower = explosionPower;
+    owner->incrementBombCount();
 }
 
 void Bomb::update()
 {
-    if (isTimeout)
+    if (checkTimeout())
         onTimeout();
     if (getDurability() <= 0)
         onDurabilityLoss();

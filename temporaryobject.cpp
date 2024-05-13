@@ -3,6 +3,7 @@
 
 TemporaryObject::TemporaryObject(int lifetime)
 {
+    isTimeout = false;
     setTimer(lifetime);
 }
 
@@ -12,6 +13,11 @@ void TemporaryObject::setTimer(int lifetime)
     connect(timer, SIGNAL(timeout()), this, SLOT(changeTimeoutStatus()));
     timer->setInterval(lifetime);
     timer->start();
+}
+
+bool TemporaryObject::checkTimeout()
+{
+    return isTimeout;
 }
 
 void TemporaryObject::changeTimeoutStatus()

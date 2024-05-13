@@ -5,8 +5,10 @@
 
 class MovableObject
 {
-protected:
+private:
     int speed;
+
+protected:
     int getSpeed();
     void setSpeed(int speed);
 

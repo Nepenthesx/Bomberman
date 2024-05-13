@@ -11,23 +11,29 @@ public:enum BombType
         Square
     };
 
-protected:
-    int bombCount = 0;
+private:
+    int bombCount;
     int maxBombCount;
     int bombPower;
     Bomber::BombType bombType;
 
+protected:
+    int getMaxBombCount();
     void setMaxBombCount(int maxBombCount);
+    int getBombPower();
     void setBombPower(int bombPower);
+    Bomber::BombType getBombType();
     void setBombType(Bomber::BombType bombType);
+
 public:
-    Bomber(QVector<int> position, QVector<int> size, int durability, int speed, int maxBombCount, int bombPower, Bomber::BombType bombType);
+    Bomber(QVector<int> position, QVector<int> size, int speed, int durability, int maxBombCount, int bombPower, Bomber::BombType bombType);
     virtual void update() = 0;
     virtual void onDurabilityLoss() = 0;
     virtual void move(QVector<int> nextPosition) = 0;
     void placeBomb();
 
     int getBombCount();
+    void incrementBombCount();
     void decrementBombCount();
 };
 

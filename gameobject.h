@@ -7,11 +7,9 @@
 class GameObject
 {
 private:
-
-protected:
     QVector<int> position;
     QVector<int> size;
-    bool isActive = true;
+    bool isActive;
 
 public:
     GameObject(QVector<int> position, QVector<int> size);

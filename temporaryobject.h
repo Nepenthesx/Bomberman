@@ -8,16 +8,20 @@ class TemporaryObject : public QObject
 {
     Q_OBJECT
 
-protected:
+private:
     QTimer* timer;
-    bool isTimeout = false;
+    bool isTimeout;
 
     void setTimer(int lifetime);
+
+protected:
+    bool checkTimeout();
+
 public:
     TemporaryObject(int lifetime);
     virtual void onTimeout() = 0;
 
-public slots:
+private slots:
     void changeTimeoutStatus();
 };
 

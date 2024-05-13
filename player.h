@@ -2,12 +2,6 @@
 #define PLAYER_H
 
 #include "bomber.h"
-//#include "gamemanager.h"
-#include "walltile.h"
-#include "rocktile.h"
-#include "bombtypeupgrade.h"
-#include "bombpowerupgrade.h"
-#include "bombcountupgrade.h"
 #include <windows.h> //do wykrywania przycisków
 #include <QVector>
 

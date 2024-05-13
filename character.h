@@ -11,7 +11,7 @@
 class Character : public DynamicObject, public MovableObject
 {
 public:
-    Character(QVector<int> position, QVector<int> size, int durability, int speed);
+    Character(QVector<int> position, QVector<int> size, int speed, int durability);
 
     virtual void update() = 0;
     virtual void onDurabilityLoss() = 0;

@@ -1,9 +1,15 @@
 #include "player.h"
+
 #include "gamemanager.h"
+#include "walltile.h"
+#include "rocktile.h"
+#include "bombtypeupgrade.h"
+#include "bombpowerupgrade.h"
+#include "bombcountupgrade.h"
 
 
 Player::Player(QVector<int> position, QVector<int> size, int speed, int durability, int maxBombCount, int bombPower, Bomber::BombType bombType)
-    : Bomber(position, size, durability, speed, maxBombCount, bombPower, bombType)
+    : Bomber(position, size, speed, durability, maxBombCount, bombPower, bombType)
 {
 
 }
@@ -18,22 +24,22 @@ void Player::update()
     if (GetAsyncKeyState(VK_LEFT))
     {
         qDebug() << "Left";
-        move(QVector<int>({position[0] - speed, position[1]}));
+        move(QVector<int>({getPosition()[0] - getSpeed(), getPosition()[1]}));
     }
     if (GetAsyncKeyState(VK_RIGHT))
     {
         qDebug() << "Right";
-        move(QVector<int>({position[0] + speed, position[1]}));
+        move(QVector<int>({getPosition()[0] + getSpeed(), getPosition()[1]}));
     }
     if (GetAsyncKeyState(VK_UP))
     {
         qDebug() << "Up";
-        move(QVector<int>({position[0], position[1] - speed}));
+        move(QVector<int>({getPosition()[0], getPosition()[1] - getSpeed()}));
     }
     if (GetAsyncKeyState(VK_DOWN))
     {
         qDebug() << "Down";
-        move(QVector<int>({position[0], position[1] + speed}));
+        move(QVector<int>({getPosition()[0], getPosition()[1] + getSpeed()}));
     }
     //BOMBA
     if(GetAsyncKeyState(VK_SPACE))
@@ -48,7 +54,7 @@ void Player::update()
 
 void Player::move(QVector<int> nextPosition)
 {
-    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(nextPosition, size));
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(nextPosition, getSize()));
     for (GameObject* object : objectsInContact)
     {
         if(dynamic_cast<WallTile*>(object) || dynamic_cast<RockTile*>(object))
@@ -71,7 +77,7 @@ void Player::onDurabilityLoss()
 
 void Player::pickItem()
 {
-    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(getPosition(), size));
+    QList<GameObject*> objectsInContact(GameManager::getObjectsInContact(getPosition(), getSize()));
 
     for (GameObject* object : objectsInContact)
     {
@@ -79,9 +85,9 @@ void Player::pickItem()
         {
             qDebug() << "Picked BombType Upgrade!";
 
-            if (bombType == Player::Cross)
+            if (getBombType() == Player::Cross)
                 setBombType(Player::Square);
-            else if (bombType == Player::Square)
+            else if (getBombType() == Player::Square)
                 setBombType(Player::Cross);
 
             object->desactive();
@@ -90,7 +96,7 @@ void Player::pickItem()
         {
             qDebug() << "Picked BombPower Upgrade!";
 
-            setBombPower(bombPower + 1);
+            setBombPower(getBombPower() + 1);
 
             object->desactive();
         }
@@ -98,7 +104,7 @@ void Player::pickItem()
         {
             qDebug() << "Picked BombCount Upgrade!";
 
-            setMaxBombCount(maxBombCount + 1);
+            setMaxBombCount(getMaxBombCount() + 1);
 
             object->desactive();
         }

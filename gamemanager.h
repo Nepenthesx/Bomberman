@@ -3,16 +3,6 @@
 
 #include "gameobject.h"
 #include "graphicobject.h"
-#include "player.h"
-#include "floortile.h"
-#include "rocktile.h"
-#include "walltile.h"
-#include "bomb.h"
-#include "crossbomb.h"
-#include "squarebomb.h"
-#include "bombtypeupgrade.h"
-#include "bombpowerupgrade.h"
-#include "bombcountupgrade.h"
 #include "bomber.h"
 
 #include <QObject>
@@ -30,7 +20,7 @@ class GameManager : public QObject
     Q_OBJECT
 
 private:
-    static QList<GameObject*> gameObjects; //POWINNO BYĆ STATYCZNE, ABY USUWANE OBIEKTY USUWAŁY SIĘ Z LISTY!!!
+    static QList<GameObject*> gameObjects;
     static QList<GraphicObject*> graphicObjects;
     static QWidget* window;
 
@@ -39,10 +29,15 @@ private:
     float frameInterval;
     QTimer* timer;
 
+    GameManager() = default;
+    GameManager(const GameManager&) = delete;
+    GameManager& operator=(const GameManager&) = delete;
+
     void removeObject(GameObject* object);
 
 public:
     GameManager(int globalScale, QWidget* window, float frameInterval = 1000);
+    static GameManager& getInstance();
 
     static int getGlobalScale();
     static void setGlobalScale(int scale);
@@ -69,7 +64,7 @@ public:
     static QSet<GameObject*> getObjectsInContactArea(QVector<int> basePosition, QSet<QVector<int>> relativePositions, QVector<int> objectSize);
     static bool checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize);
 
-public slots:
+private slots:
     void updateGame();
 };
 

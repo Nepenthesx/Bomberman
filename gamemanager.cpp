@@ -1,7 +1,15 @@
 #include "gamemanager.h"
 
-#include "qdatastream.h"
-
+#include "player.h"
+#include "enemy.h"
+#include "floortile.h"
+#include "rocktile.h"
+#include "walltile.h"
+#include "crossbomb.h"
+#include "squarebomb.h"
+#include "bombtypeupgrade.h"
+#include "bombpowerupgrade.h"
+#include "bombcountupgrade.h"
 
 int GameManager::globalScale;
 QList<GameObject*> GameManager::gameObjects;
@@ -11,7 +19,7 @@ QWidget* GameManager::window;
 
 GameManager::GameManager(int globalScale, QWidget* window, float frameInterval)
 {
-    GameManager::setGlobalScale(globalScale);
+    setGlobalScale(globalScale);
     setFrameInterval(frameInterval);
     this->window = window;
 
@@ -19,6 +27,12 @@ GameManager::GameManager(int globalScale, QWidget* window, float frameInterval)
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
     timer->setInterval(frameInterval);
     timer->start();
+}
+
+GameManager& GameManager::getInstance()
+{
+    static GameManager instance;
+    return instance;
 }
 
 void GameManager::updateGame()
@@ -108,7 +122,7 @@ void GameManager::startLevel()
         {
             if (x == 0 || x == 1 || x == tileWidth - 1 || x == tileWidth - 2 || y == 0 || y == 1 || y == tileHeight - 1 || y == tileHeight - 2)
                 createWallTile(QVector<int>({x * globalScale, y * globalScale}));
-            else if (x < 5 && y < 5)
+            else if ((x < 5 && y < 5) || (x == tileWidth - 3 || x == tileWidth - 4))
                 createFloorTile(QVector<int>({x * globalScale, y * globalScale}));
             else
                 createRockTile(QVector<int>({x * globalScale, y * globalScale}));
@@ -116,6 +130,7 @@ void GameManager::startLevel()
     }
 
     createPlayer(QVector<int>({3 * globalScale, 3 * globalScale}), globalScale);
+    createEnemy(QVector<int>({(tileWidth - 3) * globalScale, 3 * globalScale}), globalScale);
 }
 
 void GameManager::endLevel()
@@ -177,6 +192,13 @@ void GameManager::createPlayer(QVector<int> position, int speed)
 void GameManager::createEnemy(QVector<int> position, int speed)
 {
     QVector<int> size(globalScale, globalScale);
+
+    GameObject* newEnemy = new Enemy(position, size, speed);
+    gameObjects.push_back(newEnemy);
+
+    GraphicObject* newGEnemy = new GraphicObject(newEnemy, "/img/enemy.png", window, 4);
+    graphicObjects.push_back(newGEnemy);
+    newGEnemy->show();
 }
 
 void GameManager::createBomb(QVector<int> position, Bomber* owner, int explosionPower, Bomber::BombType bombType)
