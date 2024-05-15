@@ -14,39 +14,40 @@
 #include <QVector>
 
 
-//MOŻE BYĆ TYLKO JEDEN - WYKORZYSTAĆ METODĘ STATYCZNĄ
 class GameManager : public QObject
 {
     Q_OBJECT
 
 private:
+    GameManager(int globalScale, QWidget* window, float frameInterval);
+    static GameManager* instance;
+
     static QList<GameObject*> gameObjects;
     static QList<GraphicObject*> graphicObjects;
     static QWidget* window;
 
     static int globalScale;
-    int frameCount = 0;
-    float frameInterval;
-    QTimer* timer;
+    static float frameInterval;
+    static int frameCount;
+    static QTimer* timer;
 
-    GameManager() = default;
-    GameManager(const GameManager&) = delete;
-    GameManager& operator=(const GameManager&) = delete;
+    //GameManager(const GameManager&) = delete;
+    //GameManager& operator=(const GameManager&) = delete;
 
     void removeObject(GameObject* object);
 
 public:
-    GameManager(int globalScale, QWidget* window, float frameInterval = 1000);
-    static GameManager& getInstance();
+    //GameManager(int globalScale, QWidget* window, float frameInterval = 1000);
+    static GameManager* getInstance(int globalScale, QWidget* window, float frameInterval = 1000);
 
     static int getGlobalScale();
     static void setGlobalScale(int scale);
 
-    int getFrameCount();
-    float getFrameInterval();
-    void setFrameInterval(float frameInterval);
+    static int getFrameCount();
+    static float getFrameInterval();
+    static void setFrameInterval(float frameInterval);
 
-    void startLevel();
+    static void startLevel();
     static void endLevel();
 
     static void createFloorTile(QVector<int> position);

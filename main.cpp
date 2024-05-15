@@ -14,8 +14,9 @@ int main(int argc, char *argv[])
 
 
     // 50/3 = 60 fps
-    GameManager gameManager(64, mainWindow.centralWidget(), 200);
-    gameManager.startLevel();
+    //GameManager gameManager(64, mainWindow.centralWidget(), 200);
+    GameManager* gameManager = GameManager::getInstance(64, mainWindow.centralWidget(), 200);
+    gameManager->startLevel();
 
     return app.exec();
 }

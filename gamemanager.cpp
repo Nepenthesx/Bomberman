@@ -11,10 +11,14 @@
 #include "bombpowerupgrade.h"
 #include "bombcountupgrade.h"
 
-int GameManager::globalScale;
+GameManager* GameManager::instance;
 QList<GameObject*> GameManager::gameObjects;
 QList<GraphicObject*> GameManager::graphicObjects;
 QWidget* GameManager::window;
+int GameManager::globalScale;
+float GameManager::frameInterval;
+QTimer* GameManager::timer;
+int GameManager::frameCount;
 
 
 GameManager::GameManager(int globalScale, QWidget* window, float frameInterval)
@@ -23,15 +27,18 @@ GameManager::GameManager(int globalScale, QWidget* window, float frameInterval)
     setFrameInterval(frameInterval);
     this->window = window;
 
+    frameCount = 0;
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
     timer->setInterval(frameInterval);
     timer->start();
 }
 
-GameManager& GameManager::getInstance()
+GameManager* GameManager::getInstance(int globalScale, QWidget* window, float frameInterval)
 {
-    static GameManager instance;
+    if (!instance)
+        instance = new GameManager(globalScale, window, frameInterval);
     return instance;
 }
 
@@ -87,9 +94,9 @@ float GameManager::getFrameInterval()
 void GameManager::setFrameInterval(float frameInterval)
 {
     if (frameInterval > 0)
-        this->frameInterval = frameInterval;
+        GameManager::frameInterval = frameInterval;
     else
-        this->frameInterval = 500;
+        GameManager::frameInterval = 500;
 }
 
 void GameManager::removeObject(GameObject* object)
