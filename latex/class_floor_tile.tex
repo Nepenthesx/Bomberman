@@ -1,0 +1,94 @@
+\doxysection{Floor\+Tile Class Reference}
+\hypertarget{class_floor_tile}{}\label{class_floor_tile}\index{FloorTile@{FloorTile}}
+
+
+Podłoga, czyli podstawowy obiekt planszy poziomu, po którym mogą swobodnie poruszać się postacie.  
+
+
+
+
+{\ttfamily \#include $<$floortile.\+h$>$}
+
+Inheritance diagram for Floor\+Tile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_floor_tile}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_floor_tile_a9dceb0c7c53d73e94a2a91a860958171}{Floor\+Tile}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor podłogi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_floor_tile_a240ff42947bfa1329405eddd78d28808}{update}} () override
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu -\/ podłoga nie posiada żadnych aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_static_object}{Static\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_static_object_ac6ef2c0cd4c9122138123a5f3afa97e5}{Static\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu statycznego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Podłoga, czyli podstawowy obiekt planszy poziomu, po którym mogą swobodnie poruszać się postacie. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_floor_tile_a9dceb0c7c53d73e94a2a91a860958171}\index{FloorTile@{FloorTile}!FloorTile@{FloorTile}}
+\index{FloorTile@{FloorTile}!FloorTile@{FloorTile}}
+\doxysubsubsection{\texorpdfstring{FloorTile()}{FloorTile()}}
+{\footnotesize\ttfamily \label{class_floor_tile_a9dceb0c7c53d73e94a2a91a860958171} 
+Floor\+Tile\+::\+Floor\+Tile (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor podłogi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_floor_tile_a240ff42947bfa1329405eddd78d28808}\index{FloorTile@{FloorTile}!update@{update}}
+\index{update@{update}!FloorTile@{FloorTile}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_floor_tile_a240ff42947bfa1329405eddd78d28808} 
+void Floor\+Tile\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aktualizacja stanu obiektu -\/ podłoga nie posiada żadnych aktywności. 
+
+
+
+Implements \mbox{\hyperlink{class_static_object_a9b66d7ea507a54b3d76e099b075e0ccc}{Static\+Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{floortile_8h}{floortile.\+h}}\item 
+\mbox{\hyperlink{floortile_8cpp}{floortile.\+cpp}}\end{DoxyCompactItemize}

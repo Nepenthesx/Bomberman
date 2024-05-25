@@ -1,0 +1,86 @@
+\doxysection{Temporary\+Object Class Reference}
+\hypertarget{class_temporary_object}{}\label{class_temporary_object}\index{TemporaryObject@{TemporaryObject}}
+
+
+Obiekt wykonujący akcję po upłynięciu czasu.  
+
+
+
+
+{\ttfamily \#include $<$temporaryobject.\+h$>$}
+
+Inheritance diagram for Temporary\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.318518cm]{class_temporary_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_temporary_object_a9b10f2b4ebd4df244ac780035e7cb92e}{Temporary\+Object}} (int lifetime)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu czasowego. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_temporary_object_a957970699da98ef1850934936dfafba0}{on\+Timeout}} ()=0
+\begin{DoxyCompactList}\small\item\em Zainicjalizowanie akcji po upłynięciu określonego czasu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_temporary_object_ab1de89fb5d6f20425a020e950942fffd}{check\+Timeout}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdzenie czy upłynął czas do wykonania akcji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obiekt wykonujący akcję po upłynięciu czasu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_temporary_object_a9b10f2b4ebd4df244ac780035e7cb92e}\index{TemporaryObject@{TemporaryObject}!TemporaryObject@{TemporaryObject}}
+\index{TemporaryObject@{TemporaryObject}!TemporaryObject@{TemporaryObject}}
+\doxysubsubsection{\texorpdfstring{TemporaryObject()}{TemporaryObject()}}
+{\footnotesize\ttfamily \label{class_temporary_object_a9b10f2b4ebd4df244ac780035e7cb92e} 
+Temporary\+Object\+::\+Temporary\+Object (\begin{DoxyParamCaption}\item[{int}]{lifetime}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu czasowego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Czas} & do wykonania akcji \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_temporary_object_ab1de89fb5d6f20425a020e950942fffd}\index{TemporaryObject@{TemporaryObject}!checkTimeout@{checkTimeout}}
+\index{checkTimeout@{checkTimeout}!TemporaryObject@{TemporaryObject}}
+\doxysubsubsection{\texorpdfstring{checkTimeout()}{checkTimeout()}}
+{\footnotesize\ttfamily \label{class_temporary_object_ab1de89fb5d6f20425a020e950942fffd} 
+bool Temporary\+Object\+::check\+Timeout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sprawdzenie czy upłynął czas do wykonania akcji. 
+
+\begin{DoxyReturn}{Returns}
+Czy czas upłynął 
+\end{DoxyReturn}
+\Hypertarget{class_temporary_object_a957970699da98ef1850934936dfafba0}\index{TemporaryObject@{TemporaryObject}!onTimeout@{onTimeout}}
+\index{onTimeout@{onTimeout}!TemporaryObject@{TemporaryObject}}
+\doxysubsubsection{\texorpdfstring{onTimeout()}{onTimeout()}}
+{\footnotesize\ttfamily \label{class_temporary_object_a957970699da98ef1850934936dfafba0} 
+virtual void Temporary\+Object\+::on\+Timeout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Zainicjalizowanie akcji po upłynięciu określonego czasu. 
+
+
+
+Implemented in \mbox{\hyperlink{class_bomb_a8ab9d38393f200e0bacf9f7a69308324}{Bomb}}, and \mbox{\hyperlink{class_item_a89fdf4780418df0323b57cf73d5206d4}{Item}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{temporaryobject_8h}{temporaryobject.\+h}}\item 
+\mbox{\hyperlink{temporaryobject_8cpp}{temporaryobject.\+cpp}}\end{DoxyCompactItemize}

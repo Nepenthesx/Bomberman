@@ -1,0 +1,22 @@
+\doxysection{item.\+h}
+\hypertarget{item_8h_source}{}\label{item_8h_source}\mbox{\hyperlink{item_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ITEM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ITEM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dynamicobject_8h}{dynamicobject.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{temporaryobject_8h}{temporaryobject.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item}{Item}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_dynamic_object}{DynamicObject}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_temporary_object}{TemporaryObject}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_item_a67559a842f19d888cf971bb74a7f6ce5}{Item}}(QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ lifetime,\ \textcolor{keywordtype}{int}\ durability);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_item_ac1367318216d89348eb4e911192046a5}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_item_ae8383af03cf20a18dc2b57a89980c2d0}{onDurabilityLoss}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_item_a89fdf4780418df0323b57cf73d5206d4}{onTimeout}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ITEM\_H}}
+
+\end{DoxyCode}

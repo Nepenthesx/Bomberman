@@ -1,0 +1,147 @@
+\doxysection{Dynamic\+Object Class Reference}
+\hypertarget{class_dynamic_object}{}\label{class_dynamic_object}\index{DynamicObject@{DynamicObject}}
+
+
+Obiekt mogący być zniszczony w wyniku interakcji z innymi obiektami.  
+
+
+
+
+{\ttfamily \#include $<$dynamicobject.\+h$>$}
+
+Inheritance diagram for Dynamic\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.962963cm]{class_dynamic_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}{Dynamic\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu zniszczalnego. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_dynamic_object_a59891b769692ef9fcffc7d2bf122dfa6}{on\+Durability\+Loss}} ()=0
+\begin{DoxyCompactList}\small\item\em Zainicjalizowanie akcji w wyniku utraty całej wytrzymałości. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}{take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}{get\+Durability}} ()
+\item 
+void \mbox{\hyperlink{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}{set\+Durability}} (int durability)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obiekt mogący być zniszczony w wyniku interakcji z innymi obiektami. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}\index{DynamicObject@{DynamicObject}!DynamicObject@{DynamicObject}}
+\index{DynamicObject@{DynamicObject}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{DynamicObject()}{DynamicObject()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3} 
+Dynamic\+Object\+::\+Dynamic\+Object (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{, }\item[{int}]{durability}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu zniszczalnego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+{\em Wytrzymałość} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}\index{DynamicObject@{DynamicObject}!getDurability@{getDurability}}
+\index{getDurability@{getDurability}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{getDurability()}{getDurability()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702} 
+int Dynamic\+Object\+::get\+Durability (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_dynamic_object_a59891b769692ef9fcffc7d2bf122dfa6}\index{DynamicObject@{DynamicObject}!onDurabilityLoss@{onDurabilityLoss}}
+\index{onDurabilityLoss@{onDurabilityLoss}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{onDurabilityLoss()}{onDurabilityLoss()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_a59891b769692ef9fcffc7d2bf122dfa6} 
+virtual void Dynamic\+Object\+::on\+Durability\+Loss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Zainicjalizowanie akcji w wyniku utraty całej wytrzymałości. 
+
+
+
+Implemented in \mbox{\hyperlink{class_bomb_a239778490e8470d0b9180106e19ccf6c}{Bomb}}, \mbox{\hyperlink{class_bomber_a59cbd0847e16a2f4bdec5e89cf305652}{Bomber}}, \mbox{\hyperlink{class_character_aeba56acdc2eb38ab8d4fd015f2333050}{Character}}, \mbox{\hyperlink{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e}{Enemy}}, \mbox{\hyperlink{class_item_ae8383af03cf20a18dc2b57a89980c2d0}{Item}}, \mbox{\hyperlink{class_player_acdfec3203c7e176eaa72709d28f05697}{Player}}, and \mbox{\hyperlink{class_rock_tile_a585421b4c93e6fcfa0a2ea7388fa6bb2}{Rock\+Tile}}.
+
+\Hypertarget{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}\index{DynamicObject@{DynamicObject}!setDurability@{setDurability}}
+\index{setDurability@{setDurability}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{setDurability()}{setDurability()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822} 
+void Dynamic\+Object\+::set\+Durability (\begin{DoxyParamCaption}\item[{int}]{durability}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}\index{DynamicObject@{DynamicObject}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748} 
+void Dynamic\+Object\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage}{}\end{DoxyParamCaption})}
+
+
+
+Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Wartość} & obrażeń \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3}\index{DynamicObject@{DynamicObject}!update@{update}}
+\index{update@{update}!DynamicObject@{DynamicObject}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3} 
+virtual void Dynamic\+Object\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. 
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{Game\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_bomb_a15851182c209713a5946f977a7fb24b8}{Bomb}}, \mbox{\hyperlink{class_bomber_ad2d9ddcd0c1f72faad110955a8d5adef}{Bomber}}, \mbox{\hyperlink{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}{Character}}, \mbox{\hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{Enemy}}, \mbox{\hyperlink{class_item_ac1367318216d89348eb4e911192046a5}{Item}}, \mbox{\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{Player}}, and \mbox{\hyperlink{class_rock_tile_a8167557d50063fd5e6966d11dde19eac}{Rock\+Tile}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dynamicobject_8h}{dynamicobject.\+h}}\item 
+\mbox{\hyperlink{dynamicobject_8cpp}{dynamicobject.\+cpp}}\end{DoxyCompactItemize}

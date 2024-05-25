@@ -1,0 +1,33 @@
+\doxysection{bomb.\+h}
+\hypertarget{bomb_8h_source}{}\label{bomb_8h_source}\mbox{\hyperlink{bomb_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BOMB\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BOMB\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dynamicobject_8h}{dynamicobject.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{temporaryobject_8h}{temporaryobject.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomber_8h}{bomber.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QSet>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_bomb}{Bomb}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_dynamic_object}{DynamicObject}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_temporary_object}{TemporaryObject}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_bomber}{Bomber}}*\ owner;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ explosionPower;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ explode();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \ \ QSet<QVector<int>>\ \mbox{\hyperlink{class_bomb_acc9ccc7ae6a080f28d0a809d255e4030}{relativeExplosionPositions}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_bomb_aeb70a93058d08394fd1efc3447cc45be}{Bomb}}(\mbox{\hyperlink{class_bomber}{Bomber}}*\ owner,\ QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ explosionPower,\ \textcolor{keywordtype}{int}\ lifetime,\ \textcolor{keywordtype}{int}\ durability);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomb_a15851182c209713a5946f977a7fb24b8}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomb_a239778490e8470d0b9180106e19ccf6c}{onDurabilityLoss}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomb_a8ab9d38393f200e0bacf9f7a69308324}{onTimeout}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BOMB\_H}}
+
+\end{DoxyCode}

@@ -7,10 +7,19 @@
 #include <QVector>
 #include <QDebug>
 
-
+/*!
+ * \brief Postać mogąca poruszać się po planszy poziomu
+ */
 class Character : public DynamicObject, public MovableObject
 {
 public:
+    /*!
+     * \brief Konstruktor postać
+     * \param Pozycja
+     * \param Rozmiar
+     * \param Szybkość ruchu
+     * \param Wytrzymałość
+     */
     Character(QVector<int> position, QVector<int> size, int speed, int durability);
 
     virtual void update() = 0;

@@ -1,0 +1,125 @@
+\doxysection{Rock\+Tile Class Reference}
+\hypertarget{class_rock_tile}{}\label{class_rock_tile}\index{RockTile@{RockTile}}
+
+
+Kamień, czyli ściana możliwa do zniszczenia.  
+
+
+
+
+{\ttfamily \#include $<$rocktile.\+h$>$}
+
+Inheritance diagram for Rock\+Tile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_rock_tile}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rock_tile_a82228c42e5f1cc21efb1bf7c3823b3c0}{Rock\+Tile}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability=1)
+\begin{DoxyCompactList}\small\item\em Konstruktor kamienia. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rock_tile_a8167557d50063fd5e6966d11dde19eac}{update}} () override
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_rock_tile_a585421b4c93e6fcfa0a2ea7388fa6bb2}{on\+Durability\+Loss}} () override
+\begin{DoxyCompactList}\small\item\em Usunięcie kamienia w wyniku utraty całej wytrzymałości i zamienie go w podłogę \doxylink{class_floor_tile}{Floor\+Tile}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}{Dynamic\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu zniszczalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}{take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}{get\+Durability}} ()
+\item 
+void \mbox{\hyperlink{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}{set\+Durability}} (int durability)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Kamień, czyli ściana możliwa do zniszczenia. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_rock_tile_a82228c42e5f1cc21efb1bf7c3823b3c0}\index{RockTile@{RockTile}!RockTile@{RockTile}}
+\index{RockTile@{RockTile}!RockTile@{RockTile}}
+\doxysubsubsection{\texorpdfstring{RockTile()}{RockTile()}}
+{\footnotesize\ttfamily \label{class_rock_tile_a82228c42e5f1cc21efb1bf7c3823b3c0} 
+Rock\+Tile\+::\+Rock\+Tile (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{, }\item[{int}]{durability}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Konstruktor kamienia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+{\em Wytrzymałość} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rock_tile_a585421b4c93e6fcfa0a2ea7388fa6bb2}\index{RockTile@{RockTile}!onDurabilityLoss@{onDurabilityLoss}}
+\index{onDurabilityLoss@{onDurabilityLoss}!RockTile@{RockTile}}
+\doxysubsubsection{\texorpdfstring{onDurabilityLoss()}{onDurabilityLoss()}}
+{\footnotesize\ttfamily \label{class_rock_tile_a585421b4c93e6fcfa0a2ea7388fa6bb2} 
+void Rock\+Tile\+::on\+Durability\+Loss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Usunięcie kamienia w wyniku utraty całej wytrzymałości i zamienie go w podłogę \doxylink{class_floor_tile}{Floor\+Tile}. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_floor_tile}{Floor\+Tile} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{class_dynamic_object_a59891b769692ef9fcffc7d2bf122dfa6}{Dynamic\+Object}}.
+
+\Hypertarget{class_rock_tile_a8167557d50063fd5e6966d11dde19eac}\index{RockTile@{RockTile}!update@{update}}
+\index{update@{update}!RockTile@{RockTile}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_rock_tile_a8167557d50063fd5e6966d11dde19eac} 
+void Rock\+Tile\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości. 
+
+
+
+Implements \mbox{\hyperlink{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3}{Dynamic\+Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{rocktile_8h}{rocktile.\+h}}\item 
+\mbox{\hyperlink{rocktile_8cpp}{rocktile.\+cpp}}\end{DoxyCompactItemize}

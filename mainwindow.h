@@ -10,6 +10,9 @@ namespace Ui
 }
 QT_END_NAMESPACE
 
+/*!
+ * \brief Główne okno w którym wyświetlana jest gra
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

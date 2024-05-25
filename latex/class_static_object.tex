@@ -1,0 +1,93 @@
+\doxysection{Static\+Object Class Reference}
+\hypertarget{class_static_object}{}\label{class_static_object}\index{StaticObject@{StaticObject}}
+
+
+Obiekt niepodlegający zniszczeniu.  
+
+
+
+
+{\ttfamily \#include $<$staticobject.\+h$>$}
+
+Inheritance diagram for Static\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_static_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_static_object_ac6ef2c0cd4c9122138123a5f3afa97e5}{Static\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu statycznego. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_static_object_a9b66d7ea507a54b3d76e099b075e0ccc}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obiekt niepodlegający zniszczeniu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_static_object_ac6ef2c0cd4c9122138123a5f3afa97e5}\index{StaticObject@{StaticObject}!StaticObject@{StaticObject}}
+\index{StaticObject@{StaticObject}!StaticObject@{StaticObject}}
+\doxysubsubsection{\texorpdfstring{StaticObject()}{StaticObject()}}
+{\footnotesize\ttfamily \label{class_static_object_ac6ef2c0cd4c9122138123a5f3afa97e5} 
+Static\+Object\+::\+Static\+Object (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu statycznego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_static_object_a9b66d7ea507a54b3d76e099b075e0ccc}\index{StaticObject@{StaticObject}!update@{update}}
+\index{update@{update}!StaticObject@{StaticObject}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_static_object_a9b66d7ea507a54b3d76e099b075e0ccc} 
+virtual void Static\+Object\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. 
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{Game\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_floor_tile_a240ff42947bfa1329405eddd78d28808}{Floor\+Tile}}, and \mbox{\hyperlink{class_wall_tile_aa1c362696e878241d6acc33702b1890a}{Wall\+Tile}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{staticobject_8h}{staticobject.\+h}}\item 
+\mbox{\hyperlink{staticobject_8cpp}{staticobject.\+cpp}}\end{DoxyCompactItemize}

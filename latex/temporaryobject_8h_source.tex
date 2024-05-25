@@ -1,0 +1,33 @@
+\doxysection{temporaryobject.\+h}
+\hypertarget{temporaryobject_8h_source}{}\label{temporaryobject_8h_source}\mbox{\hyperlink{temporaryobject_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TEMPORARYOBJECT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TEMPORARYOBJECT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_temporary_object}{TemporaryObject}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ QTimer*\ timer;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTimeout;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ setTimer(\textcolor{keywordtype}{int}\ lifetime);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_temporary_object_ab1de89fb5d6f20425a020e950942fffd}{checkTimeout}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_temporary_object_a9b10f2b4ebd4df244ac780035e7cb92e}{TemporaryObject}}(\textcolor{keywordtype}{int}\ lifetime);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_temporary_object_a957970699da98ef1850934936dfafba0}{onTimeout}}()\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ changeTimeoutStatus();}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEMPORARYOBJECT\_H}}
+
+\end{DoxyCode}

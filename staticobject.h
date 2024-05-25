@@ -4,9 +4,17 @@
 #include "gameobject.h"
 #include <QVector>
 
+/*!
+ * \brief Obiekt niepodlegający zniszczeniu
+ */
 class StaticObject : public GameObject
 {
 public:
+    /*!
+     * \brief Konstruktor obiektu statycznego
+     * \param Pozycja
+     * \param Rozmiar
+     */
     StaticObject(QVector<int> position, QVector<int> size);
     virtual void update() = 0;
 };

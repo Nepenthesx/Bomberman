@@ -1,0 +1,92 @@
+\doxysection{Movable\+Object Class Reference}
+\hypertarget{class_movable_object}{}\label{class_movable_object}\index{MovableObject@{MovableObject}}
+
+
+Obiekt zdolny się poruszać  
+
+
+
+
+{\ttfamily \#include $<$movableobject.\+h$>$}
+
+Inheritance diagram for Movable\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_movable_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_movable_object_ad5ed02e90d5f715c9591813d626a07df}{Movable\+Object}} (int speed)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu ruchomego. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_movable_object_abcade947a84a41552726e79e2fb387ae}{move}} (QVector$<$ int $>$ next\+Position)=0
+\begin{DoxyCompactList}\small\item\em Ruszenie się obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad}{get\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_movable_object_a31182609e87fb111c14eaf95adf18530}{set\+Speed}} (int speed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obiekt zdolny się poruszać 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_movable_object_ad5ed02e90d5f715c9591813d626a07df}\index{MovableObject@{MovableObject}!MovableObject@{MovableObject}}
+\index{MovableObject@{MovableObject}!MovableObject@{MovableObject}}
+\doxysubsubsection{\texorpdfstring{MovableObject()}{MovableObject()}}
+{\footnotesize\ttfamily \label{class_movable_object_ad5ed02e90d5f715c9591813d626a07df} 
+Movable\+Object\+::\+Movable\+Object (\begin{DoxyParamCaption}\item[{int}]{speed}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu ruchomego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Szybkość} & ruchu \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad}\index{MovableObject@{MovableObject}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!MovableObject@{MovableObject}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily \label{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad} 
+int Movable\+Object\+::get\+Speed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_movable_object_abcade947a84a41552726e79e2fb387ae}\index{MovableObject@{MovableObject}!move@{move}}
+\index{move@{move}!MovableObject@{MovableObject}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_movable_object_abcade947a84a41552726e79e2fb387ae} 
+virtual void Movable\+Object\+::move (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{next\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Ruszenie się obiektu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Docelowa} & pozycja na którą obiekt się ruszy \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_bomber_a5362d6cdfb665fcb42453fd545dacf36}{Bomber}}, \mbox{\hyperlink{class_character_ac673507ef73b958d2f57455d5479a81d}{Character}}, \mbox{\hyperlink{class_enemy_a74c9ddb1372178b584c4643fcec70b78}{Enemy}}, and \mbox{\hyperlink{class_player_adc36747dc93b5c4ef0c10b1a7549a32f}{Player}}.
+
+\Hypertarget{class_movable_object_a31182609e87fb111c14eaf95adf18530}\index{MovableObject@{MovableObject}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!MovableObject@{MovableObject}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily \label{class_movable_object_a31182609e87fb111c14eaf95adf18530} 
+void Movable\+Object\+::set\+Speed (\begin{DoxyParamCaption}\item[{int}]{speed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{movableobject_8h}{movableobject.\+h}}\item 
+\mbox{\hyperlink{movableobject_8cpp}{movableobject.\+cpp}}\end{DoxyCompactItemize}

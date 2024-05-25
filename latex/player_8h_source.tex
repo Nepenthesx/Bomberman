@@ -1,0 +1,27 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLAYER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLAYER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomber_8h}{bomber.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <windows.h>}\ \textcolor{comment}{//do\ wykrywania\ przycisków}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player}{Player}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_bomber}{Bomber}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_player_a993bfc7dc035d51dcb45abca8cb881db}{Player}}(QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ durability\ =\ 3,\ \textcolor{keywordtype}{int}\ maxBombCount\ =\ 1,\ \textcolor{keywordtype}{int}\ bombPower\ =\ 1,\ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ bombType\ =\ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa03c51f0767e1dc936d612ef9ca9ba740}{Bomber::Cross}});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_adc36747dc93b5c4ef0c10b1a7549a32f}{move}}(QVector<int>\ nextPosition)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_acdfec3203c7e176eaa72709d28f05697}{onDurabilityLoss}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a9a96fefd97ee451884d6b8f93efc7262}{pickItem}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PLAYER\_H}}
+
+\end{DoxyCode}

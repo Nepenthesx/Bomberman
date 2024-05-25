@@ -4,9 +4,15 @@
 #include "gameobject.h"
 #include <QVector>
 
+/*!
+ * \brief Obiekt mogący być zniszczony w wyniku interakcji z innymi obiektami
+ */
 class DynamicObject : public GameObject
 {
 private:
+    /*!
+     * \brief Wytrzymałość, czyli ilość obrażeń które może przyjąć obiekt przed jego zniszczeniem
+     */
     int durability;
 
 protected:
@@ -14,9 +20,22 @@ protected:
     void setDurability(int durability);
 
 public:
+    /*!
+     * \brief Konstruktor obiektu zniszczalnego
+     * \param Pozycja
+     * \param Rozmiar
+     * \param Wytrzymałość
+     */
     DynamicObject(QVector<int> position, QVector<int> size, int durability);
     virtual void update() = 0;
+    /*!
+     * \brief Zainicjalizowanie akcji w wyniku utraty całej wytrzymałości
+     */
     virtual void onDurabilityLoss() = 0;
+    /*!
+     * \brief Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń
+     * \param Wartość obrażeń
+     */
     void takeDamage(int damage);
 };
 

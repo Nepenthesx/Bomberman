@@ -1,0 +1,25 @@
+\doxysection{character.\+h}
+\hypertarget{character_8h_source}{}\label{character_8h_source}\mbox{\hyperlink{character_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHARACTER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHARACTER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dynamicobject_8h}{dynamicobject.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{movableobject_8h}{movableobject.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character}{Character}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_dynamic_object}{DynamicObject}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_movable_object}{MovableObject}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_character_a8eb392924a5c254cf71e63c106d71daf}{Character}}(QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ durability);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}{update}}()\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_aeba56acdc2eb38ab8d4fd015f2333050}{onDurabilityLoss}}()\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_ac673507ef73b958d2f57455d5479a81d}{move}}(QVector<int>\ nextPosition)\ =\ 0;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHARACTER\_H}}
+
+\end{DoxyCode}

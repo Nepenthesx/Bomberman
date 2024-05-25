@@ -3,10 +3,21 @@
 
 #include "staticobject.h"
 
+/*!
+ * \brief Ściana blokująca ruch obiektów i niemożliwa do zniszczenia
+ */
 class WallTile : public StaticObject
 {
 public:
+    /*!
+     * \brief Konstruktor ściany
+     * \param Pozycja
+     * \param Rozmiar
+     */
     WallTile(QVector<int> position, QVector<int> size);
+    /*!
+     * \brief Aktualizacja stanu obiektu - ściana nie posiada żadnych aktywności
+     */
     void update() override;
 };
 

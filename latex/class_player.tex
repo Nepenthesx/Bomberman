@@ -1,0 +1,215 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Postać sterowana przez użytkownika.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a993bfc7dc035d51dcb45abca8cb881db}{Player}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability=3, int max\+Bomb\+Count=1, int bomb\+Power=1, \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}} bomb\+Type=\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa03c51f0767e1dc936d612ef9ca9ba740}{Bomber\+::\+Cross}})
+\begin{DoxyCompactList}\small\item\em Konstruktor gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{update}} () override
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości i ruch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_adc36747dc93b5c4ef0c10b1a7549a32f}{move}} (QVector$<$ int $>$ next\+Position) override
+\begin{DoxyCompactList}\small\item\em Dokonanie przemieszczenia na wskazaną przez użytkownika pozycję \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_acdfec3203c7e176eaa72709d28f05697}{on\+Durability\+Loss}} () override
+\begin{DoxyCompactList}\small\item\em Usunięcie gracza w wyniku utraty całej wytrzymałości i zakończenie poziomu gry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a9a96fefd97ee451884d6b8f93efc7262}{pick\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Zebranie przez gracza przedmiotu umieszczonego na planszy gry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_bomber}{Bomber}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bomber_ad765ad378b2ba851977ae1526c70d7ed}{Bomber}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability, int max\+Bomb\+Count, int bomb\+Power, \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}} bomb\+Type)
+\begin{DoxyCompactList}\small\item\em Konstruktor bombera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bomber_a3ece7a6364002b721c270b8d77b52c31}{place\+Bomb}} ()
+\begin{DoxyCompactList}\small\item\em Tworzenie obiektu \doxylink{class_bomb}{Bomb} na ziemi pod postacią \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_bomber_a356b17ce05c9dc735ad1d62e21c6a791}{get\+Bomb\+Count}} ()
+\item 
+void \mbox{\hyperlink{class_bomber_af203bf15bb6921ffea2ebd45c70de40f}{increment\+Bomb\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Zwiększenie ilości obecnie posiadanych bomb o 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bomber_ac0c5e7f593682e9c6c5bbd01180706a3}{decrement\+Bomb\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Zmniejszenie ilości obecnie posiadanych bomb o 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_a8eb392924a5c254cf71e63c106d71daf}{Character}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor postać \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}{Dynamic\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu zniszczalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}{take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_movable_object_ad5ed02e90d5f715c9591813d626a07df}{Movable\+Object}} (int speed)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu ruchomego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_bomber}{Bomber}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomb\+Type}} \{ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa03c51f0767e1dc936d612ef9ca9ba740}{Cross}}
+, \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa5a3649ff71bd5c61aee48cd07450b3da}{Square}}
+ \}
+\begin{DoxyCompactList}\small\item\em Rodzaj kształtu ekplozji stawianej bomby. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_bomber}{Bomber}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_bomber_a978abd8cd43a03f6d3de9d47a3774131}{get\+Max\+Bomb\+Count}} ()
+\item 
+void \mbox{\hyperlink{class_bomber_a11bc68708f123524cb0df27540910b59}{set\+Max\+Bomb\+Count}} (int max\+Bomb\+Count)
+\item 
+int \mbox{\hyperlink{class_bomber_ab9a5d548bb19e776ddea21b0a4180836}{get\+Bomb\+Power}} ()
+\item 
+void \mbox{\hyperlink{class_bomber_a83ce6124d6f0eeaa221389b2367a3979}{set\+Bomb\+Power}} (int bomb\+Power)
+\item 
+\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}} \mbox{\hyperlink{class_bomber_a94f898f1488310b045ea0705fef96e5e}{get\+Bomb\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_bomber_ab16462d07daeb377eb99b73e603e6784}{set\+Bomb\+Type}} (\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}} bomb\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}{get\+Durability}} ()
+\item 
+void \mbox{\hyperlink{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}{set\+Durability}} (int durability)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad}{get\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_movable_object_a31182609e87fb111c14eaf95adf18530}{set\+Speed}} (int speed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Postać sterowana przez użytkownika. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_a993bfc7dc035d51dcb45abca8cb881db}\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily \label{class_player_a993bfc7dc035d51dcb45abca8cb881db} 
+Player\+::\+Player (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{, }\item[{int}]{speed}{, }\item[{int}]{durability}{ = {\ttfamily 3}, }\item[{int}]{max\+Bomb\+Count}{ = {\ttfamily 1}, }\item[{int}]{bomb\+Power}{ = {\ttfamily 1}, }\item[{\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}}}]{bomb\+Type}{ = {\ttfamily \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa03c51f0767e1dc936d612ef9ca9ba740}{Bomber\+::\+Cross}}}}\end{DoxyParamCaption})}
+
+
+
+Konstruktor gracza. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+{\em Szybkość} & ruchu \\
+\hline
+{\em Wytrzymałość} & \\
+\hline
+{\em Maksymalna} & ilość postawionych jednocześnie bomb \\
+\hline
+{\em Zasięg} & rażenia stawianych bomb \\
+\hline
+{\em Kształt} & eksplozji stawianych bomb \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_adc36747dc93b5c4ef0c10b1a7549a32f}\index{Player@{Player}!move@{move}}
+\index{move@{move}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_player_adc36747dc93b5c4ef0c10b1a7549a32f} 
+void Player\+::move (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{next\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dokonanie przemieszczenia na wskazaną przez użytkownika pozycję 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & na którą zamierza przemieścić się gracz\\
+\hline
+\end{DoxyParams}
+Wskazanie następnej pozycji gracza odbywa się poprzez odpowiedni przycisk klawiatury Left\+Arrow -\/ pozycja na lewo od obecnej Right\+Arrow -\/ pozycja na prawo od obecnej Up\+Arrow -\/ pozycja w górę od obecnej Down\+Arrow -\/ pozycja w dół od obecnej Gracz nie jest w stanie wejść na obiekty typu \doxylink{class_rock_tile}{Rock\+Tile} i \doxylink{class_wall_tile}{Wall\+Tile} 
+
+Implements \mbox{\hyperlink{class_bomber_a5362d6cdfb665fcb42453fd545dacf36}{Bomber}}.
+
+\Hypertarget{class_player_acdfec3203c7e176eaa72709d28f05697}\index{Player@{Player}!onDurabilityLoss@{onDurabilityLoss}}
+\index{onDurabilityLoss@{onDurabilityLoss}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{onDurabilityLoss()}{onDurabilityLoss()}}
+{\footnotesize\ttfamily \label{class_player_acdfec3203c7e176eaa72709d28f05697} 
+void Player\+::on\+Durability\+Loss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Usunięcie gracza w wyniku utraty całej wytrzymałości i zakończenie poziomu gry. 
+
+
+
+Implements \mbox{\hyperlink{class_bomber_a59cbd0847e16a2f4bdec5e89cf305652}{Bomber}}.
+
+\Hypertarget{class_player_a9a96fefd97ee451884d6b8f93efc7262}\index{Player@{Player}!pickItem@{pickItem}}
+\index{pickItem@{pickItem}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{pickItem()}{pickItem()}}
+{\footnotesize\ttfamily \label{class_player_a9a96fefd97ee451884d6b8f93efc7262} 
+void Player\+::pick\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Zebranie przez gracza przedmiotu umieszczonego na planszy gry. 
+
+Gracz jest w stanie zebrać obiekty typu \doxylink{class_bomb_count_upgrade}{Bomb\+Count\+Upgrade}, \doxylink{class_bomb_type_upgrade}{Bomb\+Type\+Upgrade} i \doxylink{class_bomb_power_upgrade}{Bomb\+Power\+Upgrade} \Hypertarget{class_player_a6912bb6e48efb5845d59f0f4582827ef}\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_player_a6912bb6e48efb5845d59f0f4582827ef} 
+void Player\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości i ruch. 
+
+
+
+Implements \mbox{\hyperlink{class_bomber_ad2d9ddcd0c1f72faad110955a8d5adef}{Bomber}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{player_8h}{player.\+h}}\item 
+\mbox{\hyperlink{player_8cpp}{player.\+cpp}}\end{DoxyCompactItemize}

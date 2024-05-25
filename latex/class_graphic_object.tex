@@ -1,0 +1,127 @@
+\doxysection{Graphic\+Object Class Reference}
+\hypertarget{class_graphic_object}{}\label{class_graphic_object}\index{GraphicObject@{GraphicObject}}
+
+
+Graficzny wizerunek obiektu gry.  
+
+
+
+
+{\ttfamily \#include $<$graphicobject.\+h$>$}
+
+Inheritance diagram for Graphic\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_graphic_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graphic_object_aa307b147913eb3df97c55d4d7763b30f}{Graphic\+Object}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object, std\+::string graphic\+Relative\+Path, QWidget \texorpdfstring{$\ast$}{*}parent, int drawing\+Priority)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu graficznego. \end{DoxyCompactList}\item 
+QPixmap \mbox{\hyperlink{class_graphic_object_aafa5ca5a3bebfafcbb48da8785bcb893}{get\+Picture}} ()
+\item 
+void \mbox{\hyperlink{class_graphic_object_aabffd1011e9713359afe91f521d12349}{set\+Picture}} (std\+::string graphic\+Relative\+Path)
+\begin{DoxyCompactList}\small\item\em Ustawia grafikę do rysowania na podstawie ścieżki pliku graficznego. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graphic_object_af6087783faefe3bbadac6a3a78edf93b}{get\+Drawing\+Priority}} ()
+\item 
+void \mbox{\hyperlink{class_graphic_object_af151a1146f9188127c9faae49ba6d411}{set\+Drawing\+Priority}} (int drawing\+Priority)
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_graphic_object_ae23d9587ebb086cbfb7fd2092bced25c}{get\+Game\+Object}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_graphic_object_a807077daaccfbce048e93bd187a48277}{sort\+By\+Priority}} (QList$<$ \mbox{\hyperlink{class_graphic_object}{Graphic\+Object}} \texorpdfstring{$\ast$}{*} $>$ objects\+List)
+\begin{DoxyCompactList}\small\item\em Sortowanie listy obiektów graficznych po ich priorytecie rysowania. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Graficzny wizerunek obiektu gry. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_graphic_object_aa307b147913eb3df97c55d4d7763b30f}\index{GraphicObject@{GraphicObject}!GraphicObject@{GraphicObject}}
+\index{GraphicObject@{GraphicObject}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{GraphicObject()}{GraphicObject()}}
+{\footnotesize\ttfamily \label{class_graphic_object_aa307b147913eb3df97c55d4d7763b30f} 
+Graphic\+Object\+::\+Graphic\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{, }\item[{std\+::string}]{graphic\+Relative\+Path}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int}]{drawing\+Priority}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu graficznego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Obiekt} & gry \\
+\hline
+{\em Ścieżka} & do pliku z grafiką \\
+\hline
+{\em Okno} & gry \\
+\hline
+{\em Priorytet} & rysowania \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graphic_object_af6087783faefe3bbadac6a3a78edf93b}\index{GraphicObject@{GraphicObject}!getDrawingPriority@{getDrawingPriority}}
+\index{getDrawingPriority@{getDrawingPriority}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{getDrawingPriority()}{getDrawingPriority()}}
+{\footnotesize\ttfamily \label{class_graphic_object_af6087783faefe3bbadac6a3a78edf93b} 
+int Graphic\+Object\+::get\+Drawing\+Priority (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_graphic_object_ae23d9587ebb086cbfb7fd2092bced25c}\index{GraphicObject@{GraphicObject}!getGameObject@{getGameObject}}
+\index{getGameObject@{getGameObject}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{getGameObject()}{getGameObject()}}
+{\footnotesize\ttfamily \label{class_graphic_object_ae23d9587ebb086cbfb7fd2092bced25c} 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} Graphic\+Object\+::get\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_graphic_object_aafa5ca5a3bebfafcbb48da8785bcb893}\index{GraphicObject@{GraphicObject}!getPicture@{getPicture}}
+\index{getPicture@{getPicture}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{getPicture()}{getPicture()}}
+{\footnotesize\ttfamily \label{class_graphic_object_aafa5ca5a3bebfafcbb48da8785bcb893} 
+QPixmap Graphic\+Object\+::get\+Picture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_graphic_object_af151a1146f9188127c9faae49ba6d411}\index{GraphicObject@{GraphicObject}!setDrawingPriority@{setDrawingPriority}}
+\index{setDrawingPriority@{setDrawingPriority}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{setDrawingPriority()}{setDrawingPriority()}}
+{\footnotesize\ttfamily \label{class_graphic_object_af151a1146f9188127c9faae49ba6d411} 
+void Graphic\+Object\+::set\+Drawing\+Priority (\begin{DoxyParamCaption}\item[{int}]{drawing\+Priority}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_graphic_object_aabffd1011e9713359afe91f521d12349}\index{GraphicObject@{GraphicObject}!setPicture@{setPicture}}
+\index{setPicture@{setPicture}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{setPicture()}{setPicture()}}
+{\footnotesize\ttfamily \label{class_graphic_object_aabffd1011e9713359afe91f521d12349} 
+void Graphic\+Object\+::set\+Picture (\begin{DoxyParamCaption}\item[{std\+::string}]{graphic\+Relative\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Ustawia grafikę do rysowania na podstawie ścieżki pliku graficznego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ścieżka} & do pliku z grafiką względem pliku "{}build"{} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graphic_object_a807077daaccfbce048e93bd187a48277}\index{GraphicObject@{GraphicObject}!sortByPriority@{sortByPriority}}
+\index{sortByPriority@{sortByPriority}!GraphicObject@{GraphicObject}}
+\doxysubsubsection{\texorpdfstring{sortByPriority()}{sortByPriority()}}
+{\footnotesize\ttfamily \label{class_graphic_object_a807077daaccfbce048e93bd187a48277} 
+void Graphic\+Object\+::sort\+By\+Priority (\begin{DoxyParamCaption}\item[{QList$<$ \mbox{\hyperlink{class_graphic_object}{Graphic\+Object}} \texorpdfstring{$\ast$}{*} $>$}]{objects\+List}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sortowanie listy obiektów graficznych po ich priorytecie rysowania. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Lista} & obiektów graficzny \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{graphicobject_8h}{graphicobject.\+h}}\item 
+\mbox{\hyperlink{graphicobject_8cpp}{graphicobject.\+cpp}}\end{DoxyCompactItemize}

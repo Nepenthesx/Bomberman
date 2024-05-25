@@ -1,0 +1,78 @@
+\doxysection{gamemanager.\+h}
+\hypertarget{gamemanager_8h_source}{}\label{gamemanager_8h_source}\mbox{\hyperlink{gamemanager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameobject_8h}{gameobject.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graphicobject_8h}{graphicobject.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomber_8h}{bomber.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QList>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QSet>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_manager}{GameManager}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_game_manager}{GameManager}}(\textcolor{keywordtype}{int}\ globalScale,\ QWidget*\ window,\ \textcolor{keywordtype}{float}\ frameInterval);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_game_manager}{GameManager}}*\ instance;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ QList<GameObject*>\ gameObjects;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ QList<GraphicObject*>\ graphicObjects;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ QWidget*\ window;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ globalScale;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ frameInterval;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ frameCount;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ QTimer*\ timer;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//GameManager(const\ GameManager\&)\ =\ delete;}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//GameManager\&\ operator=(const\ GameManager\&)\ =\ delete;}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ removeObject(\mbox{\hyperlink{class_game_object}{GameObject}}*\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//GameManager(int\ globalScale,\ QWidget*\ window,\ float\ frameInterval\ =\ 1000);}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_game_manager}{GameManager}}*\ \mbox{\hyperlink{class_game_manager_a6252a13c5e99a38e949161e51706229b}{getInstance}}(\textcolor{keywordtype}{int}\ globalScale,\ QWidget*\ window,\ \textcolor{keywordtype}{float}\ frameInterval\ =\ 1000);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_manager_a9ddc2363c86ed2116d0a6e9bbae4c828}{getGlobalScale}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a4ce1c802508143f915064220cd45ba4a}{setGlobalScale}}(\textcolor{keywordtype}{int}\ scale);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_manager_a4ce577fde622a0c681dae4543c4ad2f9}{getFrameCount}}();}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_game_manager_a49eac6845663db1aeda5440148e498ef}{getFrameInterval}}();}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a76887b85652ecc24708726aae5beffb8}{setFrameInterval}}(\textcolor{keywordtype}{float}\ frameInterval);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a024f60b4306b65e74998dc5174ee7cad}{startLevel}}();}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a54ecdef03a6b353fbcd76c9cde44ff4d}{endLevel}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_ad7ced3e76f2874d3d25cf484e303d181}{createFloorTile}}(QVector<int>\ position);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a62135581a0b35542a15aa48f6df59958}{createRockTile}}(QVector<int>\ position);}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_af4ae3d40ee98319fbfc497498e3dac6a}{createWallTile}}(QVector<int>\ position);}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_ab358cfa0f5437f2b5295f7b30f40a717}{createPlayer}}(QVector<int>\ position,\ \textcolor{keywordtype}{int}\ speed);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a969070b724cc11eda9f5d7c3b15d6b67}{createEnemy}}(QVector<int>\ position,\ \textcolor{keywordtype}{int}\ speed);}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_ae418a51dfb06b051f25057b2749152bf}{createBomb}}(QVector<int>\ position,\ \mbox{\hyperlink{class_bomber}{Bomber}}*\ owner,\ \textcolor{keywordtype}{int}\ explosionPower,\ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ bombType);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_abfe3e08363d600f01fe0a011d466af80}{createBombTypeUpgrade}}(QVector<int>\ position);}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a2b2b5bfccd47743bb856c738e2744bef}{createBombPowerUpgrade}}(QVector<int>\ position);}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_manager_a13bf133b8269e5617613ed8dbf653e50}{createBombCountUpgrade}}(QVector<int>\ position);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{comment}{//static\ QList<GameObject*>\ getObjectsInRange(GameObject*\ object,\ int\ range);}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{static}\ QList<GameObject*>\ \mbox{\hyperlink{class_game_manager_a41b0aa420fe74752e2750b8d707bc043}{getObjectsInContact}}(QVector<int>\ objectPosition,\ QVector<int>\ objectSize);}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{static}\ QSet<GameObject*>\ \mbox{\hyperlink{class_game_manager_a8dfefa67295e6c2c98ad8e401c6ab856}{getObjectsInContactArea}}(QVector<int>\ basePosition,\ QSet<QVector<int>>\ relativePositions,\ QVector<int>\ objectSize);}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_manager_a38bcfc3d140069f57ea204cb753eba34}{checkContact}}(QVector<int>\ firstObjectPosition,\ QVector<int>\ firstObjectSize,\ QVector<int>\ secondObjectPosition,\ QVector<int>\ secondObjectSize);}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{void}\ updateGame();}
+\DoxyCodeLine{00226\ \};}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAMEMANAGER\_H}}
+
+\end{DoxyCode}

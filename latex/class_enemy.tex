@@ -1,0 +1,162 @@
+\doxysection{Enemy Class Reference}
+\hypertarget{class_enemy}{}\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+Przeciwnik, czyli postać mogąca ranić gracza i dążąca do jego zniszczenia.  
+
+
+
+
+{\ttfamily \#include $<$enemy.\+h$>$}
+
+Inheritance diagram for Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_ab2bf0477742b10ccc82782546cf22ca2}{Enemy}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability=3)
+\begin{DoxyCompactList}\small\item\em Konstruktor przeciwnika. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{update}} () override
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości i ruch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_a74c9ddb1372178b584c4643fcec70b78}{move}} (QVector$<$ int $>$ next\+Position) override
+\begin{DoxyCompactList}\small\item\em Dokonanie przemieszczenia na wskazaną przez SI przeciwnika pozycję \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e}{on\+Durability\+Loss}} () override
+\begin{DoxyCompactList}\small\item\em Usunięcie przeciwnika w wyniku utraty całej wytrzymałości. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_a8eb392924a5c254cf71e63c106d71daf}{Character}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor postać \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}{Dynamic\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu zniszczalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}{take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_movable_object_ad5ed02e90d5f715c9591813d626a07df}{Movable\+Object}} (int speed)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu ruchomego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}{get\+Durability}} ()
+\item 
+void \mbox{\hyperlink{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}{set\+Durability}} (int durability)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad}{get\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_movable_object_a31182609e87fb111c14eaf95adf18530}{set\+Speed}} (int speed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Przeciwnik, czyli postać mogąca ranić gracza i dążąca do jego zniszczenia. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_enemy_ab2bf0477742b10ccc82782546cf22ca2}\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily \label{class_enemy_ab2bf0477742b10ccc82782546cf22ca2} 
+Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{, }\item[{int}]{speed}{, }\item[{int}]{durability}{ = {\ttfamily 3}}\end{DoxyParamCaption})}
+
+
+
+Konstruktor przeciwnika. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+{\em Szybkość} & ruchu \\
+\hline
+{\em Wytrzymałość} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_enemy_a74c9ddb1372178b584c4643fcec70b78}\index{Enemy@{Enemy}!move@{move}}
+\index{move@{move}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_enemy_a74c9ddb1372178b584c4643fcec70b78} 
+void Enemy\+::move (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{next\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dokonanie przemieszczenia na wskazaną przez SI przeciwnika pozycję 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & na którą zamierza przemieścić się przeciwnik\\
+\hline
+\end{DoxyParams}
+Wskazanie następnej pozycji przeciwnika odbywa się poprzez analizę sąsiednich obiektów zawartych w relative\+Close\+Position. Piorytetem jest sąsiad w postaci \doxylink{class_player}{Player}, następnie \doxylink{class_floor_tile}{Floor\+Tile}. Jeśli możliwe są 2 pozycje o tym samym piorytecie, wybór jednej z nich odbywa się losowo. Przeciwnik nie jest w stanie wejść na obiekty typu \doxylink{class_rock_tile}{Rock\+Tile} i \doxylink{class_wall_tile}{Wall\+Tile} 
+
+Implements \mbox{\hyperlink{class_character_ac673507ef73b958d2f57455d5479a81d}{Character}}.
+
+\Hypertarget{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e}\index{Enemy@{Enemy}!onDurabilityLoss@{onDurabilityLoss}}
+\index{onDurabilityLoss@{onDurabilityLoss}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{onDurabilityLoss()}{onDurabilityLoss()}}
+{\footnotesize\ttfamily \label{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e} 
+void Enemy\+::on\+Durability\+Loss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Usunięcie przeciwnika w wyniku utraty całej wytrzymałości. 
+
+
+
+Implements \mbox{\hyperlink{class_character_aeba56acdc2eb38ab8d4fd015f2333050}{Character}}.
+
+\Hypertarget{class_enemy_aa70d742da02995011f1618acc9e303db}\index{Enemy@{Enemy}!update@{update}}
+\index{update@{update}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_enemy_aa70d742da02995011f1618acc9e303db} 
+void Enemy\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aktualizacja stanu obiektu poprzez sprawdzenie wytrzymałości i ruch. 
+
+
+
+Implements \mbox{\hyperlink{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}{Character}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{enemy_8h}{enemy.\+h}}\item 
+\mbox{\hyperlink{enemy_8cpp}{enemy.\+cpp}}\end{DoxyCompactItemize}

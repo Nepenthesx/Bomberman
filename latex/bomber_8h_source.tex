@@ -1,0 +1,45 @@
+\doxysection{bomber.\+h}
+\hypertarget{bomber_8h_source}{}\label{bomber_8h_source}\mbox{\hyperlink{bomber_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BOMBER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BOMBER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{character_8h}{character.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_bomber}{Bomber}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character}{Character}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:\textcolor{keyword}{enum}\ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{BombType}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa03c51f0767e1dc936d612ef9ca9ba740}{Cross}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72fa5a3649ff71bd5c61aee48cd07450b3da}{Square}}}
+\DoxyCodeLine{00019\ \ \ \ \ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ bombCount;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ maxBombCount;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ bombPower;}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ bombType;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_bomber_a978abd8cd43a03f6d3de9d47a3774131}{getMaxBombCount}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_a11bc68708f123524cb0df27540910b59}{setMaxBombCount}}(\textcolor{keywordtype}{int}\ maxBombCount);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_bomber_ab9a5d548bb19e776ddea21b0a4180836}{getBombPower}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_a83ce6124d6f0eeaa221389b2367a3979}{setBombPower}}(\textcolor{keywordtype}{int}\ bombPower);}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ \mbox{\hyperlink{class_bomber_a94f898f1488310b045ea0705fef96e5e}{getBombType}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_ab16462d07daeb377eb99b73e603e6784}{setBombType}}(\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ bombType);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_bomber_ad765ad378b2ba851977ae1526c70d7ed}{Bomber}}(QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ durability,\ \textcolor{keywordtype}{int}\ maxBombCount,\ \textcolor{keywordtype}{int}\ bombPower,\ \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber::BombType}}\ bombType);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_ad2d9ddcd0c1f72faad110955a8d5adef}{update}}()\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_a59cbd0847e16a2f4bdec5e89cf305652}{onDurabilityLoss}}()\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_a5362d6cdfb665fcb42453fd545dacf36}{move}}(QVector<int>\ nextPosition)\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_a3ece7a6364002b721c270b8d77b52c31}{placeBomb}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_bomber_a356b17ce05c9dc735ad1d62e21c6a791}{getBombCount}}();}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_af203bf15bb6921ffea2ebd45c70de40f}{incrementBombCount}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bomber_ac0c5e7f593682e9c6c5bbd01180706a3}{decrementBombCount}}();}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BOMBER\_H}}
+
+\end{DoxyCode}

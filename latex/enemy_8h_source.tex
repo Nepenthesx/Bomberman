@@ -1,0 +1,24 @@
+\doxysection{enemy.\+h}
+\hypertarget{enemy_8h_source}{}\label{enemy_8h_source}\mbox{\hyperlink{enemy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ENEMY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ENEMY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{character_8h}{character.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_enemy}{Enemy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_character}{Character}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ QSet<QVector<int>>\ relativeClosePositions;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_enemy_ab2bf0477742b10ccc82782546cf22ca2}{Enemy}}(QVector<int>\ position,\ QVector<int>\ size,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ durability\ =\ 3);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_a74c9ddb1372178b584c4643fcec70b78}{move}}(QVector<int>\ nextPosition)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e}{onDurabilityLoss}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ENEMY\_H}}
+
+\end{DoxyCode}

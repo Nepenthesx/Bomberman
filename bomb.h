@@ -6,19 +6,44 @@
 #include "bomber.h"
 #include <QSet>
 
+/*!
+ * \brief Obiekt uszkadzający wszystkie obiekty zniszczalne na sąsiednich polach
+ * \see DynamicObject
+ */
 class Bomb : public DynamicObject, public TemporaryObject
 {
 
 private:
+    /*!
+     * \brief Twórca bomby
+     */
     Bomber* owner;
+    /*!
+     * \brief Zasięg rażenia obiektów, czyli zadawania im obrażeń
+     */
     int explosionPower;
-
+    /*!
+     * \brief Dokonywanie procesu zadawania obrażeń sąsiadom
+     */
     void explode();
 
 protected:
+    /*!
+     * \brief Pozycje sąsiadów względem bomby w skali globalScale
+     * \see GameManager globalScale
+     */
     QSet<QVector<int>> relativeExplosionPositions;
 
 public:
+    /*!
+     * \brief Konstruktor bomby
+     * \param Twórca bomby
+     * \param Pozycja
+     * \param Rozmiar
+     * \param Zasięg rażenia
+     * \param Czas do eksplozji
+     * \param Wytrzymałość
+     */
     Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability);
 
     void update() override;

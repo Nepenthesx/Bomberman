@@ -1,0 +1,390 @@
+\doxysection{Game\+Manager Class Reference}
+\hypertarget{class_game_manager}{}\label{class_game_manager}\index{GameManager@{GameManager}}
+
+
+Silnik gry, zarządzający wszystkimi obiektami i grafiką  
+
+
+
+
+{\ttfamily \#include $<$gamemanager.\+h$>$}
+
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_manager_a6252a13c5e99a38e949161e51706229b}{get\+Instance}} (int global\+Scale, QWidget \texorpdfstring{$\ast$}{*}window, float frame\+Interval=1000)
+\begin{DoxyCompactList}\small\item\em Utworzenie singletowego managera gry. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_game_manager_a9ddc2363c86ed2116d0a6e9bbae4c828}{get\+Global\+Scale}} ()
+\item 
+static void \mbox{\hyperlink{class_game_manager_a4ce1c802508143f915064220cd45ba4a}{set\+Global\+Scale}} (int scale)
+\item 
+static int \mbox{\hyperlink{class_game_manager_a4ce577fde622a0c681dae4543c4ad2f9}{get\+Frame\+Count}} ()
+\item 
+static float \mbox{\hyperlink{class_game_manager_a49eac6845663db1aeda5440148e498ef}{get\+Frame\+Interval}} ()
+\item 
+static void \mbox{\hyperlink{class_game_manager_a76887b85652ecc24708726aae5beffb8}{set\+Frame\+Interval}} (float frame\+Interval)
+\item 
+static void \mbox{\hyperlink{class_game_manager_a024f60b4306b65e74998dc5174ee7cad}{start\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Utworzenie odpowiednich obiektów, które będą budować początkową planszę poziomu. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_a54ecdef03a6b353fbcd76c9cde44ff4d}{end\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Usunięcie wszystkich obiektów i grafik pozostawiając puste okno. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_ad7ced3e76f2874d3d25cf484e303d181}{create\+Floor\+Tile}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu podłogi. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_a62135581a0b35542a15aa48f6df59958}{create\+Rock\+Tile}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu kamienia. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_af4ae3d40ee98319fbfc497498e3dac6a}{create\+Wall\+Tile}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu ściany. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_ab358cfa0f5437f2b5295f7b30f40a717}{create\+Player}} (QVector$<$ int $>$ position, int speed)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu gracza. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_a969070b724cc11eda9f5d7c3b15d6b67}{create\+Enemy}} (QVector$<$ int $>$ position, int speed)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu przeciwnika. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_ae418a51dfb06b051f25057b2749152bf}{create\+Bomb}} (QVector$<$ int $>$ position, \mbox{\hyperlink{class_bomber}{Bomber}} \texorpdfstring{$\ast$}{*}owner, int explosion\+Power, \mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}} bomb\+Type)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu bomby. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_abfe3e08363d600f01fe0a011d466af80}{create\+Bomb\+Type\+Upgrade}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu ulepszenia kształtu bomby. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_a2b2b5bfccd47743bb856c738e2744bef}{create\+Bomb\+Power\+Upgrade}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu ulepszenia zasięgu rażenia bomby. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_game_manager_a13bf133b8269e5617613ed8dbf653e50}{create\+Bomb\+Count\+Upgrade}} (QVector$<$ int $>$ position)
+\begin{DoxyCompactList}\small\item\em Utworzenie obiektu ulepszenia ilości stawianych bomb. \end{DoxyCompactList}\item 
+static QList$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_game_manager_a41b0aa420fe74752e2750b8d707bc043}{get\+Objects\+In\+Contact}} (QVector$<$ int $>$ object\+Position, QVector$<$ int $>$ object\+Size)
+\begin{DoxyCompactList}\small\item\em Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem. \end{DoxyCompactList}\item 
+static QSet$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_game_manager_a8dfefa67295e6c2c98ad8e401c6ab856}{get\+Objects\+In\+Contact\+Area}} (QVector$<$ int $>$ base\+Position, QSet$<$ QVector$<$ int $>$ $>$ relative\+Positions, QVector$<$ int $>$ object\+Size)
+\begin{DoxyCompactList}\small\item\em Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem w wskazanym przez niego obszarze. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_game_manager_a38bcfc3d140069f57ea204cb753eba34}{check\+Contact}} (QVector$<$ int $>$ first\+Object\+Position, QVector$<$ int $>$ first\+Object\+Size, QVector$<$ int $>$ second\+Object\+Position, QVector$<$ int $>$ second\+Object\+Size)
+\begin{DoxyCompactList}\small\item\em Sprawdza zachodzenie się powierzchni dwóch wskazanych obiektów. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Silnik gry, zarządzający wszystkimi obiektami i grafiką 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_manager_a38bcfc3d140069f57ea204cb753eba34}\index{GameManager@{GameManager}!checkContact@{checkContact}}
+\index{checkContact@{checkContact}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{checkContact()}{checkContact()}}
+{\footnotesize\ttfamily \label{class_game_manager_a38bcfc3d140069f57ea204cb753eba34} 
+bool Game\+Manager\+::check\+Contact (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{first\+Object\+Position}{, }\item[{QVector$<$ int $>$}]{first\+Object\+Size}{, }\item[{QVector$<$ int $>$}]{second\+Object\+Position}{, }\item[{QVector$<$ int $>$}]{second\+Object\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sprawdza zachodzenie się powierzchni dwóch wskazanych obiektów. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & pierwszego obiektu \\
+\hline
+{\em Rozmiar} & pierwszego obiektu \\
+\hline
+{\em Pozycja} & drugiego obiektu \\
+\hline
+{\em Rozmiar} & drugiego obiektu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Informacja czy wskazane obiekty zachodzą się powierzchniami 
+\end{DoxyReturn}
+\Hypertarget{class_game_manager_ae418a51dfb06b051f25057b2749152bf}\index{GameManager@{GameManager}!createBomb@{createBomb}}
+\index{createBomb@{createBomb}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createBomb()}{createBomb()}}
+{\footnotesize\ttfamily \label{class_game_manager_ae418a51dfb06b051f25057b2749152bf} 
+void Game\+Manager\+::create\+Bomb (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{\mbox{\hyperlink{class_bomber}{Bomber}} \texorpdfstring{$\ast$}{*}}]{owner}{, }\item[{int}]{explosion\+Power}{, }\item[{\mbox{\hyperlink{class_bomber_a1f2c040b965fff428461dd9ef918b72f}{Bomber\+::\+Bomb\+Type}}}]{bomb\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu bomby. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Twórca} & bomby \\
+\hline
+{\em Zasięg} & rażenia \\
+\hline
+{\em Kształt} & eksplozji bomby \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_bomb}{Bomb} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_a13bf133b8269e5617613ed8dbf653e50}\index{GameManager@{GameManager}!createBombCountUpgrade@{createBombCountUpgrade}}
+\index{createBombCountUpgrade@{createBombCountUpgrade}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createBombCountUpgrade()}{createBombCountUpgrade()}}
+{\footnotesize\ttfamily \label{class_game_manager_a13bf133b8269e5617613ed8dbf653e50} 
+void Game\+Manager\+::create\+Bomb\+Count\+Upgrade (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu ulepszenia ilości stawianych bomb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_bomb_count_upgrade}{Bomb\+Count\+Upgrade} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_a2b2b5bfccd47743bb856c738e2744bef}\index{GameManager@{GameManager}!createBombPowerUpgrade@{createBombPowerUpgrade}}
+\index{createBombPowerUpgrade@{createBombPowerUpgrade}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createBombPowerUpgrade()}{createBombPowerUpgrade()}}
+{\footnotesize\ttfamily \label{class_game_manager_a2b2b5bfccd47743bb856c738e2744bef} 
+void Game\+Manager\+::create\+Bomb\+Power\+Upgrade (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu ulepszenia zasięgu rażenia bomby. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_bomb_power_upgrade}{Bomb\+Power\+Upgrade} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_abfe3e08363d600f01fe0a011d466af80}\index{GameManager@{GameManager}!createBombTypeUpgrade@{createBombTypeUpgrade}}
+\index{createBombTypeUpgrade@{createBombTypeUpgrade}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createBombTypeUpgrade()}{createBombTypeUpgrade()}}
+{\footnotesize\ttfamily \label{class_game_manager_abfe3e08363d600f01fe0a011d466af80} 
+void Game\+Manager\+::create\+Bomb\+Type\+Upgrade (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu ulepszenia kształtu bomby. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_bomb_type_upgrade}{Bomb\+Type\+Upgrade} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_a969070b724cc11eda9f5d7c3b15d6b67}\index{GameManager@{GameManager}!createEnemy@{createEnemy}}
+\index{createEnemy@{createEnemy}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createEnemy()}{createEnemy()}}
+{\footnotesize\ttfamily \label{class_game_manager_a969070b724cc11eda9f5d7c3b15d6b67} 
+void Game\+Manager\+::create\+Enemy (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{int}]{speed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu przeciwnika. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Szybkość} & ruchu \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_enemy}{Enemy} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_ad7ced3e76f2874d3d25cf484e303d181}\index{GameManager@{GameManager}!createFloorTile@{createFloorTile}}
+\index{createFloorTile@{createFloorTile}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createFloorTile()}{createFloorTile()}}
+{\footnotesize\ttfamily \label{class_game_manager_ad7ced3e76f2874d3d25cf484e303d181} 
+void Game\+Manager\+::create\+Floor\+Tile (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu podłogi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_floor_tile}{Floor\+Tile} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_ab358cfa0f5437f2b5295f7b30f40a717}\index{GameManager@{GameManager}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily \label{class_game_manager_ab358cfa0f5437f2b5295f7b30f40a717} 
+void Game\+Manager\+::create\+Player (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{int}]{speed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu gracza. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Szybkość} & ruchu \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_player}{Player} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_a62135581a0b35542a15aa48f6df59958}\index{GameManager@{GameManager}!createRockTile@{createRockTile}}
+\index{createRockTile@{createRockTile}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createRockTile()}{createRockTile()}}
+{\footnotesize\ttfamily \label{class_game_manager_a62135581a0b35542a15aa48f6df59958} 
+void Game\+Manager\+::create\+Rock\+Tile (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu kamienia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_rock_tile}{Rock\+Tile} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_af4ae3d40ee98319fbfc497498e3dac6a}\index{GameManager@{GameManager}!createWallTile@{createWallTile}}
+\index{createWallTile@{createWallTile}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createWallTile()}{createWallTile()}}
+{\footnotesize\ttfamily \label{class_game_manager_af4ae3d40ee98319fbfc497498e3dac6a} 
+void Game\+Manager\+::create\+Wall\+Tile (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie obiektu ściany. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_wall_tile}{Wall\+Tile} 
+\end{DoxySeeAlso}
+\Hypertarget{class_game_manager_a54ecdef03a6b353fbcd76c9cde44ff4d}\index{GameManager@{GameManager}!endLevel@{endLevel}}
+\index{endLevel@{endLevel}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{endLevel()}{endLevel()}}
+{\footnotesize\ttfamily \label{class_game_manager_a54ecdef03a6b353fbcd76c9cde44ff4d} 
+void Game\+Manager\+::end\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Usunięcie wszystkich obiektów i grafik pozostawiając puste okno. 
+
+\Hypertarget{class_game_manager_a4ce577fde622a0c681dae4543c4ad2f9}\index{GameManager@{GameManager}!getFrameCount@{getFrameCount}}
+\index{getFrameCount@{getFrameCount}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getFrameCount()}{getFrameCount()}}
+{\footnotesize\ttfamily \label{class_game_manager_a4ce577fde622a0c681dae4543c4ad2f9} 
+int Game\+Manager\+::get\+Frame\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_game_manager_a49eac6845663db1aeda5440148e498ef}\index{GameManager@{GameManager}!getFrameInterval@{getFrameInterval}}
+\index{getFrameInterval@{getFrameInterval}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getFrameInterval()}{getFrameInterval()}}
+{\footnotesize\ttfamily \label{class_game_manager_a49eac6845663db1aeda5440148e498ef} 
+float Game\+Manager\+::get\+Frame\+Interval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_game_manager_a9ddc2363c86ed2116d0a6e9bbae4c828}\index{GameManager@{GameManager}!getGlobalScale@{getGlobalScale}}
+\index{getGlobalScale@{getGlobalScale}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getGlobalScale()}{getGlobalScale()}}
+{\footnotesize\ttfamily \label{class_game_manager_a9ddc2363c86ed2116d0a6e9bbae4c828} 
+int Game\+Manager\+::get\+Global\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_game_manager_a6252a13c5e99a38e949161e51706229b}\index{GameManager@{GameManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_game_manager_a6252a13c5e99a38e949161e51706229b} 
+\mbox{\hyperlink{class_game_manager}{Game\+Manager}} \texorpdfstring{$\ast$}{*} Game\+Manager\+::get\+Instance (\begin{DoxyParamCaption}\item[{int}]{global\+Scale}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{float}]{frame\+Interval}{ = {\ttfamily 1000}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie singletowego managera gry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Podstawowa} & skala wielkości obiektów \\
+\hline
+{\em Okno} & w którym wyświetlana jest grafika \\
+\hline
+{\em Czas} & między kolejnymi klatkami \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Utworzony manager gry
+\end{DoxyReturn}
+Manager gry jest singletonem, a więc jest możliwe utworzenie tego obiektu tylko raz \Hypertarget{class_game_manager_a41b0aa420fe74752e2750b8d707bc043}\index{GameManager@{GameManager}!getObjectsInContact@{getObjectsInContact}}
+\index{getObjectsInContact@{getObjectsInContact}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getObjectsInContact()}{getObjectsInContact()}}
+{\footnotesize\ttfamily \label{class_game_manager_a41b0aa420fe74752e2750b8d707bc043} 
+QList$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ Game\+Manager\+::get\+Objects\+In\+Contact (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{object\+Position}{, }\item[{QVector$<$ int $>$}]{object\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & badanego obiektu \\
+\hline
+{\em Rozmiar} & badanego obiektu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista obiektów będących w kontakcie z danym obiektem 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Funkcja \doxylink{class_game_manager_a38bcfc3d140069f57ea204cb753eba34}{check\+Contact}
+\end{DoxySeeAlso}
+Znalezienie obiektów odbywa się poprzez iteracje przez całą listę obecnie istniejących obiektów gry i sprawdzenie funkcją check\+Contact, czy ten obiekt z listy zachodzi powierzchnią z badanym obiektem. Zwracane są wszystkie obiekty z listy istniejących obiektów, które wykazały kontakt. \Hypertarget{class_game_manager_a8dfefa67295e6c2c98ad8e401c6ab856}\index{GameManager@{GameManager}!getObjectsInContactArea@{getObjectsInContactArea}}
+\index{getObjectsInContactArea@{getObjectsInContactArea}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getObjectsInContactArea()}{getObjectsInContactArea()}}
+{\footnotesize\ttfamily \label{class_game_manager_a8dfefa67295e6c2c98ad8e401c6ab856} 
+QSet$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ Game\+Manager\+::get\+Objects\+In\+Contact\+Area (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{base\+Position}{, }\item[{QSet$<$ QVector$<$ int $>$ $>$}]{relative\+Positions}{, }\item[{QVector$<$ int $>$}]{object\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem w wskazanym przez niego obszarze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & badanego obiektu \\
+\hline
+{\em Zbiór} & badanych pozycji określonych względem podstawowej pozycji obiektu \\
+\hline
+{\em Rozmiar} & badanego obiektu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Stos obiektów będących w kontakcie z danym obiektem 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Funkcja \doxylink{class_game_manager_a38bcfc3d140069f57ea204cb753eba34}{check\+Contact} 
+
+Funckja \doxylink{class_game_manager_a41b0aa420fe74752e2750b8d707bc043}{get\+Objects\+In\+Contact}
+\end{DoxySeeAlso}
+Znalezienie obiektów odbywa się poprzez iteracje przez listę pozycji zawartych w relative\+Position. Dla poszczególnej pozycji sprawdzane są funkcją check\+Contact wszystkie istniejące w grze obiekty, które zachodzą powierzchnią z tą pozycją. Zamiana listy na stos ma zapobiedz powieleniu się tych samych obiektów. Pozycje względne określone są w skali globalnej managera global\+Scale \Hypertarget{class_game_manager_a76887b85652ecc24708726aae5beffb8}\index{GameManager@{GameManager}!setFrameInterval@{setFrameInterval}}
+\index{setFrameInterval@{setFrameInterval}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{setFrameInterval()}{setFrameInterval()}}
+{\footnotesize\ttfamily \label{class_game_manager_a76887b85652ecc24708726aae5beffb8} 
+void Game\+Manager\+::set\+Frame\+Interval (\begin{DoxyParamCaption}\item[{float}]{frame\+Interval}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_game_manager_a4ce1c802508143f915064220cd45ba4a}\index{GameManager@{GameManager}!setGlobalScale@{setGlobalScale}}
+\index{setGlobalScale@{setGlobalScale}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{setGlobalScale()}{setGlobalScale()}}
+{\footnotesize\ttfamily \label{class_game_manager_a4ce1c802508143f915064220cd45ba4a} 
+void Game\+Manager\+::set\+Global\+Scale (\begin{DoxyParamCaption}\item[{int}]{scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_game_manager_a024f60b4306b65e74998dc5174ee7cad}\index{GameManager@{GameManager}!startLevel@{startLevel}}
+\index{startLevel@{startLevel}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{startLevel()}{startLevel()}}
+{\footnotesize\ttfamily \label{class_game_manager_a024f60b4306b65e74998dc5174ee7cad} 
+void Game\+Manager\+::start\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Utworzenie odpowiednich obiektów, które będą budować początkową planszę poziomu. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamemanager_8h}{gamemanager.\+h}}\item 
+\mbox{\hyperlink{gamemanager_8cpp}{gamemanager.\+cpp}}\end{DoxyCompactItemize}

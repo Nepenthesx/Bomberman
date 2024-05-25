@@ -272,6 +272,7 @@ void GameManager::createBombCountUpgrade(QVector<int> position)
     newGUpgrade->show();
 }
 
+/*
 QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
 {
     QList<GameObject*> objectsInRange;
@@ -297,6 +298,7 @@ QList<GameObject*> GameManager::getObjectsInRange(GameObject* object, int range)
 
     return set.values();
 }
+*/
 
 QList<GameObject*> GameManager::getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize)
 {

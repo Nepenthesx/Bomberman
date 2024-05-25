@@ -1,0 +1,169 @@
+\doxysection{Character Class Reference}
+\hypertarget{class_character}{}\label{class_character}\index{Character@{Character}}
+
+
+Postać mogąca poruszać się po planszy poziomu.  
+
+
+
+
+{\ttfamily \#include $<$character.\+h$>$}
+
+Inheritance diagram for Character\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_character}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_a8eb392924a5c254cf71e63c106d71daf}{Character}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int speed, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor postać \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_character_aeba56acdc2eb38ab8d4fd015f2333050}{on\+Durability\+Loss}} ()=0
+\begin{DoxyCompactList}\small\item\em Zainicjalizowanie akcji w wyniku utraty całej wytrzymałości. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_character_ac673507ef73b958d2f57455d5479a81d}{move}} (QVector$<$ int $>$ next\+Position)=0
+\begin{DoxyCompactList}\small\item\em Ruszenie się obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_object_ae391eed0f327574a2586e43abfaf48b3}{Dynamic\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size, int durability)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu zniszczalnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dynamic_object_a03d06a49ab1791abb8e137d576fc6748}{take\+Damage}} (int damage)
+\begin{DoxyCompactList}\small\item\em Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_game_object}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_movable_object_ad5ed02e90d5f715c9591813d626a07df}{Movable\+Object}} (int speed)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu ruchomego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_dynamic_object}{Dynamic\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_dynamic_object_a2aa6547924dc83b6609f735cfd39d702}{get\+Durability}} ()
+\item 
+void \mbox{\hyperlink{class_dynamic_object_ad70f30b0688f7dffb16f537f1b58e822}{set\+Durability}} (int durability)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_movable_object}{Movable\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_movable_object_a8cccf8afb9b7bfef062b24e8ecf768ad}{get\+Speed}} ()
+\item 
+void \mbox{\hyperlink{class_movable_object_a31182609e87fb111c14eaf95adf18530}{set\+Speed}} (int speed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Postać mogąca poruszać się po planszy poziomu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_character_a8eb392924a5c254cf71e63c106d71daf}\index{Character@{Character}!Character@{Character}}
+\index{Character@{Character}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{Character()}{Character()}}
+{\footnotesize\ttfamily \label{class_character_a8eb392924a5c254cf71e63c106d71daf} 
+Character\+::\+Character (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{, }\item[{int}]{speed}{, }\item[{int}]{durability}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor postać 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+{\em Szybkość} & ruchu \\
+\hline
+{\em Wytrzymałość} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_character_ac673507ef73b958d2f57455d5479a81d}\index{Character@{Character}!move@{move}}
+\index{move@{move}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_character_ac673507ef73b958d2f57455d5479a81d} 
+virtual void Character\+::move (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{next\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Ruszenie się obiektu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Docelowa} & pozycja na którą obiekt się ruszy \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_movable_object_abcade947a84a41552726e79e2fb387ae}{Movable\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_bomber_a5362d6cdfb665fcb42453fd545dacf36}{Bomber}}, \mbox{\hyperlink{class_enemy_a74c9ddb1372178b584c4643fcec70b78}{Enemy}}, and \mbox{\hyperlink{class_player_adc36747dc93b5c4ef0c10b1a7549a32f}{Player}}.
+
+\Hypertarget{class_character_aeba56acdc2eb38ab8d4fd015f2333050}\index{Character@{Character}!onDurabilityLoss@{onDurabilityLoss}}
+\index{onDurabilityLoss@{onDurabilityLoss}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{onDurabilityLoss()}{onDurabilityLoss()}}
+{\footnotesize\ttfamily \label{class_character_aeba56acdc2eb38ab8d4fd015f2333050} 
+virtual void Character\+::on\+Durability\+Loss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Zainicjalizowanie akcji w wyniku utraty całej wytrzymałości. 
+
+
+
+Implements \mbox{\hyperlink{class_dynamic_object_a59891b769692ef9fcffc7d2bf122dfa6}{Dynamic\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_bomber_a59cbd0847e16a2f4bdec5e89cf305652}{Bomber}}, \mbox{\hyperlink{class_enemy_ad9ed9dc0aa0de61a2af31cc1b588fe8e}{Enemy}}, and \mbox{\hyperlink{class_player_acdfec3203c7e176eaa72709d28f05697}{Player}}.
+
+\Hypertarget{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}\index{Character@{Character}!update@{update}}
+\index{update@{update}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0} 
+virtual void Character\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. 
+
+
+
+Implements \mbox{\hyperlink{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3}{Dynamic\+Object}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_bomber_ad2d9ddcd0c1f72faad110955a8d5adef}{Bomber}}, \mbox{\hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{Enemy}}, and \mbox{\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{Player}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{character_8h}{character.\+h}}\item 
+\mbox{\hyperlink{character_8cpp}{character.\+cpp}}\end{DoxyCompactItemize}

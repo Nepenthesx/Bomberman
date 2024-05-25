@@ -1,0 +1,146 @@
+\doxysection{Game\+Object Class Reference}
+\hypertarget{class_game_object}{}\label{class_game_object}\index{GameObject@{GameObject}}
+
+
+Ogólny obiekt istniejący w grze.  
+
+
+
+
+{\ttfamily \#include $<$gameobject.\+h$>$}
+
+Inheritance diagram for Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.304527cm]{class_game_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a6f08ea021b2b397f9336eeafdea04630}{Game\+Object}} (QVector$<$ int $>$ position, QVector$<$ int $>$ size)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu gry. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_game_object_ae83128d0e0efef691417779605ee037c}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. \end{DoxyCompactList}\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}{get\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}{set\+Position}} (QVector$<$ int $>$ position)
+\item 
+QVector$<$ int $>$ \mbox{\hyperlink{class_game_object_a2c208a187642dba81c534280ad455b76}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}{set\+Size}} (QVector$<$ int $>$ size)
+\item 
+bool \mbox{\hyperlink{class_game_object_a701129db9487b99e61255f8481c2f5c7}{check\+Activity}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca czy obiekt wykazuje aktywność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}{desactive}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia aktywność obiektu na 0 czyli brak aktywności. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ogólny obiekt istniejący w grze. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_game_manager}{Game\+Manager} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_object_a6f08ea021b2b397f9336eeafdea04630}\index{GameObject@{GameObject}!GameObject@{GameObject}}
+\index{GameObject@{GameObject}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{GameObject()}{GameObject()}}
+{\footnotesize\ttfamily \label{class_game_object_a6f08ea021b2b397f9336eeafdea04630} 
+Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{, }\item[{QVector$<$ int $>$}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor obiektu gry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pozycja} & \\
+\hline
+{\em Rozmiar} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}\index{GameObject@{GameObject}!````~GameObject@{\texorpdfstring{$\sim$}{\string~}GameObject}}
+\index{````~GameObject@{\texorpdfstring{$\sim$}{\string~}GameObject}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameObject()}{\string~GameObject()}}
+{\footnotesize\ttfamily \label{class_game_object_ab82dfdb656f9051c0587e6593b2dda97} 
+Game\+Object\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destruktor obiektu gry. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_object_a701129db9487b99e61255f8481c2f5c7}\index{GameObject@{GameObject}!checkActivity@{checkActivity}}
+\index{checkActivity@{checkActivity}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{checkActivity()}{checkActivity()}}
+{\footnotesize\ttfamily \label{class_game_object_a701129db9487b99e61255f8481c2f5c7} 
+bool Game\+Object\+::check\+Activity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Zwraca czy obiekt wykazuje aktywność 
+
+\begin{DoxyReturn}{Returns}
+Aktywność obiektu 
+\end{DoxyReturn}
+\Hypertarget{class_game_object_a7141c8c6961ccb4f44c48cde492d3027}\index{GameObject@{GameObject}!desactive@{desactive}}
+\index{desactive@{desactive}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{desactive()}{desactive()}}
+{\footnotesize\ttfamily \label{class_game_object_a7141c8c6961ccb4f44c48cde492d3027} 
+void Game\+Object\+::desactive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ustawia aktywność obiektu na 0 czyli brak aktywności. 
+
+\Hypertarget{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc}\index{GameObject@{GameObject}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_game_object_a8d7c7eeec6a7f9a37ce31474ae2b81bc} 
+QVector$<$ int $>$ Game\+Object\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_game_object_a2c208a187642dba81c534280ad455b76}\index{GameObject@{GameObject}!getSize@{getSize}}
+\index{getSize@{getSize}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{class_game_object_a2c208a187642dba81c534280ad455b76} 
+QVector$<$ int $>$ Game\+Object\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_game_object_a182ffc56be59dbe10948f744c33ea3b0}\index{GameObject@{GameObject}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_game_object_a182ffc56be59dbe10948f744c33ea3b0} 
+void Game\+Object\+::set\+Position (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{position}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_game_object_a04e61cadeda3d863fc2979f64d9aab39}\index{GameObject@{GameObject}!setSize@{setSize}}
+\index{setSize@{setSize}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \label{class_game_object_a04e61cadeda3d863fc2979f64d9aab39} 
+void Game\+Object\+::set\+Size (\begin{DoxyParamCaption}\item[{QVector$<$ int $>$}]{size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_game_object_ae83128d0e0efef691417779605ee037c}\index{GameObject@{GameObject}!update@{update}}
+\index{update@{update}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_game_object_ae83128d0e0efef691417779605ee037c} 
+virtual void Game\+Object\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Aktualizacja stanu obiektu stanowiąca podstawową funkcję aktywności. 
+
+
+
+Implemented in \mbox{\hyperlink{class_bomb_a15851182c209713a5946f977a7fb24b8}{Bomb}}, \mbox{\hyperlink{class_bomber_ad2d9ddcd0c1f72faad110955a8d5adef}{Bomber}}, \mbox{\hyperlink{class_character_a1f4f190ccf7b93bd2ba0aaa25028d5b0}{Character}}, \mbox{\hyperlink{class_dynamic_object_a79387b262388ee85ce828182fae3d3b3}{Dynamic\+Object}}, \mbox{\hyperlink{class_enemy_aa70d742da02995011f1618acc9e303db}{Enemy}}, \mbox{\hyperlink{class_floor_tile_a240ff42947bfa1329405eddd78d28808}{Floor\+Tile}}, \mbox{\hyperlink{class_item_ac1367318216d89348eb4e911192046a5}{Item}}, \mbox{\hyperlink{class_player_a6912bb6e48efb5845d59f0f4582827ef}{Player}}, \mbox{\hyperlink{class_rock_tile_a8167557d50063fd5e6966d11dde19eac}{Rock\+Tile}}, \mbox{\hyperlink{class_static_object_a9b66d7ea507a54b3d76e099b075e0ccc}{Static\+Object}}, and \mbox{\hyperlink{class_wall_tile_aa1c362696e878241d6acc33702b1890a}{Wall\+Tile}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gameobject_8h}{gameobject.\+h}}\item 
+\mbox{\hyperlink{gameobject_8cpp}{gameobject.\+cpp}}\end{DoxyCompactItemize}
