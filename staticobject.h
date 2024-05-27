@@ -12,8 +12,8 @@ class StaticObject : public GameObject
 public:
     /*!
      * \brief Konstruktor obiektu statycznego
-     * \param Pozycja
-     * \param Rozmiar
+     * \param position Pozycja
+     * \param size Rozmiar
      */
     StaticObject(QVector<int> position, QVector<int> size);
     virtual void update() = 0;

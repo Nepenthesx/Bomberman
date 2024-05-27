@@ -40,17 +40,17 @@ private:
 public:
     /*!
      * \brief Konstruktor obiektu graficznego
-     * \param Obiekt gry
-     * \param Ścieżka do pliku z grafiką
-     * \param Okno gry
-     * \param Priorytet rysowania
+     * \param gameObject Obiekt gry
+     * \param graphicRelativePath Ścieżka do pliku z grafiką
+     * \param parent Okno gry
+     * \param drawingPriority Priorytet rysowania
      */
     GraphicObject(GameObject* gameObject, std::string graphicRelativePath, QWidget* parent, int drawingPriority);
 
     QPixmap getPicture();
     /*!
      * \brief Ustawia grafikę do rysowania na podstawie ścieżki pliku graficznego
-     * \param Ścieżka do pliku z grafiką względem pliku "build"
+     * \param graphicRelativePath Ścieżka do pliku z grafiką względem pliku "build"
      */
     void setPicture(std::string graphicRelativePath);
     int getDrawingPriority();
@@ -59,7 +59,7 @@ public:
 
     /*!
      * \brief Sortowanie listy obiektów graficznych po ich priorytecie rysowania
-     * \param Lista obiektów graficzny
+     * \param objectsList Lista obiektów graficzny
      */
     static void sortByPriority(QList<GraphicObject*> objectsList);
 

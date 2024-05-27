@@ -47,13 +47,13 @@ protected:
 public:
     /*!
      * \brief Konstruktor bombera
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Szybkość ruchu
-     * \param Wytrzymałość
-     * \param Maksymalna ilość postawionych jednocześnie bomb
-     * \param Zasięg rażenia stawianych bomb
-     * \param Kształt eksplozji stawianych bomb
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param speed Szybkość ruchu
+     * \param durability Wytrzymałość
+     * \param maxBombCount Maksymalna ilość postawionych jednocześnie bomb
+     * \param bombPower Zasięg rażenia stawianych bomb
+     * \param bombType Kształt eksplozji stawianych bomb
      */
     Bomber(QVector<int> position, QVector<int> size, int speed, int durability, int maxBombCount, int bombPower, Bomber::BombType bombType);
     virtual void update() = 0;

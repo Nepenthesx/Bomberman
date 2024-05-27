@@ -17,10 +17,10 @@ private:
 public:
     /*!
      * \brief Konstruktor przeciwnika
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Szybkość ruchu
-     * \param Wytrzymałość
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param speed Szybkość ruchu
+     * \param durability Wytrzymałość, domyślnie =3
      */
     Enemy(QVector<int> position, QVector<int> size, int speed, int durability = 3);
 
@@ -30,7 +30,7 @@ public:
     void update() override;
     /*!
      * \brief Dokonanie przemieszczenia na wskazaną przez SI przeciwnika pozycję
-     * \param Pozycja na którą zamierza przemieścić się przeciwnik
+     * \param nextPosition Pozycja na którą zamierza przemieścić się przeciwnik
      *
      * Wskazanie następnej pozycji przeciwnika odbywa się poprzez analizę sąsiednich obiektów
      *  zawartych w relativeClosePosition. Piorytetem jest sąsiad w postaci Player, następnie

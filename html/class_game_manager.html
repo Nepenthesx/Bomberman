@@ -204,10 +204,10 @@ Static Public Member Functions</h2></td></tr>
 <p>Sprawdza zachodzenie się powierzchni dwóch wskazanych obiektów. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td>pierwszego obiektu </td></tr>
-    <tr><td class="paramname">Rozmiar</td><td>pierwszego obiektu </td></tr>
-    <tr><td class="paramname">Pozycja</td><td>drugiego obiektu </td></tr>
-    <tr><td class="paramname">Rozmiar</td><td>drugiego obiektu </td></tr>
+    <tr><td class="paramname">firstObjectPosition</td><td>Pozycja pierwszego obiektu </td></tr>
+    <tr><td class="paramname">firstObjectSize</td><td>Rozmiar pierwszego obiektu </td></tr>
+    <tr><td class="paramname">secondObjectPosition</td><td>Pozycja drugiego obiektu </td></tr>
+    <tr><td class="paramname">secondObjectSize</td><td>Rozmiar drugiego obiektu </td></tr>
   </table>
   </dd>
 </dl>
@@ -255,10 +255,10 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu bomby. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
-    <tr><td class="paramname">Twórca</td><td>bomby </td></tr>
-    <tr><td class="paramname">Zasięg</td><td>rażenia </td></tr>
-    <tr><td class="paramname">Kształt</td><td>eksplozji bomby </td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
+    <tr><td class="paramname">owner</td><td>Twórca bomby </td></tr>
+    <tr><td class="paramname">explosionPower</td><td>Zasięg rażenia </td></tr>
+    <tr><td class="paramname">bombType</td><td>Kształt eksplozji bomby </td></tr>
   </table>
   </dd>
 </dl>
@@ -292,7 +292,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu ulepszenia ilości stawianych bomb. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -326,7 +326,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu ulepszenia zasięgu rażenia bomby. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -360,7 +360,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu ulepszenia kształtu bomby. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -398,8 +398,8 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu przeciwnika. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
-    <tr><td class="paramname">Szybkość</td><td>ruchu </td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
+    <tr><td class="paramname">speed</td><td>Szybkość ruchu </td></tr>
   </table>
   </dd>
 </dl>
@@ -433,7 +433,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu podłogi. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -471,8 +471,8 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu gracza. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
-    <tr><td class="paramname">Szybkość</td><td>ruchu </td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
+    <tr><td class="paramname">speed</td><td>Szybkość ruchu </td></tr>
   </table>
   </dd>
 </dl>
@@ -506,7 +506,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu kamienia. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -540,7 +540,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie obiektu ściany. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Pozycja </td></tr>
   </table>
   </dd>
 </dl>
@@ -685,9 +685,9 @@ Static Public Member Functions</h2></td></tr>
 <p>Utworzenie singletowego managera gry. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Podstawowa</td><td>skala wielkości obiektów </td></tr>
-    <tr><td class="paramname">Okno</td><td>w którym wyświetlana jest grafika </td></tr>
-    <tr><td class="paramname">Czas</td><td>między kolejnymi klatkami </td></tr>
+    <tr><td class="paramname">globalScale</td><td>Podstawowa skala wielkości obiektów </td></tr>
+    <tr><td class="paramname">window</td><td>Okno w którym wyświetlana jest grafika </td></tr>
+    <tr><td class="paramname">frameInterval</td><td>Czas między kolejnymi klatkami, domyślnie =1000ms </td></tr>
   </table>
   </dd>
 </dl>
@@ -726,8 +726,8 @@ Static Public Member Functions</h2></td></tr>
 <p>Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td>badanego obiektu </td></tr>
-    <tr><td class="paramname">Rozmiar</td><td>badanego obiektu </td></tr>
+    <tr><td class="paramname">objectPosition</td><td>Pozycja badanego obiektu </td></tr>
+    <tr><td class="paramname">objectSize</td><td>Rozmiar badanego obiektu </td></tr>
   </table>
   </dd>
 </dl>
@@ -772,9 +772,9 @@ Static Public Member Functions</h2></td></tr>
 <p>Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem w wskazanym przez niego obszarze. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Pozycja</td><td>badanego obiektu </td></tr>
-    <tr><td class="paramname">Zbiór</td><td>badanych pozycji określonych względem podstawowej pozycji obiektu </td></tr>
-    <tr><td class="paramname">Rozmiar</td><td>badanego obiektu </td></tr>
+    <tr><td class="paramname">basePosition</td><td>Pozycja badanego obiektu </td></tr>
+    <tr><td class="paramname">relativePositions</td><td>Zbiór badanych pozycji określonych względem podstawowej pozycji obiektu </td></tr>
+    <tr><td class="paramname">objectSize</td><td>Rozmiar badanego obiektu </td></tr>
   </table>
   </dd>
 </dl>

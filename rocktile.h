@@ -12,9 +12,9 @@ class RockTile : public DynamicObject
 public:
     /*!
      * \brief Konstruktor kamienia
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Wytrzymałość
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param durability Wytrzymałość, domyślnie =1
      */
     RockTile(QVector<int> position, QVector<int> size, int durability = 1);
 

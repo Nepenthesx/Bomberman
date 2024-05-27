@@ -23,9 +23,9 @@ class GameManager : public QObject
 private:
     /*!
      * \brief Konstruktor managera gry
-     * \param Podstawowa skala wielkości obiektów
-     * \param Okno w którym wyświetlana jest grafika
-     * \param Czas między kolejnymi klatkami
+     * \param globalScale Podstawowa skala wielkości obiektów
+     * \param window Okno w którym wyświetlana jest grafika
+     * \param frameInterval Czas między kolejnymi klatkami
      */
     GameManager(int globalScale, QWidget* window, float frameInterval);
     /*!
@@ -70,7 +70,7 @@ private:
 
     /*!
      * \brief Usunięcie wskazanego obiektu z systemu gry
-     * \param Obiekt gry do usunięcia
+     * \param object Obiekt gry do usunięcia
      *
      * Usunięce obiektu odbywa się poprzez odnalazienie go na liście istniejących obiektów, następnie
      *  wyszukanie wśród listy graficznych obiektów takiego graficznego obiektu, który stanowi
@@ -83,9 +83,9 @@ public:
     //GameManager(int globalScale, QWidget* window, float frameInterval = 1000);
     /*!
      * \brief Utworzenie singletowego managera gry
-     * \param Podstawowa skala wielkości obiektów
-     * \param Okno w którym wyświetlana jest grafika
-     * \param Czas między kolejnymi klatkami
+     * \param globalScale Podstawowa skala wielkości obiektów
+     * \param window Okno w którym wyświetlana jest grafika
+     * \param frameInterval Czas między kolejnymi klatkami, domyślnie =1000ms
      * \return Utworzony manager gry
      *
      * Manager gry jest singletonem, a więc jest możliwe utworzenie tego obiektu tylko raz
@@ -111,60 +111,60 @@ public:
 
     /*!
      * \brief Utworzenie obiektu podłogi
-     * \param Pozycja
+     * \param position Pozycja
      * \see FloorTile
      */
     static void createFloorTile(QVector<int> position);
     /*!
      * \brief Utworzenie obiektu kamienia
-     * \param Pozycja
+     * \param position Pozycja
      * \see RockTile
      */
     static void createRockTile(QVector<int> position);
     /*!
      * \brief Utworzenie obiektu ściany
-     * \param Pozycja
+     * \param position Pozycja
      * \see WallTile
      */
     static void createWallTile(QVector<int> position);
     /*!
      * \brief Utworzenie obiektu gracza
-     * \param Pozycja
-     * \param Szybkość ruchu
+     * \param position Pozycja
+     * \param speed Szybkość ruchu
      * \see Player
      */
     static void createPlayer(QVector<int> position, int speed);
     /*!
      * \brief Utworzenie obiektu przeciwnika
-     * \param Pozycja
-     * \param Szybkość ruchu
+     * \param position Pozycja
+     * \param speed Szybkość ruchu
      * \see Enemy
      */
     static void createEnemy(QVector<int> position, int speed);
     /*!
      * \brief Utworzenie obiektu bomby
-     * \param Pozycja
-     * \param Twórca bomby
-     * \param Zasięg rażenia
-     * \param Kształt eksplozji bomby
+     * \param position Pozycja
+     * \param owner Twórca bomby
+     * \param explosionPower Zasięg rażenia
+     * \param bombType Kształt eksplozji bomby
      * \see Bomb
      */
     static void createBomb(QVector<int> position, Bomber* owner, int explosionPower, Bomber::BombType bombType);
     /*!
      * \brief Utworzenie obiektu ulepszenia kształtu bomby
-     * \param Pozycja
+     * \param position Pozycja
      * \see BombTypeUpgrade
      */
     static void createBombTypeUpgrade(QVector<int> position);
     /*!
      * \brief Utworzenie obiektu ulepszenia zasięgu rażenia bomby
-     * \param Pozycja
+     * \param position Pozycja
      * \see BombPowerUpgrade
      */
     static void createBombPowerUpgrade(QVector<int> position);
     /*!
      * \brief Utworzenie obiektu ulepszenia ilości stawianych bomb
-     * \param Pozycja
+     * \param position Pozycja
      * \see BombCountUpgrade
      */
     static void createBombCountUpgrade(QVector<int> position);
@@ -173,8 +173,8 @@ public:
     //static QList<GameObject*> getObjectsInRange(GameObject* object, int range);
     /*!
      * \brief Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem
-     * \param Pozycja badanego obiektu
-     * \param Rozmiar badanego obiektu
+     * \param objectPosition Pozycja badanego obiektu
+     * \param objectSize Rozmiar badanego obiektu
      * \return Lista obiektów będących w kontakcie z danym obiektem
      * \see Funkcja checkContact
      *
@@ -185,9 +185,9 @@ public:
     static QList<GameObject*> getObjectsInContact(QVector<int> objectPosition, QVector<int> objectSize);
     /*!
      * \brief Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem w wskazanym przez niego obszarze
-     * \param Pozycja badanego obiektu
-     * \param Zbiór badanych pozycji określonych względem podstawowej pozycji obiektu
-     * \param Rozmiar badanego obiektu
+     * \param basePosition Pozycja badanego obiektu
+     * \param relativePositions Zbiór badanych pozycji określonych względem podstawowej pozycji obiektu
+     * \param objectSize Rozmiar badanego obiektu
      * \return Stos obiektów będących w kontakcie z danym obiektem
      * \see Funkcja checkContact
      * \see Funckja getObjectsInContact
@@ -200,10 +200,10 @@ public:
     static QSet<GameObject*> getObjectsInContactArea(QVector<int> basePosition, QSet<QVector<int>> relativePositions, QVector<int> objectSize);
     /*!
      * \brief Sprawdza zachodzenie się powierzchni dwóch wskazanych obiektów
-     * \param Pozycja pierwszego obiektu
-     * \param Rozmiar pierwszego obiektu
-     * \param Pozycja drugiego obiektu
-     * \param Rozmiar drugiego obiektu
+     * \param firstObjectPosition Pozycja pierwszego obiektu
+     * \param firstObjectSize Rozmiar pierwszego obiektu
+     * \param secondObjectPosition Pozycja drugiego obiektu
+     * \param secondObjectSize Rozmiar drugiego obiektu
      * \return Informacja czy wskazane obiekty zachodzą się powierzchniami
      */
     static bool checkContact(QVector<int> firstObjectPosition, QVector<int> firstObjectSize, QVector<int> secondObjectPosition, QVector<int> secondObjectSize);

@@ -21,12 +21,12 @@ protected:
 public:
     /*!
      * \brief Konstruktor obiektu ruchomego
-     * \param Szybkość ruchu
+     * \param speed Szybkość ruchu
      */
     MovableObject(int speed);
     /*!
      * \brief Ruszenie się obiektu
-     * \param Docelowa pozycja na którą obiekt się ruszy
+     * \param nextPosition Docelowa pozycja na którą obiekt się ruszy
      */
     virtual void move(QVector<int> nextPosition) = 0;
 };

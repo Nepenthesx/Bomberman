@@ -22,9 +22,9 @@ protected:
 public:
     /*!
      * \brief Konstruktor obiektu zniszczalnego
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Wytrzymałość
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param durability Wytrzymałość
      */
     DynamicObject(QVector<int> position, QVector<int> size, int durability);
     virtual void update() = 0;
@@ -34,7 +34,7 @@ public:
     virtual void onDurabilityLoss() = 0;
     /*!
      * \brief Przyjęcie przez obiekt obrażeń skutkujące obniżeniem jego wytrzymałości o wartość obrażeń
-     * \param Wartość obrażeń
+     * \param damage Wartość obrażeń
      */
     void takeDamage(int damage);
 };

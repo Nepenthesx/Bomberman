@@ -12,10 +12,10 @@ class Item : public DynamicObject, public TemporaryObject
 public:
     /*!
      * \brief Konstruktor przedmiotu
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Czas istnienia przedmiotu
-     * \param Wytrzymałość
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param lifetime Czas istnienia przedmiotu
+     * \param durability Wytrzymałość
      */
     Item(QVector<int> position, QVector<int> size, int lifetime, int durability);
 

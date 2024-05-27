@@ -27,8 +27,8 @@ private:
 public:
     /*!
      * \brief Konstruktor obiektu gry
-     * \param Pozycja
-     * \param Rozmiar
+     * \param position Pozycja
+     * \param size Rozmiar
      */
     GameObject(QVector<int> position, QVector<int> size);
     /*!

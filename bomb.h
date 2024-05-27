@@ -37,12 +37,12 @@ protected:
 public:
     /*!
      * \brief Konstruktor bomby
-     * \param Twórca bomby
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Zasięg rażenia
-     * \param Czas do eksplozji
-     * \param Wytrzymałość
+     * \param owner Twórca bomby
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param explosionPower Zasięg rażenia
+     * \param lifetime Czas do eksplozji
+     * \param durability Wytrzymałość
      */
     Bomb(Bomber* owner, QVector<int> position, QVector<int> size, int explosionPower, int lifetime, int durability);
 

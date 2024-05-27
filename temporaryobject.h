@@ -23,7 +23,7 @@ private:
 
     /*!
      * \brief Uruchomienie timera
-     * \param Czas do wykonania akcji
+     * \param lifetime Czas do wykonania akcji
      */
     void setTimer(int lifetime);
 
@@ -37,7 +37,7 @@ protected:
 public:
     /*!
      * \brief Konstruktor obiektu czasowego
-     * \param Czas do wykonania akcji
+     * \param lifetime Czas do wykonania akcji
      */
     TemporaryObject(int lifetime);
     /*!

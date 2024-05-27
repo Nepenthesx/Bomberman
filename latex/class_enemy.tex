@@ -95,13 +95,13 @@ Konstruktor przeciwnika.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
-{\em Rozmiar} & \\
+{\em size} & Rozmiar \\
 \hline
-{\em Szybkość} & ruchu \\
+{\em speed} & Szybkość ruchu \\
 \hline
-{\em Wytrzymałość} & \\
+{\em durability} & Wytrzymałość, domyślnie =3 \\
 \hline
 \end{DoxyParams}
 
@@ -119,7 +119,7 @@ Dokonanie przemieszczenia na wskazaną przez SI przeciwnika pozycję
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & na którą zamierza przemieścić się przeciwnik\\
+{\em next\+Position} & Pozycja na którą zamierza przemieścić się przeciwnik\\
 \hline
 \end{DoxyParams}
 Wskazanie następnej pozycji przeciwnika odbywa się poprzez analizę sąsiednich obiektów zawartych w relative\+Close\+Position. Piorytetem jest sąsiad w postaci \doxylink{class_player}{Player}, następnie \doxylink{class_floor_tile}{Floor\+Tile}. Jeśli możliwe są 2 pozycje o tym samym piorytecie, wybór jednej z nich odbywa się losowo. Przeciwnik nie jest w stanie wejść na obiekty typu \doxylink{class_rock_tile}{Rock\+Tile} i \doxylink{class_wall_tile}{Wall\+Tile} 

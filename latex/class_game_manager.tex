@@ -76,13 +76,13 @@ Sprawdza zachodzenie się powierzchni dwóch wskazanych obiektów.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & pierwszego obiektu \\
+{\em first\+Object\+Position} & Pozycja pierwszego obiektu \\
 \hline
-{\em Rozmiar} & pierwszego obiektu \\
+{\em first\+Object\+Size} & Rozmiar pierwszego obiektu \\
 \hline
-{\em Pozycja} & drugiego obiektu \\
+{\em second\+Object\+Position} & Pozycja drugiego obiektu \\
 \hline
-{\em Rozmiar} & drugiego obiektu \\
+{\em second\+Object\+Size} & Rozmiar drugiego obiektu \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -100,13 +100,13 @@ Utworzenie obiektu bomby.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
-{\em Twórca} & bomby \\
+{\em owner} & Twórca bomby \\
 \hline
-{\em Zasięg} & rażenia \\
+{\em explosion\+Power} & Zasięg rażenia \\
 \hline
-{\em Kształt} & eksplozji bomby \\
+{\em bomb\+Type} & Kształt eksplozji bomby \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -124,7 +124,7 @@ Utworzenie obiektu ulepszenia ilości stawianych bomb.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -142,7 +142,7 @@ Utworzenie obiektu ulepszenia zasięgu rażenia bomby.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -160,7 +160,7 @@ Utworzenie obiektu ulepszenia kształtu bomby.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -178,9 +178,9 @@ Utworzenie obiektu przeciwnika.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
-{\em Szybkość} & ruchu \\
+{\em speed} & Szybkość ruchu \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -198,7 +198,7 @@ Utworzenie obiektu podłogi.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -216,9 +216,9 @@ Utworzenie obiektu gracza.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
-{\em Szybkość} & ruchu \\
+{\em speed} & Szybkość ruchu \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -236,7 +236,7 @@ Utworzenie obiektu kamienia.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -254,7 +254,7 @@ Utworzenie obiektu ściany.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & \\
+{\em position} & Pozycja \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -300,11 +300,11 @@ Utworzenie singletowego managera gry.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Podstawowa} & skala wielkości obiektów \\
+{\em global\+Scale} & Podstawowa skala wielkości obiektów \\
 \hline
-{\em Okno} & w którym wyświetlana jest grafika \\
+{\em window} & Okno w którym wyświetlana jest grafika \\
 \hline
-{\em Czas} & między kolejnymi klatkami \\
+{\em frame\+Interval} & Czas między kolejnymi klatkami, domyślnie =1000ms \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -322,9 +322,9 @@ Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & badanego obiektu \\
+{\em object\+Position} & Pozycja badanego obiektu \\
 \hline
-{\em Rozmiar} & badanego obiektu \\
+{\em object\+Size} & Rozmiar badanego obiektu \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -345,11 +345,11 @@ Znalezienie wszystkich obiektów które są w kontakcie z danym obiektem w wskaz
 
 
 \begin{DoxyParams}{Parameters}
-{\em Pozycja} & badanego obiektu \\
+{\em base\+Position} & Pozycja badanego obiektu \\
 \hline
-{\em Zbiór} & badanych pozycji określonych względem podstawowej pozycji obiektu \\
+{\em relative\+Positions} & Zbiór badanych pozycji określonych względem podstawowej pozycji obiektu \\
 \hline
-{\em Rozmiar} & badanego obiektu \\
+{\em object\+Size} & Rozmiar badanego obiektu \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

@@ -15,10 +15,10 @@ class Character : public DynamicObject, public MovableObject
 public:
     /*!
      * \brief Konstruktor postać
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Szybkość ruchu
-     * \param Wytrzymałość
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param speed Szybkość ruchu
+     * \param durability Wytrzymałość
      */
     Character(QVector<int> position, QVector<int> size, int speed, int durability);
 

@@ -11,8 +11,8 @@ class FloorTile : public StaticObject
 public:
     /*!
      * \brief Konstruktor podłogi
-     * \param Pozycja
-     * \param Rozmiar
+     * \param position Pozycja
+     * \param size Rozmiar
      */
     FloorTile(QVector<int> position, QVector<int> size);
     /*!

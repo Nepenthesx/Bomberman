@@ -14,13 +14,13 @@ class Player : public Bomber
 public:
     /*!
      * \brief Konstruktor gracza
-     * \param Pozycja
-     * \param Rozmiar
-     * \param Szybkość ruchu
-     * \param Wytrzymałość
-     * \param Maksymalna ilość postawionych jednocześnie bomb
-     * \param Zasięg rażenia stawianych bomb
-     * \param Kształt eksplozji stawianych bomb
+     * \param position Pozycja
+     * \param size Rozmiar
+     * \param speed Szybkość ruchu
+     * \param durability Wytrzymałość, domyślnie =3
+     * \param maxBombCount Maksymalna ilość postawionych jednocześnie bomb, domyślnie =1
+     * \param bombPower Zasięg rażenia stawianych bomb, domyślnie =1
+     * \param bombType Kształt eksplozji stawianych bomb, domyślnie =Bomber::Cross
      */
     Player(QVector<int> position, QVector<int> size, int speed, int durability = 3, int maxBombCount = 1, int bombPower = 1, Bomber::BombType bombType = Bomber::Cross);
 
@@ -30,7 +30,7 @@ public:
     void update() override;
     /*!
      * \brief Dokonanie przemieszczenia na wskazaną przez użytkownika pozycję
-     * \param Pozycja na którą zamierza przemieścić się gracz
+     * \param nextPosition Pozycja na którą zamierza przemieścić się gracz
      *
      * Wskazanie następnej pozycji gracza odbywa się poprzez odpowiedni przycisk klawiatury
      * LeftArrow - pozycja na lewo od obecnej

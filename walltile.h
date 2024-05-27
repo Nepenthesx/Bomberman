@@ -11,8 +11,8 @@ class WallTile : public StaticObject
 public:
     /*!
      * \brief Konstruktor ściany
-     * \param Pozycja
-     * \param Rozmiar
+     * \param position Pozycja
+     * \param size Rozmiar
      */
     WallTile(QVector<int> position, QVector<int> size);
     /*!
